@@ -577,7 +577,7 @@
   },
   "wallpaper": {
     "automationEnabled": false,
-    "directory": "/home/mikejohnp/Pictures/Wallpapers",
+    "directory": "/home/mikejohnp/bg",
     "enableMultiMonitorDirectories": false,
     "enabled": true,
     "favorites": [],
