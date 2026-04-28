@@ -5,11 +5,11 @@ TERM = "xterm-256color"
 [window]
 # padding = { x = 10, y = 10 }
 decorations = "none"
-opacity = 0.94
+opacity = 0.93
 option_as_alt = "Both"
 
 [font]
-size = 14.0
+size = 12.0
 
 [font.normal]
 family = "JetBrainsMono Nerd Font Mono"
@@ -63,45 +63,70 @@ style = "Bold Italic"
 # URL: https://github.com/alacritty/alacritty
 # -----------------------------------------------------------------------------
 
-[colors.primary]
-background = '#1F1F28'
-foreground = '#DCD7BA'
+# [colors.primary]
+# background = '#1F1F28'
+# foreground = '#DCD7BA'
+#
+# [colors.cursor]
+# cursor = '#c4b28a'
+# text = '#1F1F28'
+#
+# [colors.selection]
+# background = '#363646'
+# foreground = '#9e9b93'
+#
+# [colors.normal]
+# black = '#393836'
+# red = '#c4746e'
+# green = '#699469'
+# yellow = '#c4b28a'
+# blue = '#435965'
+# magenta = '#a292a3'
+# cyan = '#8ea49e'
+# white = '#C8C093'
+#
+# [colors.bright]
+# black = '#aca9a4'
+# red = '#cc928e'
+# green = '#72a072'
+# yellow = '#d4c196'
+# blue = '#698a9b'
+# magenta = '#b4a7b5'
+# cyan = '#96ada7'
+# white = '#d5cd9d'
+#
+# [[colors.indexed_colors]]
+# index = 16
+# color = '#b6927b'
+#
+# [[colors.indexed_colors]]
+# index = 17
+# color = '#c4746e'
 
-[colors.cursor]
-cursor = '#c4b28a'
-text = '#1F1F28'
-
-[colors.selection]
-background = '#363646'
-foreground = '#9e9b93'
+# Tokyo night storm
+[colors.bright]
+black = "#444b6a"
+blue = "#7da6ff"
+cyan = "#0db9d7"
+green = "#b9f27c"
+magenta = "#bb9af7"
+red = "#ff7a93"
+white = "#acb0d0"
+yellow = "#ff9e64"
 
 [colors.normal]
-black = '#393836'
-red = '#c4746e'
-green = '#699469'
-yellow = '#c4b28a'
-blue = '#435965'
-magenta = '#a292a3'
-cyan = '#8ea49e'
-white = '#C8C093'
+black = "#32344a"
+blue = "#7aa2f7"
+cyan = "#449dab"
+green = "#9ece6a"
+magenta = "#ad8ee6"
+red = "#f7768e"
+white = "#9699a8"
+yellow = "#e0af68"
 
-[colors.bright]
-black = '#aca9a4'
-red = '#cc928e'
-green = '#72a072'
-yellow = '#d4c196'
-blue = '#698a9b'
-magenta = '#b4a7b5'
-cyan = '#96ada7'
-white = '#d5cd9d'
-
-[[colors.indexed_colors]]
-index = 16
-color = '#b6927b'
-
-[[colors.indexed_colors]]
-index = 17
-color = '#c4746e'
+[colors.primary]
+background = "#24283b"
+foreground = "#a9b1d6"
 
 [cursor]
 style = "Block"
@@ -114,3 +139,5 @@ save_to_clipboard = true
 
 [mouse]
 hide_when_typing = true
+
+

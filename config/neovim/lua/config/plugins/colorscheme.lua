@@ -1,39 +1,42 @@
 return {
 	{
 		"folke/tokyonight.nvim",
-		enabled = false,
+		enabled = true,
 		init = function()
-			-- vim.cmd.colorscheme("tokyonight-night")
-			-- vim.cmd.hi("Comment gui=none")
+			vim.cmd.colorscheme("tokyonight-night")
+			vim.cmd.hi("Comment gui=none")
 		end,
 		opts = {
-			transparent = false, -- Enable this to disable setting the background color
+			transparent = true, -- Enable this to disable setting the background color
 			terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
 			dim_inactive = false, -- dims inactive windows
 			lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
 		},
 		cache = true, -- When set to true, the theme will be cached for better performance
 	},
-	{
-		"neanias/everforest-nvim",
-		version = false,
-		lazy = false,
-		init = function()
-			vim.cmd.colorscheme("everforest")
-		end,
-		priority = 1000, -- make sure to load this before all the other start plugins
-		-- Optional; default configuration will be used if setup isn't called.
-		config = function()
-			require("everforest").setup({
-				-- Your config here
-			})
-		end,
-	},
+	-- {
+	-- 	"neanias/everforest-nvim",
+	-- 	version = false,
+	-- 	lazy = false,
+	-- 	init = function()
+	-- 		vim.cmd.colorscheme("everforest")
+	-- 	end,
+	-- 	priority = 1000, -- make sure to load this before all the other start plugins
+	-- 	-- Optional; default configuration will be used if setup isn't called.
+	-- 	config = function()
+	-- 		require("everforest").setup({
+	-- 			-- Your config here
+	-- 		})
+	-- 	end,
+	-- },
 	-- {
 	-- 	"vague-theme/vague.nvim",
-	-- 	lazy = false,  -- make sure we load this during startup if it is your main colorscheme
+	-- 	lazy = false, -- make sure we load this during startup if it is your main colorscheme
 	-- 	priority = 1000, -- make sure to load this before all the other plugins
-	-- 	enabled = false,
+	-- 	enabled = true,
+	-- 	init = function()
+	-- 		vim.cmd.colorscheme("vague")
+	-- 	end,
 	-- 	config = function()
 	-- 		require("vague").setup({
 	-- 			transparent = false, -- don't set background

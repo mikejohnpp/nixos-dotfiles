@@ -12,6 +12,10 @@
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -35,6 +39,10 @@
           ./nixos/vm-dev/configuration.nix
         ];
 
+        desk-btw = mkNixosConfig "x86_64-linux" [
+          ./nixos/desk/configuration.nix
+        ];
+
         wsl-btw = mkNixosConfig "x86_64-linux" [
           ./nixos/wsl-dev/configuration.nix
           inputs.nixos-wsl.nixosModules.wsl
@@ -42,12 +50,20 @@
       };
 
       homeConfigurations = {
-
         "nixos-btw" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs; };
           modules = [
             ./users/vm-dev/home.nix
+          ];
+        };
+
+        "desk-btw" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs; };
+          modules = [
+            ./users/desk-dev/home.nix
+            inputs.noctalia.homeModules.default
           ];
         };
 
