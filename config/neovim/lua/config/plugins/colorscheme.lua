@@ -3,7 +3,7 @@ return {
 		"folke/tokyonight.nvim",
 		enabled = true,
 		init = function()
-			vim.cmd.colorscheme("tokyonight-storm")
+			vim.cmd.colorscheme("tokyonight")
 			vim.cmd.hi("Comment gui=none")
 		end,
 		opts = {
