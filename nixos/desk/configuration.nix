@@ -41,7 +41,7 @@
   };
 
   services.xserver = {
-    enable = true;
+    enable = false;
     xkb.layout = "us";
     xkb.variant = "";
   };
@@ -74,6 +74,40 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5 = {
+      # Use the engine from qt6Packages
+      addons = with pkgs; [
+        fcitx5-gtk # Specifically keep this for Brave/Firefox
+        qt6Packages.fcitx5-unikey
+      ];
+      waylandFrontend = true;
+    };
+  };
+
+  environment.sessionVariables = {
+    GTK_IM_MODULE = lib.mkForce "fcitx";
+    QT_IM_MODULE = lib.mkForce "fcitx";
+    # XMODIFIERS = "@im=fcitx";
+    # NIXOS_OZONE_WL = "0";
+    # # Force browsers to use X11
+    # MOZ_ENABLE_WAYLAND = "0";
+    # ELECTRON_OZONE_PLATFORM_HINT = "x11";
+  };
+
+  # Add this if you use Brave or Google Chrome
+  programs.chromium.extraOpts = {
+    enable = true;
+    extraArgs = [
+      "--gtk-version=4"
+      # "--disable-features=WaylandFractionalScaleV1"
+      # "--enable-features=UseOzonePlatform"
+      # "--ozone-platform=x11"
+    ];
+  };
+
   hardware.uinput.enable = true;
 
   users.users.mikejohnp = {
@@ -82,6 +116,7 @@
       "wheel"
       "networkmanager"
       "uinput"
+      "audio"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
     ];
@@ -137,6 +172,13 @@
       mesa
     ];
   };
+
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 8 * 1024; # 8 GiB
+    }
+  ];
   system.stateVersion = "25.05";
 
 }

@@ -41,6 +41,7 @@
     fastfetch
     lazygit
     feh
+    unzip
     nerd-fonts.jetbrains-mono
   ];
 
