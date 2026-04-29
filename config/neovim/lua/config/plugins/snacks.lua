@@ -99,6 +99,13 @@ return {
 			end,
 			desc = "Pick Color Schemes",
 		},
+		{
+			"<leader>ee",
+			function()
+				require("snacks").explorer.open()
+			end,
+			desc = "Open snacks explorer",
+		},
 	},
 	opts = {
 		bigfile = { enabled = true },
@@ -109,7 +116,7 @@ return {
 				{ section = "startup" },
 			},
 		},
-		explorer = { enabled = false },
+		explorer = { enabled = true },
 		indent = {
 			priority = 1,
 			enabled = true,

@@ -20,6 +20,7 @@
   networking.firewall.allowedTCPPorts = [
     5912
     5901
+    22
   ];
 
   networking.nameservers = [
