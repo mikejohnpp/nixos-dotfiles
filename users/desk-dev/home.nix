@@ -43,7 +43,6 @@
     feh
     unzip
     file
-    remmina
     winboat # windows virtualization
     freerdp # for winboat
     nerd-fonts.jetbrains-mono
