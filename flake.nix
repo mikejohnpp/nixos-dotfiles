@@ -47,6 +47,10 @@
           ./nixos/wsl-dev/configuration.nix
           inputs.nixos-wsl.nixosModules.wsl
         ];
+
+        minimal-btw = mkNixosConfig "x86_64-linux" [
+          ./nixos/minimal/configuration.nix
+        ];
       };
 
       homeConfigurations = {
@@ -72,6 +76,14 @@
           extraSpecialArgs = { inherit inputs; };
           modules = [
             ./users/wsl-dev/home.nix
+          ];
+        };
+
+        "minimal-btw" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs; };
+          modules = [
+            ./users/minimal/home.nix
           ];
         };
       };
