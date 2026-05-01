@@ -117,6 +117,7 @@
       "networkmanager"
       "uinput"
       "audio"
+      "docker"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
     ];
