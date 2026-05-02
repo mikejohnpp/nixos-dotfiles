@@ -83,6 +83,7 @@
     mesa-demos
     xclip
     xsel
+    psmisc
   ];
 
   nix.settings.experimental-features = [

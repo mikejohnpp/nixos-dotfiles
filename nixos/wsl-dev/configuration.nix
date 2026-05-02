@@ -85,6 +85,7 @@
     mesa-demos
     xclip
     xsel
+    psmisc
   ];
 
   programs.nix-ld.enable = true;

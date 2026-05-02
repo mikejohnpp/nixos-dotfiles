@@ -138,6 +138,11 @@
     pavucontrol
     git
     xwayland-satellite
+    psmisc
+  ];
+
+  fonts.packages = with pkgs; [
+    corefonts # Msfont support
   ];
 
   nix.settings.experimental-features = [

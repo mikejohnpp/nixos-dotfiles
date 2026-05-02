@@ -1,7 +1,8 @@
-{ lib
-, config
-, pkgs
-, ...
+{
+  lib,
+  config,
+  pkgs,
+  ...
 }:
 
 with lib;
@@ -15,10 +16,9 @@ in
   config = mkIf cfg.enable {
     programs.alacritty.enable = true;
     home.file = {
-      ".config/alacritty/alacritty.toml" = {
-      source = ./../../config/alacritty/alacritty.toml;
+      ".config/alacritty" = {
+        source = ./../../config/alacritty;
       };
     };
   };
 }
-

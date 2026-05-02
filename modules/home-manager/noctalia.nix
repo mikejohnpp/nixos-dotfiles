@@ -22,12 +22,8 @@ in
     };
 
     home.file = {
-      ".config/noctalia/settings.json" = {
-        source = ./../../config/noctalia/settings.json;
-      };
-
-      ".config/noctalia/colors.json" = {
-        source = ./../../config/noctalia/colors.json;
+      ".config/noctalia" = {
+        source = ./../../config/noctalia;
       };
     };
   };

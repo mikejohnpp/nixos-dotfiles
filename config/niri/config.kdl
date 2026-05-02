@@ -373,6 +373,7 @@ window-rule {
     draw-border-with-background false
 }
 
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
@@ -385,10 +386,57 @@ window-rule {
     // block-out-from "screencast"
 }
 
+// Assorted window rules.
+window-rule {
+    match app-id=r#"^Pinentry-gtk$"#
+    match app-id=r#"^Tk$"#
+    match app-id=r#"^gimp$"# title=r#"Preferences"#
+    match app-id=r#"^mpv$"#
+    match app-id=r#"^soffice$"# title=r#"^Text Import"#
+    match app-id=r#"^thunar$"# title=r#"^Rename "#
+    match app-id=r#"^virt-manager$"# title=r#" - Connection Details"#
+    match app-id=r#"^wev$"#
+    match app-id=r#"^xarchiver$"#
+    match app-id=r#"firefox$"# title=r#"^(Picture-in-Picture|Library|About Mozilla Firefox)$"#
+
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"^org\.pwmt\.zathura$"#
+
+    open-floating true
+    default-window-height { proportion 0.98; }
+
+    default-column-width { proportion 0.5; }
+}
+
+window-rule {
+    match app-id=r#"^dot\.floating\.ghostty$"#
+    match app-id=r#"^dot\.floating\.thunar$"#
+
+    open-floating true
+    default-column-width { proportion 0.33; }
+    default-window-height { proportion 0.5; }
+}
+
+window-rule {
+    match app-id=r#"^com\.gabm\.satty$"#
+    open-floating true
+    min-width 730
+    min-height 300
+}
+
+window-rule {
+    match app-id=r#"^KeePassXC$"#
+
+    block-out-from "screencast"
+}
+
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
-/-window-rule {
-    geometry-corner-radius 12
+window-rule {
+    geometry-corner-radius 0
     clip-to-geometry true
 }
 
@@ -526,6 +574,12 @@ binds {
     Mod+Shift+Page_Up   { move-workspace-up; }
     Mod+Shift+U         { move-workspace-down; }
     Mod+Shift+I         { move-workspace-up; }
+
+     // Capture.
+    Mod+S            hotkey-overlay-title="Screenshot (region)" { spawn "dot-screenshot" "region"; }
+    Mod+Shift+S      hotkey-overlay-title="Screenshot (window)" { spawn "dot-screenshot" "window"; }
+    Mod+Ctrl+S       hotkey-overlay-title="Screenshot (monitor: focused)" { spawn "dot-screenshot" "monitor-focused"; }
+    Mod+Ctrl+Shift+S hotkey-overlay-title="Screenshot (monitor: all)" { spawn "dot-screenshot" "monitor-all"; }
 
     // You can bind mouse wheel scroll ticks using the following syntax.
     // These binds will change direction based on the natural-scroll setting.

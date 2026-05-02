@@ -76,6 +76,7 @@
     gcc
     home-manager
     git
+    psmisc
   ];
 
   services.openssh.enable = true;

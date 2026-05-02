@@ -15,8 +15,8 @@ in
 
   config = mkIf cfg.enable {
     home.file = {
-      ".config/niri/config.kdl" = {
-        source = ./../../config/niri/config.kdl;
+      ".config/niri" = {
+        source = ./../../config/niri;
       };
     };
   };
