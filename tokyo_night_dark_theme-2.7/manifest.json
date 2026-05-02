@@ -1,0 +1,45 @@
+{
+  "manifest_version": 2,
+  "version": "2.7",
+  "name": "Tokyo Night",
+  "theme": {
+    "images": {},
+    "properties": {},
+    "colors": {
+      "toolbar": "rgb(47, 49, 69)",
+      "toolbar_text": "rgb(122, 162, 247)",
+      "frame": "rgb(26, 27, 38)",
+      "tab_background_text": "rgb(122, 162, 247)",
+      "toolbar_field": "rgb(26, 27, 38)",
+      "toolbar_field_text": "rgb(192, 202, 245)",
+      "tab_line": "rgb(42, 195, 222)",
+      "popup": "rgb(47, 49, 69)",
+      "popup_text": "rgb(122, 162, 247)",
+      "icons_attention": "rgb(158, 206, 106)",
+      "ntp_background": "rgb(22, 22, 30)",
+      "ntp_text": "rgb(192, 202, 245)",
+      "popup_border": "rgb(42, 195, 222)",
+      "popup_highlight_text": "rgb(26, 27, 38)",
+      "popup_highlight": "rgb(187, 154, 247)",
+      "sidebar_border": "rgb(47, 49, 69)",
+      "sidebar_highlight_text": "rgb(26, 27, 38)",
+      "sidebar_highlight": "rgb(187, 154, 247)",
+      "sidebar_text": "rgb(192, 202, 245)",
+      "sidebar": "rgb(26, 27, 38)",
+      "tab_loading": "rgb(158, 206, 106)",
+      "tab_selected": "rgb(47, 49, 69)",
+      "tab_text": "rgb(122, 162, 247)",
+      "toolbar_bottom_separator": "rgb(47, 49, 69)",
+      "toolbar_field_border_focus": "rgb(42, 195, 222)",
+      "toolbar_field_focus": "rgb(61, 64, 90)",
+      "toolbar_field_highlight_text": "rgb(26, 27, 38)",
+      "toolbar_field_highlight": "rgb(187, 154, 247)"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{cebd395d-f568-473f-bb6e-698d08ec81ec}"
+    }
+  }
+}
+

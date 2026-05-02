@@ -3,48 +3,47 @@
 {
   programs.firefox = {
     enable = true;
-    profiles.default = {
-
-      search.engines = {
-        "Nix Packages" = {
-          urls = [
-            {
-              template = "https://search.nixos.org/packages";
-              params = [
-                {
-                  name = "type";
-                  value = "packages";
-                }
-                {
-                  name = "query";
-                  value = "{searchTerms}";
-                }
-              ];
-            }
-          ];
-
-          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = [ "@np" ];
+    policies = {
+      ExtensionSettings = {
+        "{cebd391d-f568-473f-bb6e-698d08ec81ec}" = {
+          installation_mode = "normal_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/file/4569798/tokyo_night_dark_theme-2.7.xpi";
+          private_browsing = true;
+        };
+        "adguardadblocker@adguard.com" = {
+          installation_mode = "normal_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/adguard-adblocker/latest.xpi";
+          private_browsing = true;
+          default_area = "navbar";
+        };
+        "jid1-wC71d7poAZYEGA@jetpack" = {
+          installation_mode = "normal_installed";
+          install_url = "https://addons.mozilla.org/firefox/downloads/file/3918715/ddict-4.4.1.xpi";
+          default_area = "navbar";
         };
       };
+    };
+    profiles.default = {
       search.force = true;
-
       settings = {
         "extensions.pocket.enabled" = false;
         "dom.security.https_only_mode" = false;
         "browser.download.panel.shown" = true;
         "identity.fxaccounts.enabled" = false;
         "signon.rememberSignons" = false;
-        "browser.theme.toolbar-theme" = 1;
+        "browser.theme.toolbar-theme" = 0;
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
       userChrome = ''
         /* Menu button */
+        /*
         #PanelUI-button {
           -moz-box-ordinal-group: 0 !important;
           order: -2 !important;
           margin: 2px !important;
           display: none !important;
         }
+        */
 
         /* Window control buttons (min, resize and close) */
         .titlebar-buttonbox-container {
@@ -53,18 +52,20 @@
         }
 
         /* Page back and foward buttons */
+        /*
         #back-button,
         #forward-button
         {
           display: none !important
         }
+        */
 
         /* Extensions button */
+        /*
         #unified-extensions-button {
-            position: absolute !important;
-            opacity: 0 !important;
-          size: 1px !important;
+          display: none !important;
         }
+        */
 
         /* Extension name inside URL bar */
         #identity-box.extensionPage #identity-icon-label {
@@ -165,6 +166,10 @@
             }
         }
 
+        #firefox-view-button {
+          display: none !important;
+        }
+
         .tabbrowser-tab:hover .tab-background {
             background: none !important;
         }
@@ -250,6 +255,25 @@
             background: none !important;
             cursor: pointer;
             display: -moz-box !important;
+        }
+
+        /* Tab active custom */
+        .tabbrowser-tab[visuallyselected] .tab-background {
+          background: rgba(255,255,255,0.12) !important; 
+          backdrop-filter: blur(4px) !important;
+          border-bottom: 2px solid var(--toolbarbutton-icon-fill-attention) !important;
+          opacity: 1 !important;
+        }
+
+        .tabbrowser-tab:not([visuallyselected]) .tab-background {
+          opacity: 0.35 !important;
+          filter: grayscale(40%) !important;
+          transition: opacity 0.25s ease, filter 0.25s ease !important;
+        }
+
+        .tabbrowser-tab:not([visuallyselected]):hover .tab-background {
+          opacity: 0.75 !important;
+          filter: grayscale(0%) !important;
         }
       '';
     };
