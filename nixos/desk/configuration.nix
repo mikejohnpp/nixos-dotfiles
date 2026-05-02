@@ -88,16 +88,16 @@
   };
 
   environment.sessionVariables = {
-    GTK_IM_MODULE = lib.mkForce "fcitx";
-    QT_IM_MODULE = lib.mkForce "fcitx";
-    # XMODIFIERS = "@im=fcitx";
-    # NIXOS_OZONE_WL = "0";
-    # # Force browsers to use X11
-    # MOZ_ENABLE_WAYLAND = "0";
-    # ELECTRON_OZONE_PLATFORM_HINT = "x11";
+    #   GTK_IM_MODULE = lib.mkForce "fcitx";
+    #   QT_IM_MODULE = lib.mkForce "fcitx";
+    #   # XMODIFIERS = "@im=fcitx";
+    NIXOS_OZONE_WL = "1";
+    #   # # Force browsers to use X11
+    #   # MOZ_ENABLE_WAYLAND = "0";
+    #   # ELECTRON_OZONE_PLATFORM_HINT = "x11";
   };
-
-  # Add this if you use Brave or Google Chrome
+  #
+  # # Add this if you use Brave or Google Chrome
   programs.chromium.extraOpts = {
     enable = true;
     extraArgs = [
@@ -137,6 +137,7 @@
     alsa-tools
     pavucontrol
     git
+    xwayland-satellite
   ];
 
   nix.settings.experimental-features = [

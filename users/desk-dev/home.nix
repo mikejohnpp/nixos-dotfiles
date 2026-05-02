@@ -7,7 +7,9 @@
     ./../../modules/home-manager/firefox.nix
     ./../../modules/home-manager/zathura.nix
     ./../../modules/home-manager/neovim.nix
+    ./../../modules/home-manager/vscode.nix
     ./../../modules/home-manager/noctalia.nix
+    # ./../../modules/home-manager/jetbrains.nix
     ./lang.nix
   ];
 
@@ -45,6 +47,7 @@
     file
     winboat # windows virtualization
     freerdp # for winboat
+    jetbrains-toolbox
     nerd-fonts.jetbrains-mono
   ];
 
