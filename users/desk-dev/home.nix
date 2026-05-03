@@ -27,7 +27,7 @@
       core.editor = "vim";
     };
   };
-  home.stateVersion = "25.05";
+  home.stateVersion = "26.05";
 
   within.zsh.enable = true;
   within.ghostty.enable = true;
@@ -59,13 +59,13 @@
     jq
     slurp
     grim
-    nerd-fonts.jetbrains-mono
+    opencode
   ];
 
   xdg.userDirs.enable = true;
 
   xdg.userDirs.createDirectories = true;
-
+  # xdg.userDirs.setSessionVariables = true;
   xdg.userDirs.pictures = "Pictures";
   xdg.userDirs.download = "Downloads";
   xdg.userDirs.documents = "Documents";

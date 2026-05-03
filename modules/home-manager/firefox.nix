@@ -1,6 +1,12 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 
 {
+  programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
   programs.firefox = {
     enable = true;
     policies = {

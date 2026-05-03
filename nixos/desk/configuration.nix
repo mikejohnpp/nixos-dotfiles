@@ -29,7 +29,7 @@
     "8.8.4.4"
   ];
   # networking.networkmanager.dns = "none";
-  # networking.resolvconf.enable = false;
+  networking.resolvconf.enable = true;
 
   time.timeZone = "Asia/Ho_Chi_Minh";
 
@@ -138,11 +138,13 @@
     pavucontrol
     git
     xwayland-satellite
+    google-chrome
     psmisc
   ];
 
   fonts.packages = with pkgs; [
     corefonts # Msfont support
+    nerd-fonts.jetbrains-mono
   ];
 
   nix.settings.experimental-features = [
@@ -180,12 +182,18 @@
     ];
   };
 
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.tumbler.enable = true; # Thumbnail support for images
+
+  programs.thunar.enable = true;
+  programs.xfconf.enable = true;
+
   swapDevices = [
     {
       device = "/var/lib/swapfile";
       size = 8 * 1024; # 8 GiB
     }
   ];
-  system.stateVersion = "25.05";
+  system.stateVersion = "26.05";
 
 }
