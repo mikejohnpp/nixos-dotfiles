@@ -6,8 +6,8 @@
 }:
 
 {
-  programs.firefox.configPath = "${config.xdg.configHome}/mozilla/firefox";
   programs.firefox = {
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     enable = true;
     policies = {
       ExtensionSettings = {
