@@ -60,12 +60,13 @@
     slurp
     grim
     opencode
+    opencode-desktop
   ];
 
   xdg.userDirs.enable = true;
 
   xdg.userDirs.createDirectories = true;
-  # xdg.userDirs.setSessionVariables = true;
+  xdg.userDirs.setSessionVariables = true;
   xdg.userDirs.pictures = "Pictures";
   xdg.userDirs.download = "Downloads";
   xdg.userDirs.documents = "Documents";

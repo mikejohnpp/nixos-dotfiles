@@ -14,9 +14,7 @@ in
   options.within.satty.enable = mkEnableOption "Enables Within's satty config";
 
   config = mkIf cfg.enable {
-    home.packages = [
-      pkgs.satty
-    ];
+    programs.satty.enable = true;
     home.file = {
       ".config/satty" = {
         source = ./../../config/satty;

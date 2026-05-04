@@ -1,4 +1,4 @@
-set font "monospace 17"
+set font "monospace 11"
 set recolor-keephue "true"
 set statusbar-h-padding 0
 set statusbar-v-padding 0

@@ -132,6 +132,7 @@
     gh
     gcc
     home-manager
+    libva-utils
     pulseaudio
     pipewire
     alsa-tools
@@ -171,15 +172,22 @@
     settings.General.Experimental = true;
   };
 
-  # 3. Clean up the Graphics warnings (from your earlier log)
   hardware.graphics = {
     enable = true;
-    enable32Bit = true;
     extraPackages = with pkgs; [
-      libva-vdpau-driver # This is the new name for vaapiVdpau
-      libvdpau-va-gl
-      mesa
+      intel-media-driver
     ];
+  };
+
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+    MOZ_ENABLE_WAYLAND = "1";
+    OZONE_PLATFORM = "wayland";
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
   };
 
   services.gvfs.enable = true; # Mount, trash, and other functionalities
