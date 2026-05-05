@@ -15,6 +15,19 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+
+  specialisation = {
+    kernmainline.configuration = {
+      boot.kernelPackages = lib.mkForce pkgs.linuxPackages;
+    };
+
+    xanmod.configuration = {
+      boot.kernelPackages = lib.mkForce pkgs.linuxPackages_xanmod;
+    };
+
+  };
+
   networking.hostName = "nixos-btw";
   networking.networkmanager.enable = true;
   networking.firewall.allowedTCPPorts = [
