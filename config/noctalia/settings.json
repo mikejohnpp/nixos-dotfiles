@@ -155,12 +155,18 @@
           "pinned": []
         },
         {
-          "hideWhenZero": false,
-          "hideWhenZeroUnread": false,
+          "applyToAllMonitors": false,
+          "displayMode": "onhover",
           "iconColor": "none",
-          "id": "NotificationHistory",
-          "showUnreadBadge": true,
-          "unreadBadgeColor": "primary"
+          "id": "Brightness",
+          "textColor": "none"
+        },
+        {
+          "displayMode": "onhover",
+          "iconColor": "none",
+          "id": "Volume",
+          "middleClickCommand": "pwvucontrol || pavucontrol",
+          "textColor": "none"
         },
         {
           "deviceNativePath": "__default__",
@@ -172,18 +178,18 @@
           "showPowerProfiles": false
         },
         {
-          "displayMode": "onhover",
-          "iconColor": "none",
-          "id": "Volume",
-          "middleClickCommand": "pwvucontrol || pavucontrol",
-          "textColor": "none"
+          "id": "Bluetooth"
         },
         {
-          "applyToAllMonitors": false,
-          "displayMode": "onhover",
+          "id": "Network"
+        },
+        {
+          "hideWhenZero": false,
+          "hideWhenZeroUnread": false,
           "iconColor": "none",
-          "id": "Brightness",
-          "textColor": "none"
+          "id": "NotificationHistory",
+          "showUnreadBadge": true,
+          "unreadBadgeColor": "primary"
         },
         {
           "colorizeDistroLogo": false,
