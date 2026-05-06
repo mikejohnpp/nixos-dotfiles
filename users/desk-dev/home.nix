@@ -60,7 +60,9 @@
     slurp
     grim
     opencode
+    neovide
     opencode-desktop
+    antigravity-fhs
   ];
 
   xdg.userDirs.enable = true;

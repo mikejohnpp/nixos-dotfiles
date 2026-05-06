@@ -1,3 +1,5 @@
+local isNeovide = vim.g.neovide == true
+
 return {
 	{
 		"folke/tokyonight.nvim",
@@ -7,7 +9,7 @@ return {
 			vim.cmd.hi("Comment gui=none")
 		end,
 		opts = {
-			transparent = true, -- Enable this to disable setting the background color
+			transparent = not isNeovide, -- Enable this to disable setting the background color
 			terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
 			dim_inactive = false, -- dims inactive windows
 			lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
