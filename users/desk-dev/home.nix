@@ -61,8 +61,12 @@
     grim
     opencode
     neovide
+    gemini-cli
     opencode-desktop
+    telegram-desktop
     antigravity-fhs
+    google-chrome
+    wl-mirror
   ];
 
   xdg.userDirs.enable = true;

@@ -152,7 +152,6 @@
     pavucontrol
     git
     xwayland-satellite
-    google-chrome
     psmisc
     nautilus
   ];
