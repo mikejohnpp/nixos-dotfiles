@@ -21,6 +21,9 @@
     pkgs.docker-compose
     pkgs.lazydocker
     pkgs.tlrc
+    (pkgs.writeShellScriptBin "steam" ''
+      exec ${pkgs.steam}/bin/steam -system-composer
+    '')
   ];
 
   programs.zsh = {
@@ -28,6 +31,41 @@
     shellAliases = {
       btw = "echo I use nixos, btw";
     };
+  };
+
+  programs = {
+    gamescope = {
+      enable = true;
+      capSysNice = true;
+    };
+    steam = {
+      enable = true;
+      dedicatedServer.openFirewall = true;
+      gamescopeSession = {
+        enable = true;
+      };
+
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
+      package = pkgs.steam.override {
+        extraPkgs =
+          pkgs': with pkgs'; [
+            libXcursor
+            libXi
+            libXinerama
+            libXScrnSaver
+            libpng
+            libpulseaudio
+            libvorbis
+            stdenv.cc.cc.lib # Provides libstdc++.so.6
+            libkrb5
+            keyutils
+            # Add other libraries as needed
+          ];
+      };
+    };
+    gamemode.enable = true;
   };
 
   hardware.enableRedistributableFirmware = true;

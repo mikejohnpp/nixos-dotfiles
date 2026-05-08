@@ -16,6 +16,14 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot = {
+    kernelParams = [
+      "quiet"
+      "splash"
+      "console=/dev/null"
+    ];
+    plymouth.enable = true;
+  };
 
   specialisation = {
     kernmainline.configuration = {
@@ -59,9 +67,19 @@
     xkb.variant = "";
   };
 
-  services.displayManager.sddm = {
-    wayland.enable = true;
-    enable = true;
+  services = {
+    displayManager = {
+      sddm = {
+        wayland.enable = true;
+        enable = true;
+        package = pkgs.kdePackages.sddm;
+
+        theme = "sddm-custom-theme";
+        extraPackages = [
+          pkgs.sddm-astronaut
+        ];
+      };
+    };
   };
 
   programs.niri.enable = true;
