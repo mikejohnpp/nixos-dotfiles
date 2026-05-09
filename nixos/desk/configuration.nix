@@ -13,15 +13,23 @@
 
   services.xserver.videoDrivers = [ "modesetting" ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_zen;
   boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = [
       "quiet"
       "splash"
       "console=/dev/null"
     ];
+    extraModulePackages = [ config.boot.kernelPackages.msi-ec ];
+    kernelModules = [
+      "msi-ec"
+      "ec_sys"
+    ];
+
     plymouth.enable = true;
   };
 
@@ -149,6 +157,7 @@
       "uinput"
       "audio"
       "docker"
+      "gamemode"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
     ];
