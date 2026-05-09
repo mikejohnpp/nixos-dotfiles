@@ -4,7 +4,19 @@
   pkgs,
   ...
 }:
+let
+  background-image = pkgs.runCommand "background-image" { } ''
+    cp ${../../config/bg/img0.jpg} $out
+  '';
+  custom-sddm-astronaut = pkgs.sddm-astronaut.override {
+    embeddedTheme = "hyprland_kath";
+    themeConfig = {
+      Background = "${background-image}";
+      Font = "JetBrainsMono Nerd Font";
+    };
+  };
 
+in
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
@@ -78,14 +90,19 @@
   services = {
     displayManager = {
       sddm = {
-        wayland.enable = true;
         enable = true;
-        package = pkgs.kdePackages.sddm;
-
-        theme = "sddm-custom-theme";
         extraPackages = [
-          pkgs.sddm-astronaut
+          custom-sddm-astronaut
         ];
+
+        theme = "sddm-astronaut-theme";
+        settings = {
+          Theme = {
+            Current = "sddm-astronaut-theme";
+          };
+        };
+        wayland.enable = true;
+
       };
     };
   };
@@ -181,6 +198,8 @@
     xwayland-satellite
     psmisc
     nautilus
+    custom-sddm-astronaut
+    kdePackages.qtmultimedia
   ];
 
   fonts.packages = with pkgs; [
