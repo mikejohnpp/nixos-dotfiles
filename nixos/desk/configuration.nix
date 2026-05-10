@@ -124,13 +124,12 @@ in
 
   networking.nameservers = [
     "1.1.1.1"
-    "1.0.0.1"
     "8.8.8.8"
     "8.8.4.4"
   ];
-  networking.networkmanager.dns = "none";
+  # networking.networkmanager.dns = "none";
   networking.resolvconf.enable = true;
-  networking.enableIPv6 = false;
+  # networking.enableIPv6 = false;
 
   time.timeZone = "Asia/Ho_Chi_Minh";
 
