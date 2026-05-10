@@ -314,7 +314,7 @@ in
   services.upower.enable = true; # Battery stuff
   services.udisks2.enable = true;
 
-  services.cloudflare-warp.enable = true;
+  services.cloudflare-warp.enable = false;
 
   programs.xfconf.enable = true;
 
