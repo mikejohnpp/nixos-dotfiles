@@ -171,12 +171,12 @@ in
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services.sunshine = {
-    enable = true;
-    autoStart = true;
-    capSysAdmin = true;
-    openFirewall = true;
-  };
+  # services.sunshine = {
+  #   enable = true;
+  #   autoStart = true;
+  #   capSysAdmin = true;
+  #   openFirewall = true;
+  # };
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
