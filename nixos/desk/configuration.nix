@@ -6,13 +6,71 @@
 }:
 let
   background-image = pkgs.runCommand "background-image" { } ''
-    cp ${../../config/bg/img0.jpg} $out
+    cp ${../../config/bg/136201284_p0.png} $out
   '';
   custom-sddm-astronaut = pkgs.sddm-astronaut.override {
     embeddedTheme = "hyprland_kath";
     themeConfig = {
       Background = "${background-image}";
       Font = "JetBrainsMono Nerd Font";
+
+      PartialBlur = "true";
+      # Default false.
+      FullBlur = "false";
+      # Default false.
+      # If you use FullBlur I recommend setting BlurMax to 64 and Blur to 1.0.
+      BlurMax = "36";
+      # Default 48, Options: 2-64 (can go higher because depends on Blur).
+      # Connected with: Blur.
+      Blur = "1.5";
+      # Default 2.0, Options: 0.0-3.0 (without 3.0).
+      # Connected with: BlurMax.
+
+      HaveFormBackground = "true";
+      # Form background is transparent if set to false.
+      # Connected with: PartialBlur and BackgroundColor.
+      FormPosition = "right";
+      # Default: left, Options: left, center, right.
+
+      #################### Colors ####################
+
+      HeaderTextColor = "#ddeeff";
+      DateTextColor = "#ddeeff";
+      TimeTextColor = "#ddeeff";
+
+      FormBackgroundColor = "#0d1830";
+      BackgroundColor = "#0d1830";
+      DimBackgroundColor = "#080f20";
+
+      LoginFieldBackgroundColor = "#0a1428";
+      PasswordFieldBackgroundColor = "#0a1428";
+      LoginFieldTextColor = "#ddeeff";
+      PasswordFieldTextColor = "#ddeeff";
+      UserIconColor = "#c8e0ff";
+      PasswordIconColor = "#c8e0ff";
+
+      PlaceholderTextColor = "#6688aa";
+      WarningColor = "#cc2244";
+
+      LoginButtonTextColor = "#f0f8ff";
+      LoginButtonBackgroundColor = "#cc2244";
+      SystemButtonsIconsColor = "#c8e0ff";
+      SessionButtonTextColor = "#c8e0ff";
+      VirtualKeyboardButtonTextColor = "#c8e0ff";
+
+      DropdownTextColor = "#f0f8ff";
+      DropdownSelectedBackgroundColor = "#cc2244";
+      DropdownBackgroundColor = "#1a2a4a";
+
+      HighlightTextColor = "#f0f8ff";
+      HighlightBackgroundColor = "#cc2244";
+      HighlightBorderColor = "transparent";
+
+      HoverUserIconColor = "#ffffff";
+      HoverPasswordIconColor = "#ffffff";
+      HoverSystemButtonsIconsColor = "#ffffff";
+      HoverSessionButtonTextColor = "#ffffff";
+      HoverVirtualKeyboardButtonTextColor = "#ffffff";
     };
   };
 
@@ -66,11 +124,13 @@ in
 
   networking.nameservers = [
     "1.1.1.1"
+    "1.0.0.1"
     "8.8.8.8"
     "8.8.4.4"
   ];
-  # networking.networkmanager.dns = "none";
+  networking.networkmanager.dns = "none";
   networking.resolvconf.enable = true;
+  networking.enableIPv6 = false;
 
   time.timeZone = "Asia/Ho_Chi_Minh";
 
@@ -253,6 +313,8 @@ in
   services.tumbler.enable = true; # Thumbnail support for images
   services.upower.enable = true; # Battery stuff
   services.udisks2.enable = true;
+
+  services.cloudflare-warp.enable = true;
 
   programs.xfconf.enable = true;
 

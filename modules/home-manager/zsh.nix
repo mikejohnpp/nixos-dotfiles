@@ -26,12 +26,7 @@ in
     };
 
     programs.zsh = {
-      initContent = ''
-        # Auto-start tmux if not already inside a session
-        if [ -z "$TMUX" ]; then
-            tmux attach-session -t default || tmux new-session -s default
-        fi
-      '';
+      initContent = "";
       plugins = [
         {
           name = "fzf-tab";
