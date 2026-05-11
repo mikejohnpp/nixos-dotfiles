@@ -152,7 +152,7 @@ output "HDMI-A-1" {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 5
+    gaps 12
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -240,12 +240,9 @@ layout {
         on
 
         width 1.5
-        active-color "#7fc8ff"
-        inactive-color "#505050"
-
-        // Color of the border around windows that request your attention.
-        urgent-color "#9b0000"
-
+        active-color   "#7aa2f7"
+        inactive-color "#565f89"
+        urgent-color   "#f7768e"
         // Gradients can use a few different interpolation color spaces.
         // For example, this is a pastel rainbow gradient via in="oklch longer hue".
         //
@@ -443,7 +440,7 @@ window-rule {
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
-    geometry-corner-radius 15
+    geometry-corner-radius 12
     clip-to-geometry true
 }
 
@@ -457,7 +454,7 @@ window-rule {
 window-rule {
   popups {
      // Matches the default libadwaita pop-up corner radius.
-     geometry-corner-radius 15
+     geometry-corner-radius 12
 
      // Note: it'll look better to set background opacity
      // through your GTK theme CSS and not here.
@@ -470,7 +467,7 @@ window-rule {
   }
   background-effect {
     blur true
-    xray false
+    xray true
   }
 }
 
@@ -478,6 +475,7 @@ window-rule {
 layer-rule {
   match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
   background-effect {
+    blur true
     xray false
   }
 }
