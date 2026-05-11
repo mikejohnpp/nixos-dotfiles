@@ -13,8 +13,17 @@ return {
 			terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
 			dim_inactive = false, -- dims inactive windows
 			lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
+			styles = {
+				sidebars = "transparent",
+				floats = "transparent",
+			},
 		},
 		cache = true, -- When set to true, the theme will be cached for better performance
+
+		plugins = {
+			telescope = true,
+			mini_files = true,
+		},
 	},
 	-- {
 	-- 	"neanias/everforest-nvim",
