@@ -66,6 +66,7 @@
     antigravity-fhs
     google-chrome
     wl-mirror
+    wf-recorder
   ];
 
   xdg.userDirs.enable = true;
