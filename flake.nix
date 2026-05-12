@@ -16,6 +16,10 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-neovim011 = {
+      url = "github:NixOS/nixpkgs/d39b0da718a197f6abe6800f84b0f3a510a5da74";
+      flake = false;
+    };
   };
   outputs =
     {
