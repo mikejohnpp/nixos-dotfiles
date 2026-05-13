@@ -15,6 +15,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "nixos-btw";
   networking.networkmanager.enable = true;
+  networking.firewall.allowedUDPPorts = [
+    40000
+  ];
+
   networking.firewall.allowedTCPPorts = [
     22
     3306
@@ -26,7 +30,7 @@
     "8.8.4.4"
   ];
   # networking.networkmanager.dns = "none";
-  # networking.resolvconf.enable = false;
+  networking.resolvconf.enable = true;
 
   time.timeZone = "Asia/Ho_Chi_Minh";
 
