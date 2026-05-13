@@ -69,6 +69,7 @@
     wf-recorder
     dbeaver-bin
     filezilla
+    navicat-premium
   ];
 
   xdg.userDirs.enable = true;
