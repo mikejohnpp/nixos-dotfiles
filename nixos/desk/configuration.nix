@@ -116,11 +116,7 @@ in
 
   networking.hostName = "nixos-btw";
   networking.networkmanager.enable = true;
-  networking.firewall.allowedTCPPorts = [
-    5912
-    5901
-    22
-  ];
+  networking.firewall.allowedTCPPorts = [ ];
 
   networking.nameservers = [
     "1.1.1.1"
