@@ -34,6 +34,18 @@
   virtualisation.docker.enable = true;
   nixpkgs.config.allowUnfreePredicate = (_: true);
 
+  services.tailscale = {
+    enable = true;
+    # Enable tailscale at startup
+    extraSetFlags = [
+      "--accept-dns=false"
+    ];
+
+    # If you would like to use a preauthorized key
+    #authKeyFile = "/run/secrets/tailscale_key";
+
+  };
+
   # Garbage Collector Setting
   nix.gc.automatic = true;
 

@@ -69,7 +69,6 @@
     wf-recorder
     dbeaver-bin
     filezilla
-
   ];
 
   xdg.userDirs.enable = true;
