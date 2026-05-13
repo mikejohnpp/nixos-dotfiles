@@ -17,6 +17,7 @@
   networking.networkmanager.enable = true;
   networking.firewall.allowedTCPPorts = [
     22
+    3306
   ];
 
   networking.nameservers = [
@@ -61,6 +62,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "docker"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
     ];
