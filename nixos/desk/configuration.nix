@@ -6,7 +6,7 @@
 }:
 let
   background-image = pkgs.runCommand "background-image" { } ''
-    cp ${../../config/bg/136201284_p0.png} $out
+    cp ${../../config/bg/cg02_1.png} $out
   '';
   custom-sddm-astronaut = pkgs.sddm-astronaut.override {
     embeddedTheme = "hyprland_kath";
@@ -29,7 +29,7 @@ let
       HaveFormBackground = "true";
       # Form background is transparent if set to false.
       # Connected with: PartialBlur and BackgroundColor.
-      FormPosition = "right";
+      FormPosition = "left";
       # Default: left, Options: left, center, right.
 
       #################### Colors ####################
@@ -312,6 +312,7 @@ in
   services.cloudflare-warp.enable = false;
 
   programs.xfconf.enable = true;
+  programs.nix-ld.enable = true;
 
   swapDevices = [
     {

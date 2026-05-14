@@ -41,6 +41,8 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
+    cowsay
+    fortune
     ripgrep
     nil
     nixpkgs-fmt
