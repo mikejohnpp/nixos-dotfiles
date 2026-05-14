@@ -1,7 +1,8 @@
-{ lib
-, config
-, pkgs
-, ...
+{
+  lib,
+  config,
+  pkgs,
+  ...
 }:
 
 with lib;
@@ -14,8 +15,8 @@ in
 
   config = mkIf cfg.enable {
     home.file = {
-      ".config/ghostty/config" = {
-      source = ../../config/ghostty/config;
+      ".config/ghostty" = {
+        source = ../../config/ghostty;
       };
     };
   };
