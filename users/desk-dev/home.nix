@@ -72,6 +72,7 @@
     dbeaver-bin
     filezilla
     navicat-premium
+    postman
   ];
 
   xdg.userDirs.enable = true;

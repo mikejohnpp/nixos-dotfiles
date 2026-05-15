@@ -4,8 +4,8 @@
 theme = "TokyoNight"
 font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 12
-background-opacity = 0.93
-background-blur-radius = 84
+background-opacity = 0.9
+# background-blur-radius = 84
 cursor-opacity = 0.65
 adjust-cursor-thickness = 2
 window-decoration = false

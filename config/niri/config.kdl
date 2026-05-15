@@ -471,6 +471,14 @@ window-rule {
   }
 }
 
+window-rule {
+  match app-id="dev.noctalia.Noctalia.Settings"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 920; }
+}
+
+
 /* Noctalia: blur everywhere without xray for a better look */
 layer-rule {
   match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
@@ -484,6 +492,18 @@ layer-rule {
 layer-rule {
   match namespace="^noctalia-overview*"
   place-within-backdrop true
+}
+
+// Optionally, disable the workspace shadows in the overview.
+overview {
+  workspace-shadow {
+    off
+  }
+}
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
 }
 
 
