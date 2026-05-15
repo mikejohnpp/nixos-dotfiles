@@ -75,6 +75,27 @@
     "widgets": {
       "center": [
         {
+          "clockColor": "none",
+          "customFont": "",
+          "formatHorizontal": "HH:mm ddd, MMM dd",
+          "formatVertical": "HH mm - dd MM",
+          "id": "Clock",
+          "tooltipFormat": "HH:mm ddd, MMM dd",
+          "useCustomFont": false
+        }
+      ],
+      "left": [
+        {
+          "colorizeSystemIcon": "none",
+          "colorizeSystemText": "none",
+          "customIconPath": "",
+          "enableColorization": true,
+          "icon": "rocket",
+          "iconColor": "none",
+          "id": "Launcher",
+          "useDistroLogo": true
+        },
+        {
           "characterCount": 2,
           "colorizeIcons": false,
           "emptyColor": "secondary",
@@ -94,27 +115,6 @@
           "showBadge": true,
           "showLabelsOnlyWhenOccupied": true,
           "unfocusedIconsOpacity": 1
-        }
-      ],
-      "left": [
-        {
-          "colorizeSystemIcon": "none",
-          "colorizeSystemText": "none",
-          "customIconPath": "",
-          "enableColorization": false,
-          "icon": "rocket",
-          "iconColor": "none",
-          "id": "Launcher",
-          "useDistroLogo": false
-        },
-        {
-          "clockColor": "none",
-          "customFont": "",
-          "formatHorizontal": "HH:mm ddd, MMM dd",
-          "formatVertical": "HH mm - dd MM",
-          "id": "Clock",
-          "tooltipFormat": "HH:mm ddd, MMM dd",
-          "useCustomFont": false
         },
         {
           "colorizeIcons": false,
@@ -126,22 +126,6 @@
           "showText": true,
           "textColor": "none",
           "useFixedWidth": false
-        },
-        {
-          "compactMode": false,
-          "hideMode": "hidden",
-          "hideWhenIdle": false,
-          "id": "MediaMini",
-          "maxWidth": 145,
-          "panelShowAlbumArt": true,
-          "scrollingMode": "hover",
-          "showAlbumArt": true,
-          "showArtistFirst": true,
-          "showProgressRing": true,
-          "showVisualizer": false,
-          "textColor": "none",
-          "useFixedWidth": false,
-          "visualizerType": "linear"
         }
       ],
       "right": [

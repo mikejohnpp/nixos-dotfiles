@@ -513,6 +513,7 @@ binds {
     Mod+F1 { spawn-sh "niri msg output eDP-1 on"; } 
 
     Mod+E { spawn "nautilus"; }
+    Mod+B { spawn "firefox"; }
 
     Mod+F2 repeat=false { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
     // consist of modifiers separated by + signs, followed by an XKB key name
