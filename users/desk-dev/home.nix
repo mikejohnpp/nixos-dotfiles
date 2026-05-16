@@ -130,6 +130,8 @@
   xdg.userDirs.pictures = "Pictures";
   xdg.userDirs.download = "Downloads";
   xdg.userDirs.documents = "Documents";
+  xdg.userDirs.projects = "Projects";
+  xdg.userDirs.videos = "Videos";
 
   home.sessionVariables = {
     EDITOR = "nvim";
