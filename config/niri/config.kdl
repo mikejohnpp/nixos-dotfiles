@@ -311,6 +311,7 @@ layout {
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 spawn-sh-at-startup "noctalia-shell"
+// spawn-at-startup "vicinae" "server"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
@@ -514,6 +515,10 @@ binds {
 
     Mod+E { spawn "nautilus"; }
     Mod+B { spawn "firefox"; }
+    Mod+D repeat=false { spawn "vicinae" "toggle"; }
+    Mod+Shift+D repeat=false { spawn "vicinae" "vicinae://launch/files/search"; }
+    Mod+Space repeat=false { spawn "vicinae" "vicinae://launch/clipboard/history"; }
+    Mod+T repeat=false { spawn "vicinae" "vicinae://launch/core/search-emojis"; }
 
     Mod+F2 repeat=false { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
     // consist of modifiers separated by + signs, followed by an XKB key name
@@ -532,7 +537,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
-    Mod+D hotkey-overlay-title="Run an Application: App launcher" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
+    // Mod+D hotkey-overlay-title="Run an Application: App launcher" { spawn-sh "noctalia-shell ipc call launcher toggle"; }
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
