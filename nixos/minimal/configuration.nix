@@ -9,6 +9,7 @@
   imports = [
     /etc/nixos/hardware-configuration.nix
     ./custom.nix
+    ./k3s.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
