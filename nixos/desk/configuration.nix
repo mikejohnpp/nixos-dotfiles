@@ -237,6 +237,7 @@ in
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
+    gnumake
     lsof
     vim
     wget

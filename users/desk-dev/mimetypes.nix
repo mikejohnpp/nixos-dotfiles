@@ -14,7 +14,7 @@
       "image/jpg" = "mpv.desktop";
       "image/jpeg" = "mpv.desktop";
 
-      "application/pdf" = [ "org.pwmt.zathura.desktop" ];
+      "application/pdf" = "org.pwmt.zathura.desktop";
       "inode/directory" = "nautilus.desktop";
     };
   };

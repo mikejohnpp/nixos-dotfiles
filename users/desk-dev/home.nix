@@ -46,6 +46,8 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
+    gh
+    hurl
     cowsay
     fortune
     ripgrep
