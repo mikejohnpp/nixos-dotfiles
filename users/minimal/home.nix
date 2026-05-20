@@ -5,6 +5,7 @@
     ./../../modules/home-manager/neovim.nix
     ./../../modules/home-manager/zsh.nix
     ./../../modules/home-manager/tmux.nix
+    ./../../modules/home-manager/ghostty.nix
     ./lang.nix
   ];
 
@@ -22,10 +23,12 @@
 
   within.zsh.enable = true;
   within.neovim.enable = true;
+  within.ghostty.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
+    ghostty
     ripgrep
     nil
     fastfetch

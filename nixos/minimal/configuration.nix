@@ -84,6 +84,7 @@
     home-manager
     git
     psmisc
+    btop
   ];
 
   services.openssh.enable = true;

@@ -52,6 +52,7 @@
     cowsay
     fortune
     ripgrep
+    btop
     nil
     nixpkgs-fmt
     alacritty
