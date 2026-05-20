@@ -46,6 +46,7 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
+    kiro
     gh
     hurl
     cowsay

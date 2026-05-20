@@ -20,12 +20,12 @@
           installation_mode = "normal_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/adguard-adblocker/latest.xpi";
           private_browsing = true;
-          default_area = "navbar";
+          # default_area = "navbar";
         };
         "jid1-wC71d7poAZYEGA@jetpack" = {
           installation_mode = "normal_installed";
           install_url = "https://addons.mozilla.org/firefox/downloads/file/3918715/ddict-4.4.1.xpi";
-          default_area = "navbar";
+          # default_area = "navbar";
         };
       };
     };

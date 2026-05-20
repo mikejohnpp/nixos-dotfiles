@@ -67,7 +67,7 @@
     "rightClickCommand": "",
     "rightClickFollowMouse": true,
     "screenOverrides": [],
-    "showCapsule": true,
+    "showCapsule": false,
     "showOnWorkspaceSwitch": true,
     "showOutline": false,
     "useSeparateOpacity": false,
