@@ -46,7 +46,6 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-    kiro
     gh
     hurl
     cowsay
@@ -70,9 +69,7 @@
     jq
     slurp
     grim
-    opencode
     neovide
-    gemini-cli
     opencode-desktop
     antigravity-fhs
     google-chrome

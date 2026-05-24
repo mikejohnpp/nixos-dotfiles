@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -236,27 +237,33 @@ in
   };
 
   nixpkgs.config.allowUnfree = true;
-  environment.systemPackages = with pkgs; [
-    gnumake
-    lsof
-    vim
-    wget
-    tree
-    gh
-    gcc
-    home-manager
-    libva-utils
-    pulseaudio
-    pipewire
-    alsa-tools
-    pavucontrol
-    git
-    xwayland-satellite
-    psmisc
-    nautilus
-    custom-sddm-astronaut
-    kdePackages.qtmultimedia
-  ];
+  environment.systemPackages =
+    (with pkgs; [
+      gnumake
+      lsof
+      vim
+      wget
+      tree
+      gh
+      gcc
+      home-manager
+      libva-utils
+      pulseaudio
+      pipewire
+      alsa-tools
+      pavucontrol
+      git
+      xwayland-satellite
+      psmisc
+      nautilus
+      custom-sddm-astronaut
+      kdePackages.qtmultimedia
+    ])
+    ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
+      opencode
+      gemini-cli
+      pi
+    ]);
 
   fonts.packages = with pkgs; [
     corefonts # Msfont support
