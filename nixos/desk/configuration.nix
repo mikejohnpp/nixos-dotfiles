@@ -194,15 +194,16 @@ in
       addons = with pkgs; [
         fcitx5-gtk # Specifically keep this for Brave/Firefox
         qt6Packages.fcitx5-unikey
+        fcitx5-bamboo
       ];
       waylandFrontend = true;
     };
   };
 
   environment.sessionVariables = {
-    #   GTK_IM_MODULE = lib.mkForce "fcitx";
-    #   QT_IM_MODULE = lib.mkForce "fcitx";
-    #   # XMODIFIERS = "@im=fcitx";
+    GTK_IM_MODULE = lib.mkForce "fcitx";
+    QT_IM_MODULE = lib.mkForce "fcitx";
+    XMODIFIERS = "@im=fcitx";
     NIXOS_OZONE_WL = "1";
     #   # # Force browsers to use X11
     #   # MOZ_ENABLE_WAYLAND = "0";
