@@ -299,6 +299,7 @@ layout {
         // top 64
         // bottom 64
     }
+    background-color "transparent"
 }
 
 // Add lines like this to spawn processes at startup.
@@ -489,11 +490,11 @@ layer-rule {
   }
 }
 
-// Set the overview wallpaper on the backdrop.
 layer-rule {
-  match namespace="^noctalia-overview*"
+  match namespace="^noctalia-wallpaper*"
   place-within-backdrop true
 }
+
 
 // Optionally, disable the workspace shadows in the overview.
 overview {

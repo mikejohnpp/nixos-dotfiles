@@ -577,7 +577,7 @@
     "linkLightAndDarkWallpapers": true,
     "monitorDirectories": [],
     "overviewBlur": 1.0,
-    "overviewEnabled": true,
+    "overviewEnabled": false,
     "overviewTint": 0,
     "panelPosition": "follow_bar",
     "randomIntervalSec": 300,
