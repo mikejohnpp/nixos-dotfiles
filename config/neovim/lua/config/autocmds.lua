@@ -101,6 +101,21 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
 -- 	end,
 -- })
 
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+	group = vim.api.nvim_create_augroup("AutoReload", { clear = true }),
+	callback = function()
+		if vim.fn.mode() ~= "c" then
+			vim.cmd("checktime")
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+	callback = function()
+		vim.notify("File changed on disk. Buffer reloaded.", vim.log.levels.WARN)
+	end,
+})
+
 local function get_spring_boot_runner(profile, debug)
 	local debug_param = ""
 	if debug then
