@@ -1,4 +1,8 @@
 {
+  "userInterface": {
+    "containerRadius": 40,
+    "inputRadius": 40
+  },
   "appLauncher": {
     "autoPasteClipboard": false,
     "clipboardWatchImageCommand": "wl-paste --type image --watch cliphist store",
@@ -327,6 +331,8 @@
     "autoStartAuth": false,
     "avatarImage": "/home/mikejohnp/.face",
     "boxRadiusRatio": 1,
+    "radiusRatio": 0.4,
+    "iRadiusRatio": 0.4,
     "clockFormat": "hh\\nmm",
     "clockStyle": "custom",
     "compactLockScreen": false,
@@ -336,7 +342,6 @@
     "enableLockScreenMediaControls": false,
     "enableShadows": false,
     "forceBlackScreenCorners": false,
-    "iRadiusRatio": 1,
     "keybinds": {
       "keyDown": ["Down"],
       "keyEnter": ["Return", "Enter"],
@@ -354,7 +359,6 @@
     "lockScreenMonitors": [],
     "lockScreenTint": 0,
     "passwordChars": false,
-    "radiusRatio": 1,
     "reverseScroll": false,
     "scaleRatio": 1,
     "screenRadiusRatio": 1,

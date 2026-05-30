@@ -1,6 +1,13 @@
 {
   description = "NixOs from scratch MikeJohnP";
 
+  nixConfig = {
+    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-trusted-public-keys = [
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     home-manager = {
@@ -28,6 +35,7 @@
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
     };
+
   };
   outputs =
     {

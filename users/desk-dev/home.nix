@@ -77,7 +77,6 @@
     wf-recorder
     dbeaver-bin
     filezilla
-    navicat-premium
     postman
   ];
 

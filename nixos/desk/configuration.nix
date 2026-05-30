@@ -80,6 +80,8 @@ in
   imports = [
     /etc/nixos/hardware-configuration.nix
     ./custom.nix
+    ../../modules/home-manager/mysql.nix
+
   ];
 
   services.xserver.videoDrivers = [ "modesetting" ];
