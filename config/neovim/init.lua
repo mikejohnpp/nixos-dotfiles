@@ -15,6 +15,7 @@ end)
 
 require("config.keymaps")
 require("config.options")
+require("vim._core.ui2").enable({})
 require("config.lazy")
 require("config.autocmds")
 require("config.python")

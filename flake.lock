@@ -225,6 +225,23 @@
         "type": "github"
       }
     },
+    "nixpkgs-neovim012": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1776007998,
+        "narHash": "sha256-DnfsWmzqjhBXgZLOWIilV983ZiomBXsxuujPUwuKlVQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c9baf8b27b3e1114b13b6406d58e1f6c500eae30",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c9baf8b27b3e1114b13b6406d58e1f6c500eae30",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1779536132,
@@ -309,6 +326,7 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-neovim011": "nixpkgs-neovim011",
+        "nixpkgs-neovim012": "nixpkgs-neovim012",
         "noctalia": "noctalia",
         "vicinae": "vicinae",
         "vicinae-extensions": "vicinae-extensions"

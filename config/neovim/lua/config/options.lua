@@ -3,7 +3,6 @@ vim.o.autoread = true;
 vim.o.hlsearch = true                          -- Set highlight on search
 vim.o.number = true                           -- Make line numbers default
 vim.o.mouse = 'a'                              -- Enable mouse mode
-vim.o.clipboard = 'unnamedplus'                -- Sync clipboard between OS and Neovim.
 vim.o.breakindent = true                       -- Enable break indent
 vim.o.undofile = true                          -- Save undo history
 vim.o.ignorecase = true                        -- Case-insensitive searching UNLESS \C or capital in search
@@ -55,4 +54,12 @@ vim.opt.inccommand = 'split'
 --disable netrrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.inccommand = 'split'
+vim.opt.laststatus = 3
+vim.opt.clipboard:append 'unnamedplus'                -- Sync clipboard between OS and Neovim.
+vim.opt.guicursor = ""
+vim.colorcolumn = "0"
 

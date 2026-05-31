@@ -22,6 +22,7 @@ return {
 				markdown = { "prettierd", "prettier", stop_after_first = true },
 				vue = { "prettierd", "prettier", stop_after_first = true },
 				php = { "php-cs-fixer", stop_after_first = true },
+				rust = { "rustfmt", stop_after_first = true },
 			},
 			formatters = {
 				["php-cs-fixer"] = {

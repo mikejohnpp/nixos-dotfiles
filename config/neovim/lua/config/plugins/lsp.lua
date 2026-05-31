@@ -20,6 +20,7 @@ return {
 				"laravel_ls",
 				"phpactor",
 				"vue_ls",
+				"rust_analyzer",
 			},
 			automatic_installation = false,
 		},

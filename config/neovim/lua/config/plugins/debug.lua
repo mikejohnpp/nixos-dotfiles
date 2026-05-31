@@ -37,6 +37,27 @@ return {
 
 			-- Python debugger
 			"mfussenegger/nvim-dap-python",
+			{
+				"mrcjkb/rustaceanvim",
+				version = "^9",
+				lazy = false,
+				ft = "rust",
+				config = function()
+					local codelldb = vim.fn.expand("$MASON") .. "/packages/codelldb"
+					local extension_path = codelldb .. "/extension/"
+					local codelldb_path = extension_path .. "adapter/codelldb"
+					-- local liblldb_path = extension_path .. "lldb/lib/liblldb.dylib"
+					-- If you are on Linux, replace the line above with the line below:
+					local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
+					local cfg = require("rustaceanvim.config")
+
+					vim.g.rustaceanvim = {
+						dap = {
+							adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
+						},
+					}
+				end,
+			},
 		},
 		keys = {
 			{

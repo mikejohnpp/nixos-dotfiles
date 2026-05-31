@@ -32,6 +32,11 @@
       url = "github:NixOS/nixpkgs/d39b0da718a197f6abe6800f84b0f3a510a5da74";
       flake = false;
     };
+    nixpkgs-neovim012 = {
+      url = "github:NixOS/nixpkgs/c9baf8b27b3e1114b13b6406d58e1f6c500eae30";
+      flake = false;
+    };
+
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
     };

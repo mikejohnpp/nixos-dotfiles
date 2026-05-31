@@ -6,7 +6,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	if vim.v.shell_error ~= 0 then
 		vim.api.nvim_echo({
 			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out,                            "WarningMsg" },
+			{ out, "WarningMsg" },
 			{ "\nPress any key to exit..." },
 		}, true, {})
 		vim.fn.getchar()
@@ -17,13 +17,25 @@ end
 -- Hey! Put lazy into the runtimepath for neovim!
 vim.opt.runtimepath:prepend(lazypath)
 
-
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
-		{ 'tpope/vim-sleuth' },
+		{ "tpope/vim-sleuth" },
 		-- Highlight todo, notes, etc in comments
-		{ 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+		{
+			"folke/todo-comments.nvim",
+			event = "VimEnter",
+			dependencies = { "nvim-lua/plenary.nvim" },
+			opts = { signs = false },
+		},
+		{
+			"saecki/crates.nvim",
+			tag = "stable",
+			event = { "BufRead Cargo.toml" },
+			config = function()
+				require("crates").setup()
+			end,
+		},
 		{ import = "config.plugins" },
 	},
 	change_detection = {

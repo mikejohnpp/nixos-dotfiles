@@ -10,7 +10,7 @@ with lib;
 
 let
   cfg = config.within.neovim;
-  oldPkgs = import inputs.nixpkgs-neovim011 {
+  oldPkgs = import inputs.nixpkgs-neovim012 {
     system = pkgs.system;
   };
 in
