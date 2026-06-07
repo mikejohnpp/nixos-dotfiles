@@ -78,6 +78,8 @@
     dbeaver-bin
     filezilla
     postman
+    devenv
+    focus
   ];
 
   services.vicinae = {
@@ -113,7 +115,7 @@
         };
       };
       launcher_window = {
-        opacity = 0.9;
+        opacity = 0.95;
       };
     };
     extensions = with inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [

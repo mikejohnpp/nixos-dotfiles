@@ -152,7 +152,7 @@ output "HDMI-A-1" {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 12
+    gaps 5
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -442,7 +442,7 @@ window-rule {
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
-    geometry-corner-radius 12
+    geometry-corner-radius 5
     clip-to-geometry true
 }
 
@@ -464,12 +464,12 @@ window-rule {
      opacity 0.93
 
      background-effect {
-         blur true
+         blur false
      }
   }
   background-effect {
-    blur true
-    xray true
+    blur false
+    xray false
   }
 }
 

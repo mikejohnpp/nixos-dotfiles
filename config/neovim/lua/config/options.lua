@@ -57,9 +57,8 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.inccommand = 'split'
 vim.opt.laststatus = 3
 vim.opt.clipboard:append 'unnamedplus'                -- Sync clipboard between OS and Neovim.
-vim.opt.guicursor = ""
+-- vim.opt.guicursor = ""
 vim.colorcolumn = "0"
 

@@ -273,9 +273,17 @@ in
     nerd-fonts.jetbrains-mono
   ];
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    accept-flake-config = true;
+  };
+
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
   ];
 
   services.openssh.enable = true;

@@ -1,8 +1,8 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		build = ":tsupdate",
-		branch = "master",
+		build = ":TSUpdate",
+		branch = "main",
 		opts = {
 			ensure_installed = {
 				"java",

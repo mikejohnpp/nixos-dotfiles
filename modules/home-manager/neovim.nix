@@ -26,7 +26,7 @@ in
       vimAlias = true;
       vimdiffAlias = true;
       plugins = [
-        pkgs.vimPlugins.nvim-treesitter.withAllGrammars
+        # pkgs.vimPlugins.nvim-treesitter.withAllGrammars
       ];
       extraPackages = [
         pkgs.vscode-json-languageserver
