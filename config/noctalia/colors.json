@@ -12,5 +12,7 @@
   "mShadow": "#15161e",
   "mSurface": "#1a1b26",
   "mSurfaceVariant": "#24283b",
-  "mTertiary": "#9ece6a"
+  "mTertiary": "#9ece6a",
+  "mOutline": "#353D57",
+  "mShadow": "#15161e"
 }

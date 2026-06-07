@@ -1,28 +1,47 @@
 local isNeovide = vim.g.neovide == true
 
 return {
+	-- {
+	-- 	"folke/tokyonight.nvim",
+	-- 	enabled = false,
+	-- 	init = function()
+	-- 		-- vim.cmd.colorscheme("tokyonight")
+	-- 		-- vim.cmd.hi("Comment gui=none")
+	-- 	end,
+	-- 	opts = {
+	-- 		transparent = not isNeovide, -- Enable this to disable setting the background color
+	-- 		terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+	-- 		dim_inactive = false, -- dims inactive windows
+	-- 		lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
+	-- 		styles = {
+	-- 			sidebars = "transparent",
+	-- 			floats = "transparent",
+	-- 		},
+	-- 	},
+	-- 	cache = true, -- When set to true, the theme will be cached for better performance
+	--
+	-- 	plugins = {
+	-- 		telescope = true,
+	-- 		mini_files = true,
+	-- 	},
+	-- },
 	{
-		"folke/tokyonight.nvim",
-		enabled = true,
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
 		init = function()
-			vim.cmd.colorscheme("tokyonight")
+			vim.cmd.colorscheme("catppuccin-mocha")
 			vim.cmd.hi("Comment gui=none")
 		end,
 		opts = {
-			transparent = not isNeovide, -- Enable this to disable setting the background color
-			terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
-			dim_inactive = false, -- dims inactive windows
-			lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
-			styles = {
-				sidebars = "transparent",
-				floats = "transparent",
+			auto_integrations = true,
+			transparent_background = not isNeovide,
+			custom_highlights = {
+				NormalFloat = { bg = "none" },
+				FloatBorder = { bg = "none" },
+				TelescopeBorder = { bg = "none" },
+				TelescopeNormal = { bg = "none" },
 			},
-		},
-		cache = true, -- When set to true, the theme will be cached for better performance
-
-		plugins = {
-			telescope = true,
-			mini_files = true,
 		},
 	},
 	-- {

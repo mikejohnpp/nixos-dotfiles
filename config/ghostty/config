@@ -10,6 +10,6 @@ cursor-opacity = 0.65
 adjust-cursor-thickness = 2
 window-decoration = false
 window-padding-x = 10,10
-window-padding-y = 10,10
+window-padding-y = 10,5
 gtk-titlebar = false
-
+app-notifications = no-clipboard-copy,config-reload

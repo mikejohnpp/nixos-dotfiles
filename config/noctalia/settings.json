@@ -561,7 +561,7 @@
     "fontDefaultScale": 1,
     "fontFixed": "monospace",
     "fontFixedScale": 1,
-    "panelBackgroundOpacity": 0.9,
+    "panelBackgroundOpacity": 0.95,
     "panelsAttachedToBar": true,
     "scrollbarAlwaysVisible": true,
     "settingsPanelMode": "attached",
