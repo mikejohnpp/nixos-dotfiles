@@ -70,7 +70,6 @@
     slurp
     grim
     neovide
-    opencode-desktop
     antigravity-fhs
     google-chrome
     wl-mirror
@@ -79,7 +78,6 @@
     filezilla
     postman
     devenv
-    focus
   ];
 
   services.vicinae = {
