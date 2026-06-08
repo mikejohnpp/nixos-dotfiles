@@ -32,10 +32,13 @@ return {
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 			local vue_language_server = vim.fn.expand("$MASON")
 				.. "/packages/vue-language-server/node_modules/@vue/language-server"
+
+			vim.lsp.config("*", {
+				capabilities = capabilities,
+			})
 			-- lua
 			vim.lsp.config["lua_ls"] = {
 				cmd = { "lua-language-server" },
-				capabilities = capabilities,
 				settings = {
 					Lua = {
 						diagnostics = { globals = { "vim" } },
@@ -47,10 +50,8 @@ return {
 					},
 				},
 			}
-			vim.lsp.enable("lua_ls")
 
 			vim.lsp.config["ts_ls"] = {
-				capabilities = capabilities,
 				init_options = {
 					plugins = {
 						{
@@ -63,36 +64,27 @@ return {
 				filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 			}
 
-			vim.lsp.config["yamlls"] = {
-				capabilities = capabilities,
-			}
-
 			vim.lsp.config["tailwindcss"] = {
-				capabilities = capabilities,
-			}
-
-			-- vim.lsp.config["html"] = {
-			-- 	capabilities = capabilities,
-			-- }
-
-			-- nix
-			vim.lsp.config["nil_ls"] = {
-				capabilities = capabilities,
-			}
-
-			-- python
-			vim.lsp.config["pyright"] = {
-				capabilities = capabilities,
-			}
-
-			-- bash
-			vim.lsp.config["bashls"] = {
-				capabilities = capabilities,
+				filetypes = {
+					"html",
+					"css",
+					"javascript",
+					"typescript",
+					"javascriptreact",
+					"typescriptreact",
+					"svelte",
+					"vue",
+					"astro",
+				},
+				init_options = {
+					userLanguages = {
+						astro = "html",
+					},
+				},
 			}
 
 			-- phpactor
 			vim.lsp.config["phpactor"] = {
-				capabilities = capabilities,
 				cmd = { "phpactor", "language-server" },
 				filetypes = { "php" },
 				root_markers = { ".git", "composer.json", ".phpactor.json", ".phpactor.yml" },
@@ -104,31 +96,39 @@ return {
 				},
 			}
 
-			-- laravel-ls
-			-- vim.lsp.config["laravel_ls"] = {
-			-- 	capabilities = capabilities,
-			-- }
-
-			-- vim.lsp.config["clangd"] = {
-			-- 	capabilities = capabilities,
-			-- 	opts = {
-			-- 		servers = {
-			-- 			clangd = {
-			-- 				mason = false,
-			-- 			},
-			-- 		},
-			-- 	},
-			-- }
-
-			vim.lsp.config["ccls"] = {
-				capabilities = capabilities,
-				cmd = { "ccls" },
+			vim.lsp.config["ts_ls"] = {
+				filetypes = {
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+				},
+				single_file_support = true,
+				init_options = {
+					preferences = {
+						includeCompletionsForModuleExports = true,
+						includeCompletionsForImportStatements = true,
+					},
+				},
+				settings = {
+					typescript = {
+						inlayHints = {
+							includeInlayParameterNameHints = "all",
+							includeInlayVariableTypeHints = true,
+							includeInlayFunctionParameterTypeHints = true,
+						},
+					},
+					javascript = {
+						validate = {
+							enable = true,
+						},
+						inlayHints = {
+							includeInlayParameterNameHints = "all",
+							includeInlayVariableTypeHints = true,
+						},
+					},
+				},
 			}
-
-			vim.diagnostic.config({
-				virtual_text = true,
-				underline = true,
-			})
 
 			vim.api.nvim_create_autocmd("FileType", {
 				pattern = "proto",
@@ -142,6 +142,7 @@ return {
 				"yamlls",
 				"phpactor",
 				-- "html",
+				"lua_ls",
 				"tailwindcss",
 				"nil_ls",
 				"pyright",
@@ -149,21 +150,33 @@ return {
 				"laravel_ls",
 				"ccls",
 			})
+
+			local signs = {
+				[vim.diagnostic.severity.ERROR] = " ",
+				[vim.diagnostic.severity.WARN] = " ",
+				[vim.diagnostic.severity.HINT] = "󰠠 ",
+				[vim.diagnostic.severity.INFO] = " ",
+			}
+			-- update diagnostic config function
+			vim.diagnostic.config({
+				signs = { text = signs },
+				virtual_text = true,
+				underline = true,
+				update_in_insert = false,
+				float = {
+					focusable = false,
+					style = "minimal",
+					border = "rounded",
+					source = true,
+					winhighlight = "Normal:Normal,NormalFloat:Normal,FloatBorder:FloatBorder",
+				},
+			})
 			-- LSP floating windows config (Neovim 0.11+)
 			local float_opts = {
 				border = "rounded",
 				winhighlight = "Normal:Normal,NormalFloat:Normal,FloatBorder:FloatBorder",
 			}
 
-			-- Diagnostic float
-			vim.diagnostic.config({
-				virtual_text = true,
-				underline = true,
-				float = {
-					border = "rounded",
-					winhighlight = "Normal:Normal,NormalFloat:Normal,FloatBorder:FloatBorder",
-				},
-			})
 			-- lsp kepmap setting
 			vim.keymap.set("n", "gh", function()
 				vim.lsp.buf.hover(float_opts)
@@ -200,6 +213,16 @@ return {
 				local symbols = symbols_map[filetype] or "function"
 				require("telescope.builtin").lsp_document_symbols({ symbols = symbols })
 			end, { desc = "Document symbol" })
+
+			-- toggle for virtual text
+			vim.keymap.set("n", "<leader>lx", function()
+				local current = vim.diagnostic.config().virtual_text
+				vim.diagnostic.config({ virtual_text = not current })
+			end, { desc = "Toggle LSP virtual text" })
+
+			vim.keymap.set("n", "<leader>df", function()
+				vim.diagnostic.open_float()
+			end, { desc = "Show line diagnostics" })
 		end,
 	},
 }
