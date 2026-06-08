@@ -54,14 +54,17 @@ return {
 		dependencies = {
 			-- "xzbdmw/colorful-menu.nvim",
 		},
-		version = "v0.*",
+		version = "v1.*",
 		opts = {
 			snippets = { preset = "luasnip" },
+			fuzzy = {
+				implementation = "prefer_rust",
+			},
 			keymap = {
 				preset = "default",
 				["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
 				["<C-e>"] = { "show_documentation", "hide", "fallback" },
-				["<CR>"] = { "accept", "fallback" },
+				["<C-y>"] = { "accept", "fallback" },
 
 				["<Tab>"] = { "snippet_forward", "fallback" },
 				["<S-Tab>"] = { "snippet_backward", "fallback" },
@@ -79,8 +82,22 @@ return {
 				-- example: 'foo_|_bar' will match 'foo_' for 'prefix' and 'foo__bar' for 'full'
 				keyword = { range = "full" },
 			},
+			cmdline = {
+				enabled = true,
+				keymap = { preset = "cmdline" },
+				completion = {
+					menu = { auto_show = true },
+				},
+			},
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "lsp", "path", "buffer", "snippets" },
+				providers = {
+					lsp = {
+						opts = {
+							tailwind_color_icon = "󱓻",
+						},
+					},
+				},
 			},
 			appearance = {
 				use_nvim_cmp_as_default = true,

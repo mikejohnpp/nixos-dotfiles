@@ -35,11 +35,11 @@
 
   programs = {
     gamescope = {
-      enable = true;
+      enable = false;
       capSysNice = true;
     };
     steam = {
-      enable = true;
+      enable = false;
       dedicatedServer.openFirewall = true;
       gamescopeSession = {
         enable = true;
@@ -65,7 +65,7 @@
           ];
       };
     };
-    gamemode.enable = true;
+    gamemode.enable = false;
   };
 
   hardware.enableRedistributableFirmware = true;
