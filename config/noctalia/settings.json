@@ -237,18 +237,6 @@
       },
       {
         "enabled": true,
-        "id": "audio-card"
-      },
-      {
-        "enabled": false,
-        "id": "brightness-card"
-      },
-      {
-        "enabled": true,
-        "id": "weather-card"
-      },
-      {
-        "enabled": true,
         "id": "media-sysmon-card"
       }
     ],

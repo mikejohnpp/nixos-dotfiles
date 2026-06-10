@@ -209,13 +209,13 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#cba6f7"
+        active-color "#7aa2f7"
 
         // Color of the ring on inactive monitors.
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#1e1e2e"
+        inactive-color "#00000000"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -237,11 +237,11 @@ layout {
     border {
         // The settings are the same as for the focus ring.
         // If you enable the border, you probably want to disable the focus ring.
-        on
+        // off
 
         width 1.5
         active-color "#7aa2f7"
-        inactive-color "#1a1b26"
+        inactive-color "#00000000"
         urgent-color   "#f7768e"
         // Gradients can use a few different interpolation color spaces.
         // For example, this is a pastel rainbow gradient via in="oklch longer hue".
@@ -449,22 +449,23 @@ window-rule {
 
 window-rule {
     match app-id=r#"^org\.gnome\.Nautilus$"#
-    opacity 0.93
+    opacity 0.95
 }
 
 /* Apps: blur them all without xray for a better look */
 window-rule {
   popups {
      // Matches the default libadwaita pop-up corner radius.
-     geometry-corner-radius 12
+     geometry-corner-radius 3
 
      // Note: it'll look better to set background opacity
      // through your GTK theme CSS and not here.
      // This is just an example that makes it look obvious.
-     opacity 0.93
+     opacity 1.0
 
      background-effect {
          blur false
+         xray false
      }
   }
   background-effect {

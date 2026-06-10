@@ -16,6 +16,8 @@
     ./../../modules/home-manager/noctalia.nix
     ./../../modules/home-manager/satty.nix
     ./../../modules/home-manager/mpv.nix
+
+    ./../../modules/home-manager/zoxide.nix
     # ./../../modules/home-manager/jetbrains.nix
     ./lang.nix
     ./scripts.nix
@@ -42,6 +44,7 @@
   within.noctalia.enable = true;
   within.satty.enable = true;
   within.mpv.enable = true;
+  within.zoxide.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
