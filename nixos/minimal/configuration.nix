@@ -23,6 +23,7 @@
   networking.firewall.allowedTCPPorts = [
     22
     3306
+    31835
   ];
 
   networking.nameservers = [
@@ -92,7 +93,7 @@
   swapDevices = [
     {
       device = "/var/lib/swapfile";
-      size = 8 * 1024; # 8 GiB
+      size = 4 * 1024; # 8 GiB
     }
   ];
   system.stateVersion = "25.05";

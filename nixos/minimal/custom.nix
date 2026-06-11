@@ -39,7 +39,7 @@
     # Enable tailscale at startup
     extraSetFlags = [
       "--accept-dns=false"
-      "--relay-server-port=40000"
+      # "--relay-server-port=40000"
     ];
 
     # If you would like to use a preauthorized key
