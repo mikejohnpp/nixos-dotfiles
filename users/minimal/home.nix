@@ -2,8 +2,7 @@
 
 {
   imports = [
-    ./../../modules/home-manager/neovim.nix
-    ./../../modules/home-manager/zsh.nix
+    ./../../modules/home-manager/neovim-minimal.nix
     ./../../modules/home-manager/tmux.nix
     ./../../modules/home-manager/ghostty.nix
     ./lang.nix
@@ -21,7 +20,6 @@
   };
   home.stateVersion = "25.05";
 
-  within.zsh.enable = true;
   within.neovim.enable = true;
   within.ghostty.enable = true;
 

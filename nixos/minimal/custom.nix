@@ -22,14 +22,7 @@
     pkgs.tlrc
   ];
 
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      btw = "echo I use nixos, btw";
-    };
-  };
-
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.bash;
 
   virtualisation.docker.enable = true;
   nixpkgs.config.allowUnfreePredicate = (_: true);
