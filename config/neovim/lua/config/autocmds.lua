@@ -67,6 +67,38 @@ vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
 	end,
 })
 
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI", "TermClose", "TermLeave" }, {
+	group = vim.api.nvim_create_augroup("AutoReload", { clear = true }),
+	callback = function()
+		for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+			if
+				vim.api.nvim_buf_is_valid(buf)
+				and vim.bo[buf].buftype == ""
+				and vim.api.nvim_buf_get_name(buf) ~= ""
+				and vim.fn.filereadable(vim.api.nvim_buf_get_name(buf)) == 1
+				and not vim.bo[buf].modified
+			then
+				local ok, err = pcall(vim.cmd.checktime, tostring(buf))
+
+				if not ok then
+					vim.notify("AutoReload: " .. err, vim.log.levels.WARN, { title = "checktime" })
+				end
+			end
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+	group = vim.api.nvim_create_augroup("AutoReload", { clear = true }),
+	callback = function()
+		vim.notify(
+			'File "' .. vim.fn.expand("%:t") .. '" changed on disk — reloaded',
+			vim.log.levels.INFO,
+			{ title = "AutoReload" }
+		)
+	end,
+})
+
 -- ide like highlight when stopping cursor
 -- vim.api.nvim_create_autocmd("CursorMoved", {
 -- 	group = vim.api.nvim_create_augroup("LspReferenceHighlight", { clear = true }),
