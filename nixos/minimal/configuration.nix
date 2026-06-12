@@ -10,9 +10,11 @@
     /etc/nixos/hardware-configuration.nix
     ./custom.nix
     ./k3s.nix
+    ./nfs-server.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
+  boot.supportedFilesystems = [ "nfs" ];
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "nixos-btw";
   networking.networkmanager.enable = true;
