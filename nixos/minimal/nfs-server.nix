@@ -18,6 +18,7 @@
     mountdPort = 4002;
     statdPort = 4000;
     extraNfsdConfig = "";
+    exports = "/data *(rw,sync,no_subtree_check,no_root_squash,insecure)";
   };
   networking.firewall = {
     enable = true;
@@ -39,5 +40,4 @@
       20048
     ];
   };
-  exports = "/data *(rw,sync,no_subtree_check,no_root_squash)";
 }
