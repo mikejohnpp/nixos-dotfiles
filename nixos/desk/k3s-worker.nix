@@ -21,8 +21,9 @@
 
   services.k3s = {
     enable = true;
-    role = "server";
-    clusterInit = true;
+    role = "agent";
+    token = "K10f968e0f05fee3d5c0abea5c6a7dd955924cc7a048a5dd384205879157a17b0d5::server:1fa906d24af6a0bdcb198ca2c8fd6a18";
+    serverAddr = "https://192.168.1.180:6443";
     extraFlags = toString [
       "--debug" # Optionally add additional args to k3s
     ];

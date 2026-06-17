@@ -91,11 +91,12 @@
   ];
 
   services.openssh.enable = true;
+  services.rpcbind.enable = true;
 
   swapDevices = [
     {
       device = "/var/lib/swapfile";
-      size = 4 * 1024; # 8 GiB
+      size = 4 * 1024; # 4 GiB
     }
   ];
   system.stateVersion = "25.05";

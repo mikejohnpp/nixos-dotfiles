@@ -7,7 +7,7 @@
 }:
 let
   background-image = pkgs.runCommand "background-image" { } ''
-    cp ${../../config/bg/cg02_1.png} $out
+    cp ${../../config/bg/img0.jpg} $out
   '';
   custom-sddm-astronaut = pkgs.sddm-astronaut.override {
     embeddedTheme = "hyprland_kath";
@@ -80,6 +80,7 @@ in
   imports = [
     /etc/nixos/hardware-configuration.nix
     ./custom.nix
+    ./k3s-worker.nix
     ../../modules/home-manager/mysql.nix
 
   ];
@@ -105,6 +106,8 @@ in
 
     plymouth.enable = true;
   };
+
+  boot.supportedFilesystems = [ "nfs" ];
 
   specialisation = {
     kernmainline.configuration = {
@@ -342,6 +345,7 @@ in
   services.tumbler.enable = true; # Thumbnail support for images
   services.upower.enable = true; # Battery stuff
   services.udisks2.enable = true;
+  services.rpcbind.enable = true;
 
   services.cloudflare-warp.enable = false;
 
