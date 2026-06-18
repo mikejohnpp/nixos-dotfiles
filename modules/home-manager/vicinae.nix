@@ -30,11 +30,11 @@
       };
       theme = {
         light = {
-          name = "tokyo-night";
+          name = "catppuccin-mocha";
           icon_theme = "default";
         };
         dark = {
-          name = "tokyo-night";
+          name = "catppuccin-mocha";
           icon_theme = "default";
         };
       };

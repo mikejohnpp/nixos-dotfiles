@@ -240,9 +240,9 @@ layout {
         // off
 
         width 1.5
-        active-color "#7aa2f7"
+        active-color "#cdd6f4"
         inactive-color "#00000000"
-        urgent-color   "#f7768e"
+        urgent-color   "#f38ba8"
         // Gradients can use a few different interpolation color spaces.
         // For example, this is a pastel rainbow gradient via in="oklch longer hue".
         //
@@ -469,8 +469,8 @@ window-rule {
      }
   }
   background-effect {
-    blur false
-    xray false
+    blur true
+    xray true
   }
 }
 
@@ -486,8 +486,8 @@ window-rule {
 layer-rule {
   match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
   background-effect {
-    blur false
-    xray false
+    blur true
+    xray true
   }
 }
 

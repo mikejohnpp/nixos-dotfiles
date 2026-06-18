@@ -17,7 +17,6 @@
     ./../../modules/home-manager/satty.nix
     ./../../modules/home-manager/mpv.nix
     ./../../modules/home-manager/vicinae.nix
-
     ./../../modules/home-manager/zoxide.nix
     # ./../../modules/home-manager/jetbrains.nix
     ./lang.nix
@@ -36,6 +35,15 @@
     };
   };
   home.stateVersion = "26.05";
+
+  # Point default cursor to the Breeze theme
+  home.file.".icons/default".source = "${pkgs.kdePackages.breeze}/share/icons/breeze_cursors";
+
+  # # For fine-grained X11/GTK setup
+  # gtk.cursorTheme = {
+  #   package = pkgs.kdePackages.breeze;
+  #   name = "Breeze_Cursors"; # You can use "Breeze_Cursors" or "Breeze_Snow" depending on your preference
+  # };
 
   within.zsh.enable = true;
   within.ghostty.enable = true;
@@ -82,6 +90,7 @@
     filezilla
     postman
     devenv
+    kdePackages.breeze
   ];
 
   xdg.userDirs.enable = true;

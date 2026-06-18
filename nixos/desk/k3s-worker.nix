@@ -26,6 +26,8 @@
     serverAddr = "https://192.168.1.180:6443";
     extraFlags = toString [
       "--debug" # Optionally add additional args to k3s
+      "--node-name=desk-worker-1"
+      "--with-node-id"
     ];
   };
 
