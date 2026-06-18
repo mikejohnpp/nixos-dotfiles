@@ -36,14 +36,67 @@
   };
   home.stateVersion = "26.05";
 
-  # Point default cursor to the Breeze theme
-  home.file.".icons/default".source = "${pkgs.kdePackages.breeze}/share/icons/breeze_cursors";
+  gtk = {
+    enable = true;
+    theme = {
+      name = "catppuccin-mocha-mauve-standard";
+      package = pkgs.catppuccin-gtk.override {
+        variant = "mocha";
+        accents = [ "mauve" ];
+      };
+    };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+    cursorTheme = {
+      name = "breeze_cursors";
+      package = pkgs.kdePackages.breeze;
+      size = 24;
+    };
+    font = {
+      name = "Cantarell";
+      size = 10;
+    };
+    gtk4 = {
+      theme = {
+        name = "catppuccin-mocha-mauve-standard";
+        package = pkgs.catppuccin-gtk.override {
+          variant = "mocha";
+          accents = [ "mauve" ];
+        };
+      };
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
+      };
+      cursorTheme = {
+        name = "breeze_cursors";
+        package = pkgs.kdePackages.breeze;
+        size = 24;
+      };
+    };
+  };
 
-  # # For fine-grained X11/GTK setup
-  # gtk.cursorTheme = {
-  #   package = pkgs.kdePackages.breeze;
-  #   name = "Breeze_Cursors"; # You can use "Breeze_Cursors" or "Breeze_Snow" depending on your preference
-  # };
+  home.pointerCursor = {
+    name = "breeze_cursors";
+    package = pkgs.kdePackages.breeze;
+    size = 24;
+    x11 = {
+      enable = true;
+      defaultCursor = true;
+    };
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      gtk-theme = "catppuccin-mocha-mauve-standard";
+      icon-theme = "Papirus-Dark";
+      cursor-theme = "breeze_cursors";
+      font-name = "Cantarell 10";
+      color-scheme = "prefer-dark";
+    };
+  };
 
   within.zsh.enable = true;
   within.ghostty.enable = true;
@@ -105,6 +158,8 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    XCURSOR_THEME = "breeze_cursors";
+    XCURSOR_SIZE = "24";
   };
 
   # Let Home Manager install and manage itself.

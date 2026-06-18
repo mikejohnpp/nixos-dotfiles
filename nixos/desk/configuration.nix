@@ -349,6 +349,7 @@ in
 
   services.cloudflare-warp.enable = false;
 
+  programs.dconf.enable = true;
   programs.xfconf.enable = true;
   programs.nix-ld.enable = true;
 
