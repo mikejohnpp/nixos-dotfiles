@@ -39,7 +39,7 @@
         };
       };
       launcher_window = {
-        opacity = 0.93;
+        opacity = 0.9;
       };
     };
     extensions = with inputs.vicinae-extensions.packages.${pkgs.stdenv.hostPlatform.system}; [

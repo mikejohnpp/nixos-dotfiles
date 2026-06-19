@@ -455,7 +455,7 @@ window-rule {
 
 window-rule {
     match app-id=r#"^org\.gnome\.Nautilus$"#
-    opacity 0.93
+    opacity 0.9
 }
 
 /* Apps: blur them all without xray for a better look */
