@@ -2,7 +2,7 @@
 # custom-shader = shaders/sonic_boom_cursor.glsl
 
 theme = "Catppuccin Mocha"
-font-family = "Iosevka Nerd Font Mono"
+font-family = "IosevkaTerm Nerd Font Mono"
 font-size = 13
 background-opacity = 0.9
 # background-blur-radius = 84

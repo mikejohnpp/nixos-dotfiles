@@ -291,7 +291,7 @@ in
   fonts.packages = with pkgs; [
     corefonts # Msfont support
     nerd-fonts.jetbrains-mono
-    nerd-fonts.iosevka
+    nerd-fonts.iosevka-term
   ];
 
   nix.settings = {
