@@ -114,9 +114,9 @@ in
       boot.kernelPackages = lib.mkForce pkgs.linuxPackages;
     };
 
-    xanmod.configuration = {
-      boot.kernelPackages = lib.mkForce pkgs.linuxPackages_xanmod;
-    };
+    # xanmod.configuration = {
+    #   boot.kernelPackages = lib.mkForce pkgs.linuxPackages_xanmod;
+    # };
 
   };
 
@@ -131,6 +131,8 @@ in
       19001
       19002
       3000
+      8080
+      9091
     ];
     allowedUDPPorts = [
       19000
@@ -289,6 +291,7 @@ in
   fonts.packages = with pkgs; [
     corefonts # Msfont support
     nerd-fonts.jetbrains-mono
+    nerd-fonts.iosevka
   ];
 
   nix.settings = {
@@ -352,6 +355,11 @@ in
   programs.dconf.enable = true;
   programs.xfconf.enable = true;
   programs.nix-ld.enable = true;
+
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
 
   swapDevices = [
     {

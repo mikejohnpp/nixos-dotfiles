@@ -112,6 +112,7 @@
 
   home.packages = with pkgs; [
     gh
+    fd
     hurl
     cowsay
     fortune
@@ -143,6 +144,7 @@
     filezilla
     postman
     devenv
+    redis
     kdePackages.breeze
   ];
 
