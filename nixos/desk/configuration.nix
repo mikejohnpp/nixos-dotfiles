@@ -103,9 +103,9 @@ in
       "msi-ec"
       "ec_sys"
     ];
-
-    plymouth.enable = true;
   };
+
+  boot.initrd.systemd.enable = true;
 
   boot.supportedFilesystems = [ "nfs" ];
 
@@ -359,6 +359,18 @@ in
   programs.appimage = {
     enable = true;
     binfmt = true;
+  };
+
+  system.autoUpgrade = {
+    enable = true;
+    flake = "/home/mikejohnp/nixos-dotfiles#desk"; # Path to your flake and the output name
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "--commit-lock-file" # Automatically commits the flake.lock change to your git repo
+    ];
+    dates = "weekly"; # Can be "daily", "04:00", etc.
+    randomizedDelaySec = "45min";
   };
 
   swapDevices = [

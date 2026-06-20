@@ -28,9 +28,6 @@
 
   programs.zsh = {
     enable = true;
-    shellAliases = {
-      btw = "echo I use nixos, btw";
-    };
   };
 
   programs = {
