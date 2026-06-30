@@ -160,7 +160,7 @@ in
   };
 
   services.xserver = {
-    enable = false;
+    enable = true;
     xkb.layout = "us";
     xkb.variant = "";
   };
@@ -231,8 +231,12 @@ in
     #   # MOZ_ENABLE_WAYLAND = "0";
     #   # ELECTRON_OZONE_PLATFORM_HINT = "x11";
   };
-  #
-  # # Add this if you use Brave or Google Chrome
+
+  # Fix unpopulated MIME menus in dolphin
+  environment.etc."/xdg/menus/applications.menu".text =
+    builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+
+  # Add this if you use Brave or Google Chrome
   programs.chromium.extraOpts = {
     enable = true;
     extraArgs = [
@@ -278,15 +282,20 @@ in
       git
       xwayland-satellite
       psmisc
-      nautilus
       custom-sddm-astronaut
-      kdePackages.qtmultimedia
     ])
     ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
       opencode
       gemini-cli
       pi
     ]);
+
+  # Exclude unnecessary/heavy default packages
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    oxygen
+    elisa
+    kwin-x11
+  ];
 
   fonts.packages = with pkgs; [
     corefonts # Msfont support

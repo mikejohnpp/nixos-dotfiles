@@ -36,48 +36,6 @@
   };
   home.stateVersion = "26.05";
 
-  gtk = {
-    enable = true;
-    theme = {
-      name = "catppuccin-mocha-mauve-standard";
-      package = pkgs.catppuccin-gtk.override {
-        variant = "mocha";
-        accents = [ "mauve" ];
-      };
-    };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-    cursorTheme = {
-      name = "breeze_cursors";
-      package = pkgs.kdePackages.breeze;
-      size = 24;
-    };
-    font = {
-      name = "Cantarell";
-      size = 10;
-    };
-    gtk4 = {
-      theme = {
-        name = "catppuccin-mocha-mauve-standard";
-        package = pkgs.catppuccin-gtk.override {
-          variant = "mocha";
-          accents = [ "mauve" ];
-        };
-      };
-      iconTheme = {
-        name = "Papirus-Dark";
-        package = pkgs.papirus-icon-theme;
-      };
-      cursorTheme = {
-        name = "breeze_cursors";
-        package = pkgs.kdePackages.breeze;
-        size = 24;
-      };
-    };
-  };
-
   home.pointerCursor = {
     name = "breeze_cursors";
     package = pkgs.kdePackages.breeze;
@@ -90,8 +48,8 @@
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
-      gtk-theme = "catppuccin-mocha-mauve-standard";
-      icon-theme = "Papirus-Dark";
+      # gtk-theme = "catppuccin-mocha-mauve-standard";
+      # icon-theme = "Papirus-Dark";
       cursor-theme = "breeze_cursors";
       font-name = "Cantarell 10";
       color-scheme = "prefer-dark";
@@ -146,6 +104,11 @@
     devenv
     redis
     kdePackages.breeze
+    kdePackages.qtsvg
+    kdePackages.dolphin
+    kdePackages.qtmultimedia
+    kdePackages.plasma-integration
+    ngrok
   ];
 
   xdg.userDirs.enable = true;
@@ -158,10 +121,14 @@
   xdg.userDirs.projects = "Projects";
   xdg.userDirs.videos = "Videos";
 
+  xdg.configFile."kdeglobals".text =
+    builtins.readFile "${pkgs.kdePackages.breeze}/share/color-schemes/BreezeDark.colors";
+
   home.sessionVariables = {
     EDITOR = "nvim";
     XCURSOR_THEME = "breeze_cursors";
     XCURSOR_SIZE = "24";
+    QT_QPA_PLATFORMTHEME = "kde";
   };
 
   # Let Home Manager install and manage itself.

@@ -6,7 +6,6 @@
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://yalter.github.io/niri/Configuration:-Input
-prefer-no-csd
 
 cursor {
     xcursor-theme "breeze_cursors"
@@ -330,7 +329,7 @@ hotkey-overlay {
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
 // This option will also fix border/focus ring drawing behind some semitransparent windows.
 // After enabling or disabling this, you need to restart the apps for this to take effect.
-// prefer-no-csd
+prefer-no-csd
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
@@ -458,6 +457,11 @@ window-rule {
     opacity 0.9
 }
 
+window-rule {
+    match app-id=r#"^org\.kde\.dolphin$"#
+    opacity 0.9
+}
+
 /* Apps: blur them all without xray for a better look */
 window-rule {
   popups {
@@ -521,7 +525,7 @@ binds {
 
     Mod+F1 { spawn-sh "niri msg output eDP-1 on"; } 
 
-    Mod+E { spawn "nautilus"; }
+    Mod+E { spawn "dolphin"; }
     Mod+B { spawn "firefox"; }
     Mod+D repeat=false { spawn "vicinae" "toggle"; }
     Mod+Shift+D repeat=false { spawn "vicinae" "vicinae://launch/files/search"; }

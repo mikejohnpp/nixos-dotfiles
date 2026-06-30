@@ -11,8 +11,8 @@ vim.o.cmdheight = 0
 vim.o.guifont = "JetBrainsMono Nerd Font Propo:h13"
 
 -- Transparency
-vim.g.neovide_opacity = 0.93
-vim.g.neovide_normal_opacity = 0.93
+vim.g.neovide_opacity = 0.9
+vim.g.neovide_normal_opacity = 0.9
 
 -- Scroll animation
 vim.g.neovide_scroll_animation_length = 0.2

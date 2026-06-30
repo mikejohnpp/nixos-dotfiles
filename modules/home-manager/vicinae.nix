@@ -25,7 +25,7 @@
       font = {
         normal = {
           size = 12;
-          family = "JetBrainsMono Nerd Font";
+          family = "JetBrainsMono Nerd Font Mono";
         };
       };
       theme = {
