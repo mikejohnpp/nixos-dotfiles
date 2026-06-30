@@ -258,6 +258,7 @@ in
       "audio"
       "docker"
       "gamemode"
+      "i2c"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
     ];
@@ -283,6 +284,7 @@ in
       xwayland-satellite
       psmisc
       custom-sddm-astronaut
+      ddcutil
     ])
     ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
       opencode
@@ -334,6 +336,8 @@ in
     powerOnBoot = true;
     settings.General.Experimental = true;
   };
+
+  hardware.i2c.enable = true;
 
   hardware.graphics = {
     enable = true;
