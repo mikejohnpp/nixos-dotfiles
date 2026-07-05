@@ -4,7 +4,7 @@
 theme = "Catppuccin Mocha"
 font-family = "FiraCode Nerd Font Mono"
 font-size = 12
-background-opacity = 0.85
+background-opacity = 0.9
 # background-blur-radius = 84
 cursor-opacity = 0.65
 adjust-cursor-thickness = 2
