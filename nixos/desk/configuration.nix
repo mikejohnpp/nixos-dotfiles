@@ -302,7 +302,7 @@ in
   fonts.packages = with pkgs; [
     corefonts # Msfont support
     nerd-fonts.jetbrains-mono
-    nerd-fonts.iosevka-term
+    nerd-fonts.fira-code
   ];
 
   nix.settings = {
