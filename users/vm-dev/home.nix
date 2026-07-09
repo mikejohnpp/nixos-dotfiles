@@ -31,8 +31,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  # home.file.".config/nvim".source = ../../config/nvim;
-
   home.packages = with pkgs; [
     ripgrep
     nil
