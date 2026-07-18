@@ -63,6 +63,23 @@
       "text/x-perl" = "neovide.desktop";
       "text/x-r" = "neovide.desktop";
 
+      # Archive / Compressed → peazip
+      "application/zip" = "peazip.desktop";
+      "application/x-7z-compressed" = "peazip.desktop";
+      "application/x-rar" = "peazip.desktop";
+      "application/x-tar" = "peazip.desktop";
+      "application/gzip" = "peazip.desktop";
+      "application/x-bzip2" = "peazip.desktop";
+      "application/x-xz" = "peazip.desktop";
+      "application/x-zstd" = "peazip.desktop";
+      "application/x-lzip" = "peazip.desktop";
+      "application/x-lzma" = "peazip.desktop";
+      "application/x-arj" = "peazip.desktop";
+      "application/x-cpio" = "peazip.desktop";
+      "application/vnd.ms-cab-compressed" = "peazip.desktop";
+      "application/x-tarz" = "peazip.desktop";
+      "application/x-genesis-rom" = "peazip.desktop";
+
       # Document
       "application/pdf" = "org.pwmt.zathura.desktop";
 
