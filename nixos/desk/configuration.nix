@@ -97,6 +97,7 @@ in
       "quiet"
       "splash"
       "console=/dev/null"
+      "snd-hda-intel.dmic_detect=0"
     ];
     extraModulePackages = [ config.boot.kernelPackages.msi-ec ];
     kernelModules = [
@@ -319,7 +320,7 @@ in
   ];
 
   services.openssh.enable = true;
-
+  services.pulseaudio.enable = false;
   # Hardware specific
   services.pipewire = {
     enable = true;

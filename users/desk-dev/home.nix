@@ -90,6 +90,8 @@
     jetbrains-toolbox
     libreoffice-qt
     wl-clipboard
+    audacity
+    peazip
     jq
     slurp
     grim

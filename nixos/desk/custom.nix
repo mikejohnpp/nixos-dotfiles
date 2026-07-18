@@ -67,7 +67,11 @@
 
   hardware.enableRedistributableFirmware = true;
 
-  hardware.firmware = [ pkgs.linux-firmware ];
+  hardware.enableAllFirmware = true;
+  hardware.firmware = [
+    pkgs.linux-firmware
+    pkgs.sof-firmware
+  ];
 
   services.fwupd.enable = true;
 
