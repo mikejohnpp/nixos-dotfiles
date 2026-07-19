@@ -97,7 +97,7 @@ in
       "quiet"
       "splash"
       "console=/dev/null"
-      "snd-hda-intel.dmic_detect=0"
+      # "snd-hda-intel.dmic_detect=0"
     ];
     extraModulePackages = [ config.boot.kernelPackages.msi-ec ];
     kernelModules = [

@@ -38,7 +38,7 @@
     "visualizerType": "linear",
     "volumeFeedback": false,
     "volumeFeedbackSoundFile": "",
-    "volumeOverdrive": false,
+    "volumeOverdrive": true,
     "volumeStep": 5
   },
   "bar": {
