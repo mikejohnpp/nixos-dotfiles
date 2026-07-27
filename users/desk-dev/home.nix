@@ -111,6 +111,8 @@
     kdePackages.qtmultimedia
     kdePackages.plasma-integration
     ngrok
+    inkscape
+    jmeter
   ];
 
   xdg.userDirs.enable = true;

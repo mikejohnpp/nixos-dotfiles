@@ -351,6 +351,7 @@ in
     LIBVA_DRIVER_NAME = "iHD";
     MOZ_ENABLE_WAYLAND = "1";
     OZONE_PLATFORM = "wayland";
+    _JAVA_AWT_WM_NONREPARENTING = "1";
   };
 
   xdg.portal = {

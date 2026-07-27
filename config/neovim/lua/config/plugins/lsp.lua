@@ -148,6 +148,7 @@ return {
 				"pyright",
 				"bashls",
 				"laravel_ls",
+				"clangd",
 				"ccls",
 			})
 
