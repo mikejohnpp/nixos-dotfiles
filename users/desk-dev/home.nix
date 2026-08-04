@@ -37,6 +37,7 @@
   home.stateVersion = "26.05";
 
   home.pointerCursor = {
+    enable = true;
     name = "breeze_cursors";
     package = pkgs.kdePackages.breeze;
     size = 24;
@@ -51,7 +52,7 @@
       gtk-theme = "catppuccin-mocha-mauve-standard";
       icon-theme = "Papirus-Dark";
       cursor-theme = "breeze_cursors";
-      font-name = "Cantarell 10";
+      font-name = "Adwaita Sans 10";
       color-scheme = "prefer-dark";
     };
   };
@@ -66,7 +67,10 @@
   within.mpv.enable = true;
   within.zoxide.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [ "electron-40.10.5" ];
+  };
 
   home.packages = with pkgs; [
     gh

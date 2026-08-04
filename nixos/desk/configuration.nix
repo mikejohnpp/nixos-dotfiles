@@ -320,6 +320,7 @@ in
     corefonts # Msfont support
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code
+    adwaita-fonts
   ];
 
   nix.settings = {
