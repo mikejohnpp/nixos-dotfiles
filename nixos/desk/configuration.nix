@@ -185,6 +185,17 @@ in
       };
     };
   };
+  services.desktopManager.gnome.enable = true;
+
+  # To disable installing GNOME's suite of applications
+  # and only be left with GNOME shell.
+  services.gnome.core-apps.enable = false;
+  services.gnome.core-developer-tools.enable = false;
+  services.gnome.games.enable = false;
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-tour
+    gnome-user-docs
+  ];
 
   programs.niri.enable = true;
 
@@ -286,6 +297,11 @@ in
       psmisc
       custom-sddm-astronaut
       ddcutil
+
+      gnomeExtensions.blur-my-shell
+      gnomeExtensions.just-perfection
+      gnomeExtensions.arc-menu
+      gnomeExtensions.appindicator
     ])
     ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
       opencode
@@ -359,6 +375,8 @@ in
     extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
   };
 
+  services.sysprof.enable = true;
+  services.flatpak.enable = true; # enable flatpak support
   services.gvfs.enable = true; # Mount, trash, and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
   services.upower.enable = true; # Battery stuff

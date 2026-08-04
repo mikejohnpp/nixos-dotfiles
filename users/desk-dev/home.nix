@@ -48,8 +48,8 @@
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
-      # gtk-theme = "catppuccin-mocha-mauve-standard";
-      # icon-theme = "Papirus-Dark";
+      gtk-theme = "catppuccin-mocha-mauve-standard";
+      icon-theme = "Papirus-Dark";
       cursor-theme = "breeze_cursors";
       font-name = "Cantarell 10";
       color-scheme = "prefer-dark";
