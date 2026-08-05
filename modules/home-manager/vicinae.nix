@@ -6,7 +6,7 @@
   ...
 }:
 {
-  services.vicinae = {
+  programs.vicinae = {
     package = pkgs.vicinae;
     enable = true;
     systemd = {
