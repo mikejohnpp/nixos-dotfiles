@@ -92,7 +92,7 @@ in
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = inputs.nixpkgs-zen.legacyPackages.${pkgs.stdenv.hostPlatform.system}.linuxPackages_zen;
     kernelParams = [
       "quiet"
       "splash"
