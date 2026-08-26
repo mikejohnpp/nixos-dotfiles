@@ -316,8 +316,7 @@ layout {
 // spawn-at-startup "waybar"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-spawn-sh-at-startup "noctalia-shell"
-// spawn-at-startup "vicinae" "server"
+spawn-sh-at-startup "noctalia"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
@@ -480,26 +479,26 @@ window-rule {
   }
   background-effect {
     blur true
-    xray true
-  }
-}
-
-window-rule {
-  match app-id="dev.noctalia.Noctalia.Settings"
-  open-floating true
-  default-column-width { fixed 1080; }
-  default-window-height { fixed 920; }
-}
-
-
-/* Noctalia: blur everywhere without xray for a better look */
-layer-rule {
-  match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
-  background-effect {
-    blur false
     xray false
   }
 }
+
+// window-rule {
+//   match app-id="dev.noctalia.Noctalia.Settings"
+//   open-floating true
+//   default-column-width { fixed 1080; }
+//   default-window-height { fixed 920; }
+// }
+
+
+/* Noctalia: blur everywhere without xray for a better look */
+// layer-rule {
+//   match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
+//   background-effect {
+//     blur false
+//     xray false
+//   }
+// }
 
 layer-rule {
   match namespace="^noctalia-wallpaper*"
@@ -527,9 +526,11 @@ binds {
 
     Mod+E { spawn "dolphin"; }
     Mod+B { spawn "firefox"; }
-    Mod+D repeat=false { spawn "vicinae" "toggle"; }
-    Mod+Shift+D repeat=false { spawn "vicinae" "vicinae://launch/files/search"; }
-    Mod+Space repeat=false { spawn "vicinae" "vicinae://launch/clipboard/history"; }
+    // Mod+D repeat=false { spawn "vicinae" "toggle"; }
+    Mod+D repeat=false { spawn-sh "noctalia msg panel-toggle launcher"; }
+    // Mod+Shift+D repeat=false { spawn "vicinae" "vicinae://launch/files/search"; }
+    // Mod+Space repeat=false { spawn "vicinae" "vicinae://launch/clipboard/history"; }
+    Mod+Space repeat=false { spawn-sh "noctalia msg panel-toggle clipboard"; }
     Mod+T repeat=false { spawn "vicinae" "vicinae://launch/core/search-emojis"; }
 
     Mod+F2 repeat=false { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }

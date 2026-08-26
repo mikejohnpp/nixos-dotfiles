@@ -14,17 +14,10 @@ in
   options.within.noctalia.enable = mkEnableOption "Enables Within's noctalia config";
 
   config = mkIf cfg.enable {
-    # import the home manager module
-    programs.noctalia-shell = {
+    programs.noctalia = {
       enable = true;
-      # settings = ./../../config/noctalia/settings.json;
-      # colors = ./../../config/noctalia/colors.json;
     };
-
-    home.file = {
-      ".config/noctalia" = {
-        source = ./../../config/noctalia;
-      };
-    };
+    home.file.".config/noctalia/config.toml".source =
+      ../../config/noctalia/config.toml;
   };
 }

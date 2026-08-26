@@ -1,0 +1,114 @@
+[bar.default]
+background_opacity = 0.6
+border = "on_error"
+center = []
+end = [ "tray", "network", "battery", "volume", "bluetooth", "brightness", "notifications", "clock", "control-center" ]
+font_family = "JetBrainsMono NFP"
+margin_ends = 0
+radius = 0
+shadow = false
+start = [ "launcher", "workspaces" ]
+thickness = 28
+widget_spacing = 15
+
+[control_center]
+sidebar = "full"
+sidebar_section = "full"
+
+[desktop_widgets]
+enabled = false
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
+
+[location]
+auto_locate = true
+sunrise = "06:00"
+sunset = "18:00"
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 957.0
+    output = "HDMI-A-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        center_password_text = false
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 957.0
+    output = "eDP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        center_password_text = false
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[shell]
+font_family = "JetBrainsMono NFP"
+telemetry_enabled = false
+
+    [shell.panel]
+    open_near_click_control_center = true
+    open_near_click_launcher = true
+    transparency_mode = "glass"
+
+[theme]
+builtin = "Tokyo-Night"
+wallpaper_scheme = "m3-tonal-spot"
+
+[wallpaper]
+directory = "/home/mikejohnp/bg"
+
+[widget.workspaces]
+show_labels = false
+
+[brightness]
+enable_ddcutil = true
+
+[nightlight]
+enabled = true
+force = false
+temperature_night = 4400

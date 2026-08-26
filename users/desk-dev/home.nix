@@ -16,7 +16,7 @@
     ./../../modules/home-manager/noctalia.nix
     ./../../modules/home-manager/satty.nix
     ./../../modules/home-manager/mpv.nix
-    ./../../modules/home-manager/vicinae.nix
+    # ./../../modules/home-manager/vicinae.nix
     ./../../modules/home-manager/zoxide.nix
     # ./../../modules/home-manager/jetbrains.nix
     ./lang.nix
@@ -116,7 +116,6 @@
     kdePackages.plasma-integration
     ngrok
     inkscape
-    jmeter
   ];
 
   xdg.userDirs.enable = true;
@@ -137,6 +136,8 @@
     XCURSOR_THEME = "breeze_cursors";
     XCURSOR_SIZE = "24";
     QT_QPA_PLATFORMTHEME = "kde";
+
+    XDG_CONFIG_HOME = "$HOME/.config";
   };
 
   # Let Home Manager install and manage itself.
