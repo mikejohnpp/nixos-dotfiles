@@ -13,10 +13,7 @@ fcitx5 -d >/dev/null 2>&1 &
 # NetworkManager applet.
 nm-applet >/dev/null 2>&1 &
 
-# Noctalia desktop shell.
-#
-# NOTE: left commented on purpose so it is easy to try. Uncomment the line
-# below when you want Noctalia (bar, launcher, notifications, wallpaper)
-# to start automatically with the labwc session.
-#
+wlr-randr --output HDMI-A-1 --mode 1920x1080@120.000000Hz
+
+# Noctalia desktop shell (bar, launcher, notifications, wallpaper).
 noctalia -d >/dev/null 2>&1 &

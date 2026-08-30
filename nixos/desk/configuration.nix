@@ -308,6 +308,8 @@ in
       psmisc
       custom-sddm-astronaut
       ddcutil
+      wlr-randr
+      mcontrolcenter
 
       gnomeExtensions.blur-my-shell
       gnomeExtensions.just-perfection

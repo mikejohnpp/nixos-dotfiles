@@ -1,19 +1,26 @@
 [bar.default]
-background_opacity = 0.6
+background_opacity = 0.59999999999999998
 border = "on_error"
 center = []
 end = [ "tray", "network", "battery", "volume", "bluetooth", "brightness", "notifications", "clock", "control-center" ]
 font_family = "JetBrainsMono NFP"
 margin_ends = 0
+panel_overlap = 0
 radius = 0
 shadow = false
 start = [ "launcher", "workspaces" ]
 thickness = 28
 widget_spacing = 15
 
+[brightness]
+enable_ddcutil = true
+
 [control_center]
 sidebar = "full"
 sidebar_section = "full"
+
+    [control_center.calendar]
+    show_events_card = false
 
 [desktop_widgets]
 enabled = false
@@ -27,6 +34,22 @@ widget_order = []
 
     [desktop_widgets.widget]
 
+[dock]
+auto_hide = true
+background_opacity = 0.59999998658895493
+cross_axis_padding = 5
+enabled = true
+icon_size = 32
+item_spacing = 5
+launcher_position = "start"
+magnification_scale = 1.2000000029802322
+main_axis_padding = 5
+pinned = [ "firefox", "org.kde.dolphin" ]
+radius = 5
+reserve_space = false
+shadow = false
+show_dots = true
+
 [location]
 auto_locate = true
 sunrise = "06:00"
@@ -34,6 +57,16 @@ sunset = "18:00"
 
 [lockscreen_widgets]
 enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@HEADLESS-1", "lockscreen-login-box@eDP-1", "lockscreen-login-box@HDMI-A-1" ]
+
+[nightlight]
+enabled = true
+force = false
+temperature_night = 4400
+
+[osd.kinds]
+power_profile = false
 
 [shell]
 font_family = "JetBrainsMono NFP"
@@ -48,27 +81,17 @@ telemetry_enabled = false
 builtin = "Tokyo-Night"
 wallpaper_scheme = "m3-tonal-spot"
 
+    [theme.templates]
+    builtin_ids = []
+    enable_builtin_templates = true
+
+        [theme.templates.user.labwc-themerc]
+        input_path = "~/.config/noctalia/templates/labwc.conf"
+        output_path = "~/.config/labwc/themerc-override"
+        post_hook = "labwc --reconfigure"
+
 [wallpaper]
 directory = "/home/mikejohnp/bg"
 
 [widget.workspaces]
 show_labels = false
-
-[brightness]
-enable_ddcutil = true
-
-[nightlight]
-enabled = true
-force = false
-temperature_night = 4400
-
-# Sync Noctalia's current color palette into labwc's themerc-override
-# (titlebar, menu, OSD colors) and reconfigure labwc whenever it changes.
-[theme.templates]
-enable_builtin_templates = true
-builtin_ids = []
-
-[theme.templates.user.labwc-themerc]
-input_path = "~/.config/noctalia/templates/labwc.conf"
-output_path = "~/.config/labwc/themerc-override"
-post_hook = "labwc --reconfigure"

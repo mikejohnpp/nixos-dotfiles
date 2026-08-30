@@ -102,15 +102,15 @@
 
   services.dbus.packages = [ pkgs.mcontrolcenter ];
 
-  systemd.user.services.mcontrolcenter = {
-    description = "Auto start mcontrolcenter";
-    wantedBy = [ "default.target" ];
-
-    serviceConfig = {
-      ExecStart = "${pkgs.mcontrolcenter}/bin/mcontrolcenter";
-      Restart = "on-failure";
-    };
-  };
+  # systemd.user.services.mcontrolcenter = {
+  #   description = "Auto start mcontrolcenter";
+  #   wantedBy = [ "default.target" ];
+  #
+  #   serviceConfig = {
+  #     ExecStart = "${pkgs.mcontrolcenter}/bin/mcontrolcenter";
+  #     Restart = "on-failure";
+  #   };
+  # };
 
   services.tailscale = {
     enable = true;
