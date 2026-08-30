@@ -1,0 +1,17 @@
+##
+## Environment variables for the labwc session (desk-btw).
+## See labwc-environment(5) / /usr/share/doc/labwc/environment for full docs.
+##
+
+# Keyboard layout (matches system xkb.layout = "us").
+XKB_DEFAULT_LAYOUT=us
+
+# Cursor theme and size (matches home.pointerCursor in desk-dev).
+XCURSOR_THEME=breeze_cursors
+XCURSOR_SIZE=24
+
+# Force GTK4 internal composing instead of requiring an input method.
+# This is required for simple compose sequences in Qt/GTK apps.
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx

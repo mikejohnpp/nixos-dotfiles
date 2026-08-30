@@ -9,6 +9,7 @@
   imports = [
     ./../../modules/home-manager/default.nix
     ./../../modules/home-manager/niri.nix
+    ./../../modules/home-manager/labwc.nix
     ./../../modules/home-manager/firefox.nix
     ./../../modules/home-manager/zathura.nix
     ./../../modules/home-manager/neovim.nix
@@ -16,6 +17,7 @@
     ./../../modules/home-manager/noctalia.nix
     ./../../modules/home-manager/satty.nix
     ./../../modules/home-manager/mpv.nix
+    ./../../modules/home-manager/fastfetch.nix
     # ./../../modules/home-manager/vicinae.nix
     ./../../modules/home-manager/zoxide.nix
     # ./../../modules/home-manager/jetbrains.nix
@@ -62,10 +64,12 @@
   within.neovim.enable = true;
   within.alacritty.enable = true;
   within.niri.enable = true;
+  within.labwc.enable = true;
   within.noctalia.enable = true;
   within.satty.enable = true;
   within.mpv.enable = true;
   within.zoxide.enable = true;
+  within.fastfetch.enable = true;
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -73,6 +77,7 @@
   };
 
   home.packages = with pkgs; [
+    pciutils
     gh
     fd
     hurl

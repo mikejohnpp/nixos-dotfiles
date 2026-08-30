@@ -1,0 +1,240 @@
+<labwc_config>
+
+  <core>
+    <gap>4</gap>
+    <adaptiveSync>no</adaptiveSync>
+    <allowTearing>no</allowTearing>
+    <primarySelection>yes</primarySelection>
+  </core>
+
+  <placement>
+    <policy>cascade</policy>
+  </placement>
+
+  <theme>
+    <fallbackAppIcon>labwc</fallbackAppIcon>
+    <cornerRadius>6</cornerRadius>
+    <keepBorder>yes</keepBorder>
+    <maximizedDecoration>titlebar</maximizedDecoration>
+    <dropShadows>no</dropShadows>
+    <dropShadowsOnTiled>no</dropShadowsOnTiled>
+    <font place="ActiveWindow">
+      <name>JetBrainsMono NFP</name>
+      <size>10</size>
+      <weight>normal</weight>
+    </font>
+    <font place="InactiveWindow">
+      <name>JetBrainsMono NFP</name>
+      <size>10</size>
+      <weight>normal</weight>
+    </font>
+    <font place="MenuHeader">
+      <name>JetBrainsMono NFP</name>
+      <size>10</size>
+      <weight>normal</weight>
+    </font>
+    <font place="MenuItem">
+      <name>JetBrainsMono NFP</name>
+      <size>10</size>
+      <weight>normal</weight>
+    </font>
+    <font place="OnScreenDisplay">
+      <name>JetBrainsMono NFP</name>
+      <size>10</size>
+      <weight>normal</weight>
+    </font>
+  </theme>
+
+  <windowSwitcher preview="yes" outlines="yes" unshade="yes">
+    <osd show="yes" style="classic" output="all" thumbnailLabelFormat="%T" />
+    <fields>
+      <field content="icon" width="5%" />
+      <field content="desktop_entry_name" width="30%" />
+      <field content="title" width="65%" />
+    </fields>
+  </windowSwitcher>
+
+  <focus>
+    <followMouse>no</followMouse>
+  </focus>
+
+  <desktops>
+    <popupTime>1000</popupTime>
+    <number>9</number>
+    <prefix>Workspace</prefix>
+  </desktops>
+
+  <keyboard>
+    <numlock>on</numlock>
+    <layoutScope>global</layoutScope>
+    <repeatRate>35</repeatRate>
+    <repeatDelay>200</repeatDelay>
+
+    <!-- Windows-style Alt+Tab window switching (shows preview overlay) -->
+    <keybind key="A-Tab">
+      <action name="NextWindow" />
+    </keybind>
+    <keybind key="A-S-Tab">
+      <action name="PreviousWindow" />
+    </keybind>
+
+    <!-- Terminal / apps (matches niri binds) -->
+    <keybind key="W-Return">
+      <action name="Execute" command="ghostty" />
+    </keybind>
+    <keybind key="W-e">
+      <action name="Execute" command="dolphin" />
+    </keybind>
+    <keybind key="W-b">
+      <action name="Execute" command="firefox" />
+    </keybind>
+
+    <!-- Noctalia launcher / clipboard (uncomment when running noctalia) -->
+    <keybind key="W-d">
+      <action name="Execute" command="noctalia msg panel-toggle launcher" />
+    </keybind>
+    <keybind key="W-space">
+      <action name="Execute" command="noctalia msg panel-toggle clipboard" />
+    </keybind>
+
+    <!-- Close window -->
+    <keybind key="W-q">
+      <action name="Close" />
+    </keybind>
+
+    <!-- Fullscreen / maximize -->
+    <keybind key="W-f">
+      <action name="ToggleMaximize" />
+    </keybind>
+    <keybind key="W-S-f">
+      <action name="ToggleFullscreen" />
+    </keybind>
+
+    <!-- Workspace switching -->
+    <keybind key="W-Page_Down">
+      <action name="GoToDesktop" to="right" wrap="yes" />
+    </keybind>
+    <keybind key="W-Page_Up">
+      <action name="GoToDesktop" to="left" wrap="yes" />
+    </keybind>
+    <keybind key="W-1"><action name="GoToDesktop" to="1" /></keybind>
+    <keybind key="W-2"><action name="GoToDesktop" to="2" /></keybind>
+    <keybind key="W-3"><action name="GoToDesktop" to="3" /></keybind>
+    <keybind key="W-4"><action name="GoToDesktop" to="4" /></keybind>
+    <keybind key="W-5"><action name="GoToDesktop" to="5" /></keybind>
+    <keybind key="W-6"><action name="GoToDesktop" to="6" /></keybind>
+    <keybind key="W-7"><action name="GoToDesktop" to="7" /></keybind>
+    <keybind key="W-8"><action name="GoToDesktop" to="8" /></keybind>
+    <keybind key="W-9"><action name="GoToDesktop" to="9" /></keybind>
+
+    <!-- Screenshots -->
+    <keybind key="W-s">
+      <action name="Execute" command="dot-screenshot region" />
+    </keybind>
+    <keybind key="W-S-s">
+      <action name="Execute" command="dot-screenshot window" />
+    </keybind>
+    <keybind key="W-C-s">
+      <action name="Execute" command="dot-screenshot monitor-focused" />
+    </keybind>
+    <keybind key="W-C-S-s">
+      <action name="Execute" command="dot-screenshot monitor-all" />
+    </keybind>
+
+    <!-- Media / volume (matches niri wpctl binds) -->
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute" command="wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0" />
+    </keybind>
+    <keybind key="XF86AudioLowerVolume">
+      <action name="Execute" command="wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-" />
+    </keybind>
+    <keybind key="XF86AudioMute">
+      <action name="Execute" command="wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle" />
+    </keybind>
+    <keybind key="XF86AudioMicMute">
+      <action name="Execute" command="wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle" />
+    </keybind>
+    <keybind key="XF86AudioPlay">
+      <action name="Execute" command="playerctl play-pause" />
+    </keybind>
+    <keybind key="XF86AudioStop">
+      <action name="Execute" command="playerctl stop" />
+    </keybind>
+    <keybind key="XF86AudioPrev">
+      <action name="Execute" command="playerctl previous" />
+    </keybind>
+    <keybind key="XF86AudioNext">
+      <action name="Execute" command="playerctl next" />
+    </keybind>
+
+    <!-- Brightness -->
+    <keybind key="XF86MonBrightnessUp">
+      <action name="Execute" command="brightnessctl --class=backlight set +10%" />
+    </keybind>
+    <keybind key="XF86MonBrightnessDown">
+      <action name="Execute" command="brightnessctl --class=backlight set 10%-" />
+    </keybind>
+
+    <!-- Root menu -->
+    <keybind key="A-Space">
+      <action name="ShowMenu" menu="root-menu" atCursor="no" />
+    </keybind>
+
+    <!-- Quit -->
+    <keybind key="W-S-e">
+      <action name="Exit" />
+    </keybind>
+  </keyboard>
+
+  <mouse>
+    <doubleClickTime>500</doubleClickTime>
+
+    <!--
+      Load all default mouse bindings. This is what wires up the Per-window
+      title-bar buttons (Iconify / Maximize / Close) and the menu buttons,
+      which otherwise would not respond unless declared manually here.
+      Contexts defined below override the corresponding defaults.
+    -->
+    <default />
+
+    <context name="Root">
+      <mousebind button="Left" action="Press">
+        <action name="ShowMenu" menu="root-menu" />
+      </mousebind>
+      <mousebind button="Right" action="Press">
+        <action name="ShowMenu" menu="root-menu" />
+      </mousebind>
+      <mousebind button="Middle" action="Press">
+        <action name="ShowMenu" menu="root-menu" />
+      </mousebind>
+      <mousebind direction="Up" action="Scroll">
+        <action name="GoToDesktop" to="left" wrap="yes" />
+      </mousebind>
+      <mousebind direction="Down" action="Scroll">
+        <action name="GoToDesktop" to="right" wrap="yes" />
+      </mousebind>
+    </context>
+  </mouse>
+
+  <libinput>
+    <device category="default">
+      <tap>yes</tap>
+      <naturalScroll>no</naturalScroll>
+      <scrollFactor>1.0</scrollFactor>
+    </device>
+  </libinput>
+
+  <windowRules>
+    <!--
+      Noctalia surfaces are layer-shell, so they are not regular windows.
+      Add per-app window rules here as needed, e.g.:
+      <windowRule identifier="dev.noctalia.Noctalia" serverDecoration="no" />
+    -->
+  </windowRules>
+
+  <menu>
+    <ignoreButtonReleasePeriod>250</ignoreButtonReleasePeriod>
+    <showIcons>yes</showIcons>
+  </menu>
+
+</labwc_config>

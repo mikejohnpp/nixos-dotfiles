@@ -208,6 +208,7 @@ in
   ];
 
   programs.niri.enable = true;
+  programs.labwc.enable = true;
 
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -383,7 +384,10 @@ in
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
+    extraPortals = [
+      pkgs.xdg-desktop-portal-wlr
+      pkgs.xdg-desktop-portal-gtk
+    ];
   };
 
   services.sysprof.enable = true;

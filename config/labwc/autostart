@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+
+# labwc autostart script for desk-btw.
+# Executed by labwc with the current session environment.
+
+# Pull in graphical-session.target so systemd user services
+# (portals, notification daemons, etc.) start in sync with the session.
+systemctl --user --no-block start labwc-session.target
+
+# Input method (fcitx5) for CJK/Vietnamese typing.
+fcitx5 -d >/dev/null 2>&1 &
+
+# NetworkManager applet.
+nm-applet >/dev/null 2>&1 &
+
+# Noctalia desktop shell.
+#
+# NOTE: left commented on purpose so it is easy to try. Uncomment the line
+# below when you want Noctalia (bar, launcher, notifications, wallpaper)
+# to start automatically with the labwc session.
+#
+noctalia -d >/dev/null 2>&1 &
