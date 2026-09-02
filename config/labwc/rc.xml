@@ -45,7 +45,7 @@
     </font>
   </theme>
 
-  <windowSwitcher preview="yes" outlines="yes" unshade="yes">
+  <windowSwitcher preview="no" outlines="yes" unshade="yes">
     <osd show="yes" style="thumbnail" output="all" thumbnailLabelFormat="%t" />
   </windowSwitcher>
 
@@ -54,9 +54,17 @@
   </focus>
 
   <desktops>
-    <popupTime>1000</popupTime>
-    <number>9</number>
+    <popupTime>700</popupTime>
+    <number>5</number>
     <prefix>Workspace</prefix>
+    <names>
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+      <name>4</name>
+      <name>5</name>
+    </names>
+
   </desktops>
 
   <keyboard>
@@ -112,9 +120,9 @@
     <keybind key="W-F1">
       <action name="Execute" command="wlr-randr --output eDP-1 --on" />
     </keybind>
-    <keybind key="W-F2">
-      <action name="Execute" command="wl-mirror eDP-1" />
-    </keybind>
+    <!-- <keybind key="W-F2"> -->
+    <!--   <action name="Execute" command="wl-mirror eDP-1" /> -->
+    <!-- </keybind> -->
 
     <!-- Snap window to half screen (50%/50%) -->
     <keybind key="W-Left">
@@ -142,10 +150,6 @@
     <keybind key="W-3"><action name="GoToDesktop" to="3" /></keybind>
     <keybind key="W-4"><action name="GoToDesktop" to="4" /></keybind>
     <keybind key="W-5"><action name="GoToDesktop" to="5" /></keybind>
-    <keybind key="W-6"><action name="GoToDesktop" to="6" /></keybind>
-    <keybind key="W-7"><action name="GoToDesktop" to="7" /></keybind>
-    <keybind key="W-8"><action name="GoToDesktop" to="8" /></keybind>
-    <keybind key="W-9"><action name="GoToDesktop" to="9" /></keybind>
 
     <!-- Move window to workspace (matches niri Mod+Shift binds) -->
     <keybind key="W-S-Page_Down">
@@ -159,10 +163,6 @@
     <keybind key="W-S-3"><action name="SendToDesktop" to="3" /></keybind>
     <keybind key="W-S-4"><action name="SendToDesktop" to="4" /></keybind>
     <keybind key="W-S-5"><action name="SendToDesktop" to="5" /></keybind>
-    <keybind key="W-S-6"><action name="SendToDesktop" to="6" /></keybind>
-    <keybind key="W-S-7"><action name="SendToDesktop" to="7" /></keybind>
-    <keybind key="W-S-8"><action name="SendToDesktop" to="8" /></keybind>
-    <keybind key="W-S-9"><action name="SendToDesktop" to="9" /></keybind>
 
     <!-- Screenshots -->
     <keybind key="W-s">
@@ -259,9 +259,16 @@
       <naturalScroll>no</naturalScroll>
       <scrollFactor>1.0</scrollFactor>
     </device>
+
+    <device category="touchpad">
+      <tap>yes</tap>
+      <naturalScroll>yes</naturalScroll>
+      <scrollFactor>1.0</scrollFactor>
+    </device>
   </libinput>
 
   <windowRules>
+    <windowRule identifier="*" serverDecoration="no" />
   </windowRules>
 
   <menu>

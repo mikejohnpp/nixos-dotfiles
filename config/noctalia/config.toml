@@ -1,14 +1,15 @@
 [bar.default]
-background_opacity = 0.59999999999999998
+background_opacity = 1.0
 border = "on_error"
 center = []
 end = [ "tray", "network", "battery", "volume", "bluetooth", "brightness", "notifications", "clock", "control-center" ]
 font_family = "JetBrainsMono NFP"
 margin_ends = 0
 panel_overlap = 0
+position = "bottom"
 radius = 0
 shadow = false
-start = [ "launcher", "workspaces" ]
+start = [ "launcher", "workspaces", "taskbar" ]
 thickness = 28
 widget_spacing = 15
 
@@ -38,7 +39,7 @@ widget_order = []
 auto_hide = true
 background_opacity = 0.59999998658895493
 cross_axis_padding = 5
-enabled = true
+enabled = false
 icon_size = 32
 item_spacing = 5
 launcher_position = "start"
@@ -93,5 +94,23 @@ wallpaper_scheme = "m3-tonal-spot"
 [wallpaper]
 directory = "/home/mikejohnp/bg"
 
+[widget.battery]
+display_mode = "graphic"
+show_label = false
+
+[widget.brightness]
+show_label = false
+
+[widget.network]
+show_label = false
+
+[widget.taskbar]
+show_window_title = true
+
+[widget.volume]
+show_label = false
+
 [widget.workspaces]
-show_labels = false
+show_labels = true
+style = "minimal"
+

@@ -124,6 +124,7 @@ in
 
   networking.hostName = "nixos-btw";
   networking.networkmanager.enable = true;
+  # networking.wg-quick.interfaces.wg0.configFile = "/etc/nixos/wireguard/wg0.conf";
 
   networking.firewall = {
     enable = true;
