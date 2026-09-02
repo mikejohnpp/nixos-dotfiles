@@ -54,7 +54,7 @@
   </focus>
 
   <desktops>
-    <popupTime>700</popupTime>
+    <popupTime>0</popupTime>
     <number>5</number>
     <prefix>Workspace</prefix>
     <names>
@@ -64,7 +64,6 @@
       <name>4</name>
       <name>5</name>
     </names>
-
   </desktops>
 
   <keyboard>
@@ -98,6 +97,11 @@
     </keybind>
     <keybind key="W-space">
       <action name="Execute" command="noctalia msg panel-toggle clipboard" />
+    </keybind>
+
+    <!-- Minimize current window -->
+    <keybind key="W-n">
+      <action name="Iconify" />
     </keybind>
 
     <!-- Close window -->
