@@ -23,6 +23,9 @@ return {
 				"rust_analyzer",
 			},
 			automatic_installation = false,
+			automatic_enable = {
+				exclude = { "rust_analyzer" },
+			},
 		},
 	},
 	{
@@ -150,6 +153,7 @@ return {
 				"laravel_ls",
 				"clangd",
 				"ccls",
+				-- "rust_analyzer",
 			})
 
 			local signs = {
@@ -187,7 +191,14 @@ return {
 			-- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
 			-- vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "LSP Rename" })
-			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
+			-- vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
+			vim.keymap.set({ "n", "v" }, "<leader>ca", function()
+				if vim.bo.filetype == "rust" and vim.fn.exists(":RustLsp") == 2 then
+					vim.cmd.RustLsp("codeAction")
+				else
+					vim.lsp.buf.code_action()
+				end
+			end, { desc = "Code action" })
 			vim.keymap.set("n", "gr", function()
 				require("telescope.builtin").lsp_references()
 			end, { desc = "LSP references" })

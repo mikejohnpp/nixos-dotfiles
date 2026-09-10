@@ -311,6 +311,7 @@ in
       ddcutil
       wlr-randr
       mcontrolcenter
+      xdg-utils
 
       gnomeExtensions.blur-my-shell
       gnomeExtensions.just-perfection
@@ -334,6 +335,7 @@ in
     corefonts # Msfont support
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code
+    nerd-fonts.fira-mono
     adwaita-fonts
   ];
 
