@@ -19,7 +19,7 @@
   environment.systemPackages = [
     pkgs.docker-compose
     pkgs.lazydocker
-    pkgs.tlrc
+    # pkgs.tlrc
   ];
 
   users.defaultUserShell = pkgs.bash;

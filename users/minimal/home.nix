@@ -18,7 +18,6 @@
       core.editor = "vim";
     };
   };
-  home.stateVersion = "25.05";
 
   within.neovim.enable = true;
   within.ghostty.enable = true;
@@ -41,4 +40,6 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  home.stateVersion = "25.05";
 }

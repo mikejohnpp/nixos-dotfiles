@@ -9,8 +9,8 @@
   imports = [
     /etc/nixos/hardware-configuration.nix
     ./custom.nix
-    ./k3s.nix
-    ./nfs-server.nix
+    # ./k3s.nix
+    # ./nfs-server.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -19,13 +19,10 @@
   networking.hostName = "nixos-btw";
   networking.networkmanager.enable = true;
   networking.firewall.allowedUDPPorts = [
-    40000
   ];
 
   networking.firewall.allowedTCPPorts = [
     22
-    3306
-    30940
   ];
 
   networking.nameservers = [
