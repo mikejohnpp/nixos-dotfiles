@@ -79,7 +79,6 @@
     vim
     wget
     tree
-    gh
     gcc
     home-manager
     git

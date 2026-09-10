@@ -27,9 +27,7 @@
   home.packages = with pkgs; [
     ghostty
     ripgrep
-    nil
     fastfetch
-    feh
     lazygit
     unzip
   ];
