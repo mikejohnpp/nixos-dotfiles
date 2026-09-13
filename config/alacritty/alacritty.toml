@@ -13,7 +13,7 @@ option_as_alt = "Both"
 size = 12.0
 
 [font.normal]
-family = "JetBrainsMono Nerd Font Mono"
+family = "FiraMono Nerd Font Mono"
 style = "Regular"
 
 [font.bold]
