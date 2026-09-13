@@ -1,7 +1,7 @@
 # custom-shader = shaders/cursor_warp.glsl
 # custom-shader = shaders/sonic_boom_cursor.glsl
 
-theme = Ayu
+theme = catppuccin
 font-family = "FiraMono Nerd Font Mono"
 adjust-cell-height = 2
 font-size = 12

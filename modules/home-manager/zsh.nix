@@ -62,6 +62,10 @@ in
       shellAliases = {
         lzd = "lazydocker";
         slzd = "sudo lazydocker";
+        lzg = "lazygit";
+        slzg = "sudo lazygit";
+        ff = "fastfetch";
+        ls = "ls -lh -F --color=auto";
       };
     };
   };

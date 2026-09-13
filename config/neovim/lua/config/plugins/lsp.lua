@@ -33,8 +33,8 @@ return {
 		lazy = false,
 		config = function()
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
-			local vue_language_server = vim.fn.expand("$MASON")
-				.. "/packages/vue-language-server/node_modules/@vue/language-server"
+			local vue_language_server = vim.fn.stdpath("data")
+				.. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 
 			vim.lsp.config("*", {
 				capabilities = capabilities,
@@ -54,18 +54,48 @@ return {
 				},
 			}
 
-			vim.lsp.config["ts_ls"] = {
+			vim.lsp.config("ts_ls", {
+				filetypes = {
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+					"vue",
+				},
+				single_file_support = true,
 				init_options = {
 					plugins = {
 						{
 							name = "@vue/typescript-plugin",
 							location = vue_language_server,
 							languages = { "vue" },
+							configNamespace = "typescript",
+						},
+					},
+					preferences = {
+						includeCompletionsForModuleExports = true,
+						includeCompletionsForImportStatements = true,
+					},
+				},
+				settings = {
+					typescript = {
+						inlayHints = {
+							includeInlayParameterNameHints = "all",
+							includeInlayVariableTypeHints = true,
+							includeInlayFunctionParameterTypeHints = true,
+						},
+					},
+					javascript = {
+						validate = {
+							enable = true,
+						},
+						inlayHints = {
+							includeInlayParameterNameHints = "all",
+							includeInlayVariableTypeHints = true,
 						},
 					},
 				},
-				filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-			}
+			})
 
 			vim.lsp.config["tailwindcss"] = {
 				filetypes = {
@@ -99,40 +129,6 @@ return {
 				},
 			}
 
-			vim.lsp.config["ts_ls"] = {
-				filetypes = {
-					"javascript",
-					"javascriptreact",
-					"typescript",
-					"typescriptreact",
-				},
-				single_file_support = true,
-				init_options = {
-					preferences = {
-						includeCompletionsForModuleExports = true,
-						includeCompletionsForImportStatements = true,
-					},
-				},
-				settings = {
-					typescript = {
-						inlayHints = {
-							includeInlayParameterNameHints = "all",
-							includeInlayVariableTypeHints = true,
-							includeInlayFunctionParameterTypeHints = true,
-						},
-					},
-					javascript = {
-						validate = {
-							enable = true,
-						},
-						inlayHints = {
-							includeInlayParameterNameHints = "all",
-							includeInlayVariableTypeHints = true,
-						},
-					},
-				},
-			}
-
 			vim.api.nvim_create_autocmd("FileType", {
 				pattern = "proto",
 				callback = function()
@@ -141,6 +137,7 @@ return {
 			})
 			vim.lsp.enable({
 				"ts_ls",
+				"vue_ls",
 				"zls",
 				"yamlls",
 				"phpactor",
