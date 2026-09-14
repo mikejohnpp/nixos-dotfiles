@@ -414,6 +414,9 @@ in
     binfmt = true;
   };
 
+  zramSwap.enable = true;
+  systemd.oomd.enable = true;
+
   system.autoUpgrade = {
     enable = true;
     flake = "/home/mikejohnp/nixos-dotfiles#desk"; # Path to your flake and the output name
