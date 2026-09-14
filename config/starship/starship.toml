@@ -1,0 +1,76 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+scan_timeout = 100
+command_timeout = 500
+follow_symlinks = false
+add_newline = false
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$cmd_duration\
+$line_break\
+$character\
+"""
+
+right_format = """
+"""
+
+[fill]
+symbol = ' '
+
+[cmd_duration]
+min_time = 500
+format = '[$duration]($style)'
+
+[character]
+# success_symbol = '[ ➜](bold green)'
+# error_symbol = '[ ✗](bold red) '
+success_symbol = '[❯](bold green)'
+error_symbol = '[❯](bold red)'
+vimcmd_symbol = '[❮](bold green)'
+vimcmd_replace_one_symbol = '[❮](bold purple)'
+vimcmd_replace_symbol = '[❮](bold purple)'
+vimcmd_visual_symbol = '[❮](bold yellow)'
+
+
+[package]
+disabled = true
+
+[directory]
+format = "[$path ]($style)"
+truncation_length = 4
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Developer" = "󰲋 "
+"Others" = " "
+
+[git_branch]
+symbol = "[ ]($style)"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+format = "[$untracked$staged$modified$renamed$deleted$conflicted$ahead_behind]($style)"
+staged     = "[+${count} ](green)"
+modified   = "[!${count} ](yellow)"
+renamed    = "[»${count} ](blue)"
+deleted    = "[-${count} ](red)"
+untracked  = "[?${count} ](red)"
+stashed    = "[≡ ](bright-black)"
+conflicted = "[✖${count} ](red bold)"
+
+ahead      = "[⇡${count} ](cyan)"
+behind     = "[⇣${count} ](yellow)"
+diverged   = "[⇕⇡${ahead_count}⇣${behind_count} ](magenta)"
+
+[os]
+disabled = true
+
+[line_break]
+disabled = false
