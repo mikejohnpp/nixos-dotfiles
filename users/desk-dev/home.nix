@@ -81,8 +81,6 @@
     gh
     fd
     hurl
-    cowsay
-    fortune
     ripgrep
     btop
     nil

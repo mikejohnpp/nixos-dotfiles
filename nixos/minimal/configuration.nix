@@ -18,6 +18,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "nix-homelab";
   networking.networkmanager.enable = true;
+  services.resolved.enable = true;
+  networking.networkmanager.dns = "systemd-resolved";
   networking.firewall.allowedUDPPorts = [
   ];
 

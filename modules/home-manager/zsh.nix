@@ -26,9 +26,6 @@ in
     };
 
     programs.zsh = {
-      initContent = ''
-        fortune | cowsay
-      '';
       plugins = [
         {
           name = "fzf-tab";
