@@ -33,7 +33,7 @@
     "8.8.4.4"
   ];
   # networking.networkmanager.dns = "none";
-  networking.resolvconf.enable = true;
+  networking.resolvconf.enable = false;
 
   time.timeZone = "Asia/Ho_Chi_Minh";
 
