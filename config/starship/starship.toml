@@ -9,7 +9,6 @@ format = """
 $directory\
 $git_branch\
 $git_status\
-$fill\
 $cmd_duration\
 $line_break\
 $character\
@@ -18,10 +17,8 @@ $character\
 right_format = """
 """
 
-[fill]
-symbol = ' '
-
 [cmd_duration]
+disabled = true
 min_time = 500
 format = '[$duration]($style)'
 

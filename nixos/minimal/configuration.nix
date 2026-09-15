@@ -16,7 +16,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.supportedFilesystems = [ "nfs" ];
   boot.loader.efi.canTouchEfiVariables = true;
-  networking.hostName = "nixos-btw";
+  networking.hostName = "nix-homelab";
   networking.networkmanager.enable = true;
   networking.firewall.allowedUDPPorts = [
   ];
