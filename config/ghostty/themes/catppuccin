@@ -43,7 +43,7 @@ palette = 13=#f4b8e4
 palette = 14=#81c8be
 palette = 15=#b5bfe2
 # background = 303446
-background = #0b0e14
+background = 121721 
 foreground = c6d0f5
 cursor-color = f2d5cf
 cursor-text = 232634
