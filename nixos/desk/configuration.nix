@@ -335,6 +335,7 @@ in
     corefonts # Msfont support
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code
+    nerd-fonts.sauce-code-pro
     nerd-fonts.fira-mono
     adwaita-fonts
   ];
