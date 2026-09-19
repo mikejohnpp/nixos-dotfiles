@@ -28,14 +28,6 @@
 
   home.username = "mikejohnp";
   home.homeDirectory = "/home/mikejohnp";
-  programs.git = {
-    enable = true;
-    settings = {
-      init.defaultBranch = "main";
-      pull.rebase = true;
-      core.editor = "vim";
-    };
-  };
   home.stateVersion = "26.05";
 
   home.pointerCursor = {
@@ -59,6 +51,7 @@
     };
   };
 
+  within.git.enable = true;
   within.zsh.enable = true;
   within.ghostty.enable = true;
   within.neovim.enable = true;

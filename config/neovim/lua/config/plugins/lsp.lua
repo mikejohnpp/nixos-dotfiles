@@ -153,16 +153,32 @@ return {
 				-- "rust_analyzer",
 			})
 
-			local signs = {
+			local signs_fill = {
 				[vim.diagnostic.severity.ERROR] = " ",
 				[vim.diagnostic.severity.WARN] = " ",
-				[vim.diagnostic.severity.HINT] = "󰠠 ",
+				[vim.diagnostic.severity.HINT] = "󰌶 ",
 				[vim.diagnostic.severity.INFO] = " ",
 			}
+
+			-- local signs = {
+			-- 	[vim.diagnostic.severity.ERROR] = "󰅚 ",
+			-- 	[vim.diagnostic.severity.WARN] = "󰀪 ",
+			-- 	[vim.diagnostic.severity.INFO] = "󰋽 ",
+			-- 	[vim.diagnostic.severity.HINT] = "󰌶 ",
+			-- }
+
 			-- update diagnostic config function
 			vim.diagnostic.config({
-				signs = { text = signs },
-				virtual_text = true,
+				signs = { text = signs_fill },
+				virtual_text = {
+					prefix = "● ",
+					spacing = 4,
+					source = "if_many",
+					severity = { min = vim.diagnostic.severity.WARN },
+					format = function(diag)
+						return diag.message:gsub("%s+", " "):sub(1, 80)
+					end,
+				},
 				underline = true,
 				update_in_insert = false,
 				float = {
