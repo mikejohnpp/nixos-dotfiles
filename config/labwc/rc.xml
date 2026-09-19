@@ -11,38 +11,21 @@
     <policy>cascade</policy>
   </placement>
 
+  <resistance>
+    <screenEdgeStrength>10</screenEdgeStrength>
+    <windowEdgeStrength>20</windowEdgeStrength>
+    <unSnapThreshold>20</unSnapThreshold>
+    <unMaximizeThreshold>150</unMaximizeThreshold>
+  </resistance>
+
   <theme>
     <fallbackAppIcon>labwc</fallbackAppIcon>
     <cornerRadius>8</cornerRadius>
     <keepBorder>yes</keepBorder>
     <maximizedDecoration>none</maximizedDecoration>
-    <dropShadows>no</dropShadows>
-    <dropShadowsOnTiled>no</dropShadowsOnTiled>
-    <font place="ActiveWindow">
-      <name>FiraMono Nerd Font Propo</name>
-      <size>10</size>
-      <weight>normal</weight>
-    </font>
-    <font place="InactiveWindow">
-      <name>FiraMono Nerd Font Propo</name>
-      <size>10</size>
-      <weight>normal</weight>
-    </font>
-    <font place="MenuHeader">
-      <name>FiraMono Nerd Font Propo</name>
-      <size>10</size>
-      <weight>normal</weight>
-    </font>
-    <font place="MenuItem">
-      <name>FiraMono Nerd Font Propo</name>
-      <size>10</size>
-      <weight>normal</weight>
-    </font>
-    <font place="OnScreenDisplay">
-      <name>FiraMono Nerd Font Propo</name>
-      <size>10</size>
-      <weight>normal</weight>
-    </font>
+    <dropShadows>yes</dropShadows>
+    <dropShadowsOnTiled>yes</dropShadowsOnTiled>
+    <font name="NotoSans Nerd Font Propo" size="10" weight="medium"/>
   </theme>
 
   <windowSwitcher preview="no" outlines="yes" unshade="yes">

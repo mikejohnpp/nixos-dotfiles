@@ -1,3 +1,6 @@
+[audio]
+enable_overdrive = true
+
 [bar.default]
 background_opacity = 1.0
 border = "on_error"
@@ -15,6 +18,8 @@ widget_spacing = 15
 
 [brightness]
 enable_ddcutil = true
+
+[calendar]
 
 [control_center]
 sidebar = "full"
@@ -59,7 +64,7 @@ sunset = "18:00"
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
-widget_order = [ "lockscreen-login-box@HEADLESS-1", "lockscreen-login-box@eDP-1", "lockscreen-login-box@HDMI-A-1" ]
+widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1", "lockscreen-login-box@HEADLESS-1" ]
 
 [nightlight]
 enabled = true
@@ -67,6 +72,8 @@ force = false
 temperature_night = 4400
 
 [osd.kinds]
+keyboard_layout = false
+media = false
 power_profile = false
 
 [shell]
@@ -76,15 +83,21 @@ telemetry_enabled = false
     [shell.panel]
     open_near_click_control_center = true
     open_near_click_launcher = true
-    transparency_mode = "glass"
+    session_placement = "floating"
+    session_position = "center"
+    transparency_mode = "soft"
 
 [theme]
-builtin = "Tokyo-Night"
+builtin = "Catppuccin"
+community_palette = "Oxocarbon"
+mode = "dark"
+source = "wallpaper"
 wallpaper_scheme = "m3-tonal-spot"
 
     [theme.templates]
     builtin_ids = []
-    enable_builtin_templates = true
+    enable_builtin_templates = false
+    enable_community_templates = false
 
         [theme.templates.user.labwc-themerc]
         input_path = "~/.config/noctalia/templates/labwc.conf"
@@ -105,6 +118,7 @@ show_label = false
 show_label = false
 
 [widget.taskbar]
+show_all_outputs = true
 show_window_title = true
 
 [widget.volume]
@@ -113,4 +127,3 @@ show_label = false
 [widget.workspaces]
 show_labels = true
 style = "minimal"
-
