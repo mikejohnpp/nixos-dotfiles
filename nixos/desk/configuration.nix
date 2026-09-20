@@ -334,10 +334,9 @@ in
   fonts.packages = with pkgs; [
     corefonts # Msfont support
     nerd-fonts.jetbrains-mono
-    nerd-fonts.fira-code
-    nerd-fonts.sauce-code-pro
     nerd-fonts.fira-mono
     nerd-fonts.noto
+    nerd-fonts.meslo-lg
     adwaita-fonts
   ];
 
