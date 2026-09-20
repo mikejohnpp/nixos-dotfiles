@@ -91,6 +91,18 @@ local function find_symbol_path(symbol_list, line, char, path)
 	return false
 end
 
+--- Returns the window displaying a given buffer, or the current window.
+---@param bufnr number
+---@return number
+local function find_win(bufnr)
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		if vim.api.nvim_win_get_buf(win) == bufnr then
+			return win
+		end
+	end
+	return vim.api.nvim_get_current_win()
+end
+
 --- Callback for the textDocument/documentSymbol LSP request.
 --- Builds the full breadcrumb string (file path + symbol path) and sets the winbar.
 ---@param err any? Error object if the request failed.
@@ -104,9 +116,9 @@ local function lsp_callback(err, symbols, ctx, config)
 	end
 
 	---@type number
-	local winnr = vim.api.nvim_get_current_win()
+	local winnr = find_win(ctx.bufnr)
 	---@type number[]
-	local pos = vim.api.nvim_win_get_cursor(0)
+	local pos = vim.api.nvim_win_get_cursor(winnr)
 	---@type number
 	local cursor_line = pos[1] - 1
 	---@type number
@@ -122,18 +134,15 @@ local function lsp_callback(err, symbols, ctx, config)
 	---@type string?
 	local relative_path
 
-	---@type vim.lsp.Client[]
-	local clients = vim.lsp.get_clients({ bufnr = ctx.bufnr })
+	-- Use the root_dir of the client that actually answered the request.
+	---@type vim.lsp.Client?
+	local client = vim.lsp.get_client_by_id(ctx.client_id)
 
-	if #clients > 0 and clients[1].root_dir then
+	if client and client.root_dir then
 		-- Try to get relative path from LSP root
-		---@type string?
-		local root_dir = clients[1].root_dir
-		if root_dir == nil then
-			relative_path = file_path
-		else
-			relative_path = vim.fs.relpath(root_dir, file_path)
-		end
+		---@type string
+		local root_dir = client.root_dir
+		relative_path = vim.fs.relpath(root_dir, file_path)
 	else
 		-- Fallback to CWD
 		---@type string
@@ -166,7 +175,8 @@ local function lsp_callback(err, symbols, ctx, config)
 			if devicons_ok then
 				icon, icon_hl = devicons.get_icon(component)
 			end
-			table.insert(breadcrumbs, "%#" .. icon_hl .. "#" .. (icon or file_icon) .. "%#Normal#" .. " " .. component)
+			local icon_hl_str = icon_hl or "Normal"
+			table.insert(breadcrumbs, "%#" .. icon_hl_str .. "#" .. (icon or file_icon) .. "%#Normal#" .. " " .. component)
 		else
 			table.insert(breadcrumbs, folder_icon .. " " .. component)
 		end
@@ -184,6 +194,38 @@ local function lsp_callback(err, symbols, ctx, config)
 	end
 end
 
+--- LSP clients that may attach alongside the primary language server but do not
+--- provide useful document symbols (e.g. tailwindcss alongside ts_ls).
+---@type table<string, boolean>
+local secondary_clients = {
+	tailwindcss = true,
+	emmet_ls = true,
+	html = true,
+	cssls = true,
+	css_vls = true,
+}
+
+--- Returns the best suited LSP client for documentSymbol breadcrumbs.
+--- Prefers a client that supports textDocument/documentSymbol and is not
+--- a secondary/utility server. Falls back to the first supporting client.
+---@param bufnr number
+---@return vim.lsp.Client?
+local function pick_client(bufnr)
+	local clients = vim.lsp.get_clients({ bufnr = bufnr })
+	local fallback
+
+	for _, client in ipairs(clients) do
+		if client:supports_method("textDocument/documentSymbol", bufnr) then
+			if not secondary_clients[client.name] then
+				return client
+			end
+			fallback = fallback or client
+		end
+	end
+
+	return fallback
+end
+
 --- Requests document symbols from the LSP to update the breadcrumbs.
 --- This function initiates the request; `lsp_callback` handles the result.
 ---@return nil
@@ -198,12 +240,9 @@ local function breadcrumbs_set()
 	---@diagnostic disable-next-line: unused-local
 	local winnr = vim.api.nvim_get_current_buf()
 
-	---@type vim.lsp.Client[]
-	local clients = vim.lsp.get_clients({ bufnr = bufnr })
-
-	if #clients == 0 then
-		return
-	elseif not clients[1]:supports_method("textDocument/documentSymbol") then
+	---@type vim.lsp.Client?
+	local client = pick_client(bufnr)
+	if not client then
 		return
 	end
 
@@ -228,11 +267,8 @@ local function breadcrumbs_set()
 		return
 	end
 
-	local result, _ = pcall(vim.lsp.buf_request, bufnr, "textDocument/documentSymbol", params, lsp_callback)
-
-	if not result then
-		return
-	end
+	-- request only the chosen client so responses don't race/overwrite
+	client:request("textDocument/documentSymbol", params, lsp_callback, bufnr)
 end
 
 local timer = nil
