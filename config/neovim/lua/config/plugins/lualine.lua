@@ -4,6 +4,14 @@ return {
 		enabled = true,
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
+			local mode = {
+				"mode",
+				fmt = function(str)
+					return " " .. str
+					-- return " " .. str:sub(1, 1) -- displays only the first character of the mode
+					-- return str
+				end,
+			}
 			local filename = {
 				"filename",
 				file_status = true,
@@ -51,7 +59,7 @@ return {
 					always_divide_middle = true,
 				},
 				sections = {
-					lualine_a = { { "mode", icons_enabled = true } },
+					lualine_a = { mode },
 					lualine_b = { { "branch", icon = "" }, { "filetype", cond = hide_in_width } },
 					lualine_c = {
 						filename,
