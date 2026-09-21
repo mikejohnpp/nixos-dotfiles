@@ -153,18 +153,6 @@ local config = {
 config["on_attach"] = function(client, bufnr)
 	jdtls.setup_dap({ hotcodereplace = "auto" })
 	require("jdtls.dap").setup_dap_main_class_configs()
-
-	-- Refresh the codelens
-	-- Code lens enables features such as code reference counts, implemenation counts, and more.
-	vim.lsp.codelens.refresh()
-
-	-- Setup a function that automatically runs every time a java file is saved to refresh the code lens
-	vim.api.nvim_create_autocmd("BufWritePost", {
-		pattern = { "*.java" },
-		callback = function()
-			local _, _ = pcall(vim.lsp.codelens.refresh)
-		end,
-	})
 end
 
 -- This starts a new client & server, or attaches to an existing client & server based on the `root_dir`.

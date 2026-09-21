@@ -79,6 +79,8 @@ return {
 				},
 				settings = {
 					typescript = {
+						-- referencesCodeLens = { enabled = true },
+						-- implementationsCodeLens = { enabled = true },
 						inlayHints = {
 							includeInlayParameterNameHints = "all",
 							includeInlayVariableTypeHints = true,
@@ -89,6 +91,8 @@ return {
 						validate = {
 							enable = true,
 						},
+						-- referencesCodeLens = { enabled = true },
+						-- implementationsCodeLens = { enabled = true },
 						inlayHints = {
 							includeInlayParameterNameHints = "all",
 							includeInlayVariableTypeHints = true,
@@ -152,6 +156,8 @@ return {
 				"ccls",
 				-- "rust_analyzer",
 			})
+
+			vim.lsp.codelens.enable(false) -- disable codelens by default, can be toggled with <leader>lt
 
 			local signs_fill = {
 				[vim.diagnostic.severity.ERROR] = " ",
@@ -248,6 +254,11 @@ return {
 			vim.keymap.set("n", "<leader>df", function()
 				vim.diagnostic.open_float()
 			end, { desc = "Show line diagnostics" })
+
+			vim.keymap.set("n", "<leader>lc", vim.lsp.codelens.run, { desc = "Run CodeLens action" })
+			vim.keymap.set("n", "<leader>lt", function()
+				vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled())
+			end, { desc = "Toggle CodeLens" })
 		end,
 	},
 }

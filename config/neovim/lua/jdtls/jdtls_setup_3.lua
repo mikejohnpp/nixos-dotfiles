@@ -137,15 +137,6 @@ local config = {
 		require("jdtls").setup_dap({ hotcodereplace = "auto" })
 		require("jdtls.dap").setup_dap_main_class_configs()
 
-		-- Refresh codelens on save
-		vim.api.nvim_create_autocmd("BufWritePost", {
-			buffer = bufnr,
-			pattern = "*.java",
-			callback = function()
-				pcall(vim.lsp.codelens.refresh)
-			end,
-		})
-
 		-- Toggle dependency tree
 		-- vim.api.nvim_buf_create_user_command(bufnr, "JavaProjects", function()
 		-- 	require("java-deps").toggle_outline()
