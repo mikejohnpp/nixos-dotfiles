@@ -67,6 +67,19 @@ local function range_contains_pos(range, line, char)
 	return true
 end
 
+--- Extracts the range of a symbol, supporting both the hierarchical
+--- DocumentSymbol format (`symbol.range`) and the flat SymbolInformation
+--- format (`symbol.location.range`) used by some servers (e.g. bashls).
+---@param symbol any
+---@return any?
+local function symbol_range(symbol)
+	if symbol.range then
+		return symbol.range
+	elseif symbol.location and symbol.location.range then
+		return symbol.location.range
+	end
+end
+
 --- Recursively finds the symbol path at the current cursor position.
 ---@param symbol_list any[]? List of LSP DocumentSymbol items
 ---@param line number Zero-indexed line number
@@ -79,7 +92,8 @@ local function find_symbol_path(symbol_list, line, char, path)
 	end
 
 	for _, symbol in ipairs(symbol_list) do
-		if range_contains_pos(symbol.range, line, char) then
+		local range = symbol_range(symbol)
+		if range and range_contains_pos(range, line, char) then
 			-- Found the symbol, add it to the path
 			---@type string
 			local icon = kind_icons[symbol.kind] or ""
@@ -150,12 +164,13 @@ local function lsp_callback(err, symbols, ctx, config)
 		relative_path = vim.fs.relpath(root_dir, file_path)
 	end
 
+	-- If the file is not under any known root (e.g. a scratch buffer opened
+	-- outside the project), fall back to the full path so the winbar still works.
+	---@type string
+	relative_path = relative_path or file_path
+
 	---@type string[]
 	local breadcrumbs = {}
-
-	if not relative_path then
-		return -- Failed to get a relative path
-	end
 
 	-- Split the path into components
 	---@type string[]

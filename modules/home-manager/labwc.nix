@@ -31,6 +31,9 @@ in
       ".config/labwc/environment" = {
         source = ./../../config/labwc/environment;
       };
+      ".config/kanshi/config" = {
+        source = ./../../config/kanshi/config;
+      };
       # NOTE: ~/.config/labwc/themerc-override is intentionally NOT managed
       # here — it is the output of Noctalia's theme template.
     };

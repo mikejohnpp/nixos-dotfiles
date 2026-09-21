@@ -5,6 +5,7 @@
     <adaptiveSync>no</adaptiveSync>
     <allowTearing>no</allowTearing>
     <primarySelection>yes</primarySelection>
+    <reuseOutputMode>yes</reuseOutputMode>
   </core>
 
   <placement>
@@ -107,9 +108,10 @@
     <keybind key="W-F1">
       <action name="Execute" command="wlr-randr --output eDP-1 --on" />
     </keybind>
-    <!-- <keybind key="W-F2"> -->
-    <!--   <action name="Execute" command="wl-mirror eDP-1" /> -->
-    <!-- </keybind> -->
+    <!-- Presentation mirroring (mirrors niri Mod+F2) -->
+    <keybind key="W-F2">
+      <action name="Execute" command="dot-present toggle" />
+    </keybind>
 
     <!-- Snap window to half screen (50%/50%) -->
     <keybind key="W-Left">

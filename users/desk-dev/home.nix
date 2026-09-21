@@ -99,6 +99,7 @@
     antigravity-fhs
     google-chrome
     wl-mirror
+    kanshi
     wf-recorder
     dbeaver-bin
     filezilla

@@ -13,7 +13,7 @@ fcitx5 -d >/dev/null 2>&1 &
 # NetworkManager applet.
 nm-applet >/dev/null 2>&1 &
 
-wlr-randr --output HDMI-A-1 --mode 1920x1080@120.000000Hz
+kanshi >/dev/null 2>&1 &
 
 # Noctalia desktop shell (bar, launcher, notifications, wallpaper).
 noctalia -d >/dev/null 2>&1 &

@@ -19,7 +19,8 @@ return {
 			}
 
 			local hide_in_width = function()
-				return vim.fn.winwidth(0) > 100
+				-- return vim.fn.winwidth(0) > 100
+				return true
 			end
 
 			local diagnostics = {
@@ -64,9 +65,10 @@ return {
 					lualine_c = {
 						filename,
 					},
+
 					lualine_x = {
-						diagnostics,
 						diff,
+						diagnostics,
 						{
 							"lsp_status",
 							ignore_lsp = { "null-ls", "copilot" },
@@ -75,7 +77,7 @@ return {
 						},
 						{ "encoding", cond = hide_in_width },
 					},
-					lualine_y = { "location" },
+					lualine_y = { "searchcount", "location" },
 					lualine_z = { "progress" },
 				},
 				inactive_sections = {
