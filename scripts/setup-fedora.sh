@@ -15,7 +15,8 @@
 #   --system   dnf-install GUI system packages, clean stale session file
 #   --hm       build + switch home-manager configuration "fedora-btw"
 #              from the flake (uses the flake's own pinned home-manager)
-#   --config   write labwc/environment (GPU-detected); rest of config is HM-owned
+#   --config   write labwc/environment (GPU-detected); ensure xterm-ghostty terminfo;
+#              rest of config is HM-owned
 #   --shell    opt-in: zsh login wrapper (/usr/local/bin/zzsh) + chsh
 #
 # Optional extra flags (run alongside the phases above):
@@ -248,6 +249,16 @@ if [ "$DO_HM" = 1 ]; then
 fi
 
 if [ "$DO_CONFIG" = 1 ]; then
+  # if [ ! -s "$HOME/.terminfo/x/xterm-ghostty" ]; then
+  #   echo "> installing xterm-ghostty terminfo (~/.terminfo) for remote tmux TERM"
+  #   mkdir -p "$HOME/.terminfo/x"
+  #   if command -v tic >/dev/null 2>&1; then
+  #     tic -x -o "$HOME/.terminfo" "$REPO/config/terminfo/xterm-ghostty.ti"
+  #   else
+  #     cp -f /usr/share/terminfo/x/xterm-ghostty "$HOME/.terminfo/x/xterm-ghostty" 2>/dev/null || true
+  #   fi
+  # fi
+
   SW=0
   if [ -z "$FORCE_SOFTWARE" ]; then
     if [ ! -e /dev/dri/renderD128 ]; then

@@ -81,6 +81,7 @@
   xdg.userDirs.videos = "Videos";
 
   home.sessionVariables = {
+    LANG = "en_US.UTF-8";
     EDITOR = "nvim";
     TZ = "Asia/Ho_Chi_Minh";
   };
