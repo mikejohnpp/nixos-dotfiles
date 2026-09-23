@@ -11,7 +11,7 @@
 #   --initial  base groups, GNOME base apps, graphical boot, RPM Fusion,
 #              COPR repos (ghostty, fcitx5-bamboo),
 #              Intel media driver (only when an Intel GPU is present)
-#   --nix      install Nix (Determinate Systems) if missing, copy nix.conf
+#   --nix      install Nix (dnf: package nix + nix-daemon) if missing, copy nix.conf
 #   --system   dnf-install GUI system packages, clean stale session file
 #   --hm       build + switch home-manager configuration "fedora-btw"
 #              from the flake (uses the flake's own pinned home-manager)
@@ -137,13 +137,19 @@ if [ "$DO_NIX" = 1 ]; then
   if command -v nix >/dev/null 2>&1; then
     echo "> nix: already installed"
   else
-    echo "> installing nix (Determinate Systems installer)"
-    curl -L https://install.determinate.systems/nix | sh -s -- install --no-confirm
-    export PATH="$PATH:/nix/var/nix/profiles/default/bin"
+    need_sudo
+    if sudo dnf install -y nix nix-daemon >/dev/null 2>&1; then
+      sudo systemctl enable --now nix-daemon
+      echo "> nix installed (Fedora package, daemon mode; socket-activated)"
+    else
+      echo "> nix not in the Fedora repo (Fedora <44?), falling back to Determinate installer"
+      curl -L https://install.determinate.systems/nix | sh -s -- install --no-confirm
+      export PATH="$PATH:/nix/var/nix/profiles/default/bin"
+    fi
   fi
   mkdir -p "$HOME/.config/nix"
   cp -f "$REPO/nix.conf" "$HOME/.config/nix/nix.conf"
-  echo "> nix.conf copied"
+  echo "> nix.conf copied (user-level; merges with /etc/nix/nix.conf)"
 fi
 
 if [ "$DO_SYSTEM" = 1 ]; then
@@ -153,7 +159,7 @@ if [ "$DO_SYSTEM" = 1 ]; then
     ghostty dolphin fcitx5 fcitx5-unikey fcitx5-bamboo kanshi wlr-randr \
     pipewire-pulseaudio wireplumber \
     upower udisks2 gvfs tumbler xdg-desktop-portal-gtk \
-    openssh-server fuse bluez blueman opencode \
+    openssh-server fuse bluez blueman firefox \
     libva-utils gcc make tree lsof wget xdg-utils mpv
   sudo systemctl enable --now sshd bluetooth
   if [ -f /usr/share/wayland-sessions/labwc.desktop ] &&
