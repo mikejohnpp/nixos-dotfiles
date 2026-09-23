@@ -283,6 +283,7 @@ in
       "docker"
       "gamemode"
       "i2c"
+      "libvirtd"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
     ];
@@ -404,7 +405,7 @@ in
   services.udisks2.enable = true;
   services.rpcbind.enable = true;
 
-  services.cloudflare-warp.enable = false;
+  services.cloudflare-warp.enable = true;
 
   programs.dconf.enable = true;
   programs.xfconf.enable = true;

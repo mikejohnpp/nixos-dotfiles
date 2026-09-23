@@ -1,19 +1,15 @@
 #!/usr/bin/env sh
 
-# labwc autostart script for desk-btw.
+# labwc autostart script for desk-btw / fedora-btw.
 # Executed by labwc with the current session environment.
-
-# Pull in graphical-session.target so systemd user services
-# (portals, notification daemons, etc.) start in sync with the session.
-systemctl --user --no-block start labwc-session.target
 
 # Input method (fcitx5) for CJK/Vietnamese typing.
 fcitx5 -d >/dev/null 2>&1 &
 
 # NetworkManager applet.
-nm-applet >/dev/null 2>&1 &
+# nm-applet >/dev/null 2>&1 &
 
 kanshi >/dev/null 2>&1 &
 
 # Noctalia desktop shell (bar, launcher, notifications, wallpaper).
-noctalia -d >/dev/null 2>&1 &
+noctalia --daemon >/dev/null 2>&1 &

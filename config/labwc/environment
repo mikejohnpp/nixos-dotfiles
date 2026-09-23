@@ -6,6 +6,8 @@
 # Keyboard layout (matches system xkb.layout = "us").
 XKB_DEFAULT_LAYOUT=us
 
+TZ=Asia/Ho_Chi_Minh
+
 # Cursor theme and size (matches home.pointerCursor in desk-dev).
 XCURSOR_THEME=breeze_cursors
 XCURSOR_SIZE=24

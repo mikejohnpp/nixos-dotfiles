@@ -44,8 +44,8 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- BuffercopeFuzzyCommandSearch)
-vim.keymap.set("n", "<Tab>", ":bnext<CR>", opts)
-vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", opts)
+-- vim.keymap.set("n", "<Tab>", ":bnext<CR>", opts)
+-- vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", opts)
 
 -- Save all
 vim.keymap.set("n", "<leader>w", ":wa<CR>", opts)

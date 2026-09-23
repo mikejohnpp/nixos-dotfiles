@@ -85,6 +85,7 @@
     feh
     unzip
     file
+    alacritty
     winboat # windows virtualization
     freerdp # for winboat
     jetbrains-toolbox

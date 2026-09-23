@@ -21,6 +21,7 @@
     pkgs.docker-compose
     pkgs.lazydocker
     pkgs.tlrc
+    pkgs.dnsmasq
     (pkgs.writeShellScriptBin "steam" ''
       exec ${pkgs.steam}/bin/steam -system-composer
     '')
@@ -101,6 +102,15 @@
   # };
 
   services.dbus.packages = [ pkgs.mcontrolcenter ];
+
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
+  };
+  programs.virt-manager.enable = true;
+
+  services.qemuGuest.enable = true;
+  services.spice-vdagentd.enable = true; # enable copy and paste between host and guest
 
   # systemd.user.services.mcontrolcenter = {
   #   description = "Auto start mcontrolcenter";

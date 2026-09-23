@@ -14,7 +14,6 @@ in
   options.within.alacritty.enable = mkEnableOption "Enables Within's Alacritty config";
 
   config = mkIf cfg.enable {
-    programs.alacritty.enable = true;
     home.file = {
       ".config/alacritty" = {
         source = ./../../config/alacritty;
