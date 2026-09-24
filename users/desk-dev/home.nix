@@ -130,6 +130,13 @@
     XDG_CONFIG_HOME = "$HOME/.config";
   };
 
+  home.file = {
+    "bg" = {
+      source = ../../config/bg;
+      recursive = true;
+    };
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

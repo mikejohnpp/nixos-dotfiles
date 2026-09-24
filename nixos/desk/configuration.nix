@@ -144,9 +144,6 @@ in
     ];
   };
 
-  # Disable NetworkManager's internal DNS resolution
-  networking.networkmanager.dns = "default";
-
   # These options are unnecessary when managing DNS ourselves
   # networking.useDHCP = false;
   # networking.dhcpcd.enable = false;
@@ -159,7 +156,10 @@ in
     "8.8.8.8"
     "8.8.4.4"
   ];
-  networking.resolvconf.enable = true;
+  networking.resolvconf.enable = false;
+
+  services.resolved.enable = true;
+  networking.networkmanager.dns = "systemd-resolved";
   # networking.enableIPv6 = false;
 
   time.timeZone = "Asia/Ho_Chi_Minh";
