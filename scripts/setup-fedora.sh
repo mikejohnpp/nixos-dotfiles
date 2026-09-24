@@ -165,7 +165,7 @@ if [ "$DO_SYSTEM" = 1 ]; then
     ghostty dolphin fcitx5 fcitx5-unikey fcitx5-bamboo kanshi wlr-randr \
     pipewire-pulseaudio wireplumber pavucontrol \
     upower udisks2 gvfs tumbler xdg-desktop-portal-gtk \
-    openssh-server fuse bluez blueman firefox \
+    openssh-server fuse bluez blueman firefox breeze-cursor-theme \
     libva-utils gcc make tree lsof wget xdg-utils mpv
   sudo systemctl enable --now sshd bluetooth
   if [ -f /usr/share/wayland-sessions/labwc.desktop ] &&
