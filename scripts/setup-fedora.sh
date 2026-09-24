@@ -4,7 +4,7 @@
 # fedora-btw profile (labwc + noctalia system-side, Home Manager for CLI).
 #
 # Usage:
-#   setup-fedora.sh [-a] [--initial] [--nix] [--system] [--hm] [--config]
+#   setup-fedora.sh [-a] [--initial] [--nix] [--system] [--dm] [--hm] [--config]
 #                   [--shell] [--force-software|--force-gpu] [--repo PATH]
 #
 # Phases (default runs --initial --nix --system --hm --config):
@@ -12,11 +12,14 @@
 #              COPR repos (ghostty, fcitx5-bamboo),
 #              Intel media driver (only when an Intel GPU is present)
 #   --nix      install Nix (dnf: package nix + nix-daemon) if missing, copy nix.conf
-#   --system   dnf-install GUI system packages, clean stale session file
+#   --system   dnf-install GUI system packages, WirePlumber combined
+#              analog+HDMI sinks (monitor speakers + built-in analog),
+#              clean stale session file
 #   --hm       build + switch home-manager configuration "fedora-btw"
 #              from the flake (uses the flake's own pinned home-manager)
 #   --config   write labwc/environment (GPU-detected); ensure xterm-ghostty terminfo;
 #              rest of config is HM-owned
+#   --dm       greetd + tuigreet TUI display manager (replaces GDM)
 #   --shell    opt-in: zsh login wrapper (/usr/local/bin/zzsh) + chsh
 #
 # Optional extra flags (run alongside the phases above):
@@ -37,6 +40,7 @@ DO_NIX=0
 DO_SYSTEM=0
 DO_HM=0
 DO_CONFIG=0
+DO_DM=0
 DO_SHELL=0
 DO_DOCKER=0
 DO_VIRT=0
@@ -47,7 +51,7 @@ REPO="${SETUP_REPO:-}"
 MAIN_SELECTED=0
 
 usage() {
-  sed -n '2,27p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//' >&2
+  sed -n '2,29p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//' >&2
   exit 0
 }
 
@@ -59,6 +63,7 @@ while [ $# -gt 0 ]; do
     -s | --system) DO_SYSTEM=1 MAIN_SELECTED=1 ;;
     -h | --hm) DO_HM=1 MAIN_SELECTED=1 ;;
     -c | --config) DO_CONFIG=1 MAIN_SELECTED=1 ;;
+    --dm) DO_DM=1 MAIN_SELECTED=1 ;;
     --shell) DO_SHELL=1 ;;
     --docker) DO_DOCKER=1 ;;
     --virt) DO_VIRT=1 ;;
@@ -158,7 +163,7 @@ if [ "$DO_SYSTEM" = 1 ]; then
   echo "> dnf: installing system GUI packages"
   sudo dnf install -y labwc labwc-session noctalia \
     ghostty dolphin fcitx5 fcitx5-unikey fcitx5-bamboo kanshi wlr-randr \
-    pipewire-pulseaudio wireplumber \
+    pipewire-pulseaudio wireplumber pavucontrol \
     upower udisks2 gvfs tumbler xdg-desktop-portal-gtk \
     openssh-server fuse bluez blueman firefox \
     libva-utils gcc make tree lsof wget xdg-utils mpv
@@ -168,6 +173,111 @@ if [ "$DO_SYSTEM" = 1 ]; then
     sudo rm -f /usr/share/wayland-sessions/labwc.desktop
     echo "> removed stray /usr/share/wayland-sessions/labwc.desktop"
   fi
+
+  # WirePlumber: combined ACP profile-set ("multiple") so built-in analog
+  # and HDMI/DP (monitor speakers) sinks coexist on the same card and stay
+  # selectable (wpctl default sink / pavucontrol; pwvucontrol comes via
+  # Flatpak since it is not packaged in Fedora). User-level overrides
+  # (~/.config) are documented for both wireplumber.conf.d and
+  # alsa-card-profile, so no sudo is needed for these files.
+  alsa_card="$(pactl list cards short 2>/dev/null | awk 'NR == 1 { print $2; exit }')"
+  [ -n "$alsa_card" ] || alsa_card='alsa_card_*'
+
+  acp_dir="$HOME/.config/alsa-card-profile/mixer/profile-sets"
+  acp_conf="$acp_dir/multiple.conf"
+  mkdir -p "$acp_dir"
+  if [ ! -f "$acp_conf" ]; then
+    tee "$acp_conf" >/dev/null <<'MULTCONF'
+[General]
+auto-profiles = no
+
+[Mapping analog-stereo]
+description = Analog Stereo
+device-strings = front:%f
+channel-map = left,right
+paths-output = analog-output analog-output-lineout analog-output-speaker analog-output-headphones
+paths-input = analog-input-front-mic analog-input-rear-mic analog-input-internal-mic analog-input
+priority = 15
+
+[Mapping hdmi-stereo]
+description = Digital Stereo (HDMI)
+device-strings = hdmi:%f
+paths-output = hdmi-output-0
+channel-map = left,right
+priority = 9
+direction = output
+
+[Profile multiple]
+description = Analog Stereo Duplex + Digital Stereo (HDMI) Output
+output-mappings = analog-stereo hdmi-stereo
+input-mappings = analog-stereo
+MULTCONF
+    echo "> wrote $acp_conf (combined analog+HDMI ACP profile-set)"
+  fi
+
+  wp_dir="$HOME/.config/wireplumber/wireplumber.conf.d"
+  wp_conf="$wp_dir/61-alsa-multiple.conf"
+  mkdir -p "$wp_dir"
+  if [ ! -f "$wp_conf" ]; then
+    tee "$wp_conf" >/dev/null <<WPCONF
+monitor.alsa.rules = [
+  {
+    matches = [ { device.name = "$alsa_card" } ]
+    actions = {
+      update-props = {
+        api.alsa.use-acp = true
+        api.acp.auto-profile = false
+        api.acp.auto-port = false
+        device.profile-set = "multiple.conf"
+        device.profile = "multiple"
+      }
+    }
+  }
+]
+WPCONF
+    echo "> wrote $wp_conf (force profile-set multiple.conf; matched card: $alsa_card)"
+  fi
+
+  # Remove the old (invalid) profile-disable drop-in from an earlier attempt:
+  # `api.alsa.card.profile` is not a real PipeWire property and the rule used
+  # node.name on the card device, which never exists.
+  if [ -f /etc/wireplumber/wireplumber.conf.d/51-disable-card-profiles.conf ]; then
+    sudo rm -f /etc/wireplumber/wireplumber.conf.d/51-disable-card-profiles.conf
+    echo "> removed stale /etc/wireplumber/wireplumber.conf.d/51-disable-card-profiles.conf"
+  fi
+  systemctl --user restart pipewire pipewire-pulse wireplumber 2>/dev/null || true
+fi
+
+if [ "$DO_DM" = 1 ]; then
+  need_sudo
+  echo "> dm: installing greetd + tuigreet (TUI login, replaces GDM)"
+  sudo dnf install -y greetd greetd-selinux tuigreet
+
+  # greetd runs the greeter as a dedicated account; its home points at
+  # /var/lib/greetd (the greetd package's tmpfiles create it, owned
+  # greetd:greetd).
+  if ! id greeter >/dev/null 2>&1; then
+    sudo useradd -r -M -s /sbin/nologin -d /var/lib/greetd -G video,greetd greeter
+  else
+    sudo usermod -aG video,greetd greeter
+  fi
+  # tuigreet 0.9.1 persists "--remember*" state in /var/lib/greetd, so the
+  # greeter needs group write there. tmpfiles resets ownership to
+  # greetd:greetd on boot, but group permissions survive that reset.
+  sudo chmod 770 /var/lib/greetd
+
+  sudo tee /etc/greetd/config.toml >/dev/null <<'DMCFG'
+[terminal]
+vt = 7
+
+[default_session]
+command = "tuigreet --time --time-format '%H:%M  %d/%m/%Y' --greeting 'welcome back' --remember --remember-user-session --user-menu --user-menu-min-uid 1000 --asterisks --width 72 --container-padding 3 --window-padding 1 --theme 'border=cyan;text=white;container=black;title=cyan;greet=cyan;prompt=green;input=white;action=blue;button=cyan' --power-shutdown 'systemctl poweroff' --power-reboot 'systemctl reboot'"
+user = "greeter"
+DMCFG
+
+  sudo systemctl disable --now gdm 2>/dev/null || true
+  sudo systemctl enable greetd
+  echo "> greetd+tuigreet enabled — logout/reboot to enter TUI login"
 fi
 
 if [ "$DO_DOCKER" = 1 ]; then
