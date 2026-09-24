@@ -26,6 +26,9 @@
   hardware.enableAllFirmware = false;
   hardware.firmware = [ ];
 
+  programs.zsh = {
+    enable = true;
+  };
   users.defaultUserShell = pkgs.zsh;
 
   virtualisation.docker.enable = true;
