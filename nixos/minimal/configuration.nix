@@ -15,11 +15,13 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.supportedFilesystems = [ "nfs" ];
+  boot.initrd.systemd.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "nix-homelab";
   networking.networkmanager.enable = true;
   services.resolved.enable = true;
   networking.networkmanager.dns = "systemd-resolved";
+
   networking.firewall.allowedUDPPorts = [
   ];
 
@@ -29,10 +31,10 @@
 
   networking.nameservers = [
     "1.1.1.1"
+    "1.0.0.1"
     "8.8.8.8"
     "8.8.4.4"
   ];
-  # networking.networkmanager.dns = "none";
   networking.resolvconf.enable = false;
 
   time.timeZone = "Asia/Ho_Chi_Minh";
@@ -90,6 +92,9 @@
 
   services.openssh.enable = true;
   services.rpcbind.enable = true;
+
+  zramSwap.enable = true;
+  systemd.oomd.enable = true;
 
   swapDevices = [
     {

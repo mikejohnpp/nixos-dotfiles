@@ -5,21 +5,17 @@
     ./../../modules/home-manager/neovim-minimal.nix
     ./../../modules/home-manager/tmux.nix
     ./../../modules/home-manager/ghostty.nix
+    ./../../modules/home-manager/git.nix
+    ./../../modules/home-manager/zsh.nix
     ./lang.nix
   ];
 
   home.username = "mikejohnp";
   home.homeDirectory = "/home/mikejohnp";
-  programs.git = {
-    enable = true;
-    settings = {
-      init.defaultBranch = "main";
-      pull.rebase = true;
-      core.editor = "vim";
-    };
-  };
 
   within.neovim.enable = true;
+  within.zsh.enable = true;
+  within.git.enable = true;
   within.ghostty.enable = true;
 
   nixpkgs.config.allowUnfree = true;

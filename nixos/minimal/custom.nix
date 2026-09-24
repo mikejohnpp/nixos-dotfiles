@@ -22,7 +22,11 @@
     # pkgs.tlrc
   ];
 
-  users.defaultUserShell = pkgs.bash;
+  hardware.enableRedistributableFirmware = false;
+  hardware.enableAllFirmware = false;
+  hardware.firmware = [ ];
+
+  users.defaultUserShell = pkgs.zsh;
 
   virtualisation.docker.enable = true;
   nixpkgs.config.allowUnfreePredicate = (_: true);
@@ -41,7 +45,7 @@
   };
 
   # Garbage Collector Setting
-  nix.gc.automatic = true;
+  nix.gc.automatic = false;
 
   nix.gc.dates = "daily";
   nix.gc.options = "--delete-older-than 7d";
