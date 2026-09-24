@@ -91,20 +91,14 @@
     jetbrains-toolbox
     libreoffice-qt
     wl-clipboard
-    audacity
     peazip
     jq
     slurp
     grim
     neovide
-    antigravity-fhs
-    google-chrome
     wl-mirror
     kanshi
     wf-recorder
-    dbeaver-bin
-    filezilla
-    postman
     devenv
     redis
     kdePackages.breeze
@@ -112,8 +106,6 @@
     kdePackages.dolphin
     kdePackages.qtmultimedia
     kdePackages.plasma-integration
-    ngrok
-    inkscape
   ];
 
   xdg.userDirs.enable = true;
