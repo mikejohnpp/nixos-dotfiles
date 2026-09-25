@@ -14,6 +14,14 @@ return {
 			}
 			local filename = {
 				"filename",
+				fmt = function(name, context)
+					local devicons = require("nvim-web-devicons")
+					local icon, _ = devicons.get_icon(name, nil, { default = true })
+					return icon .. " " .. name
+				end,
+				symbols = {
+					modified = "[󰏫]",
+				},
 				file_status = true,
 				path = 0,
 			}
@@ -57,18 +65,21 @@ return {
 					section_separators = { left = "", right = "" },
 					component_separators = { left = "", right = "" },
 					disabled_filetypes = { "alpha", "neo-tree" },
+					always_show_tabline = false,
 					always_divide_middle = true,
 				},
 				sections = {
 					lualine_a = { mode },
-					lualine_b = { { "branch", icon = "" }, { "filetype", cond = hide_in_width } },
-					lualine_c = {
+					lualine_b = {
 						filename,
+					},
+					lualine_c = {
+						{ "branch", icon = "" },
+						diagnostics,
 					},
 
 					lualine_x = {
 						diff,
-						diagnostics,
 						{
 							"lsp_status",
 							ignore_lsp = { "null-ls", "copilot" },
@@ -79,6 +90,29 @@ return {
 					},
 					lualine_y = { "searchcount", "location" },
 					lualine_z = { "progress" },
+				},
+				tabline = {
+					lualine_a = {
+						{
+							"tabs",
+							mode = 2,
+							use_mode_colors = true,
+							section_separators = { left = "", right = "" },
+							path = 0,
+							symbols = {
+								modified = " 󰏫",
+							},
+							fmt = function(name, context)
+								local devicons = require("nvim-web-devicons")
+								local icon, _ = devicons.get_icon(name, nil, { default = true })
+								return icon .. " " .. name
+							end,
+							max_length = vim.o.columns - 1,
+						},
+					},
+					lualine_z = {
+						{},
+					},
 				},
 				inactive_sections = {
 					lualine_a = {},
