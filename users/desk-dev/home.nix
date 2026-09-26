@@ -98,6 +98,7 @@
     neovide
     wl-mirror
     kanshi
+    gnome-software
     wf-recorder
     devenv
     redis

@@ -96,6 +96,21 @@
   zramSwap.enable = true;
   systemd.oomd.enable = true;
 
+  fileSystems = {
+    "/".options = [ "compress=zstd" ];
+    "/home".options = [ "compress=zstd" ];
+    "/nix".options = [
+      "compress=zstd"
+      "noatime"
+    ];
+  };
+
+  services.btrfs.autoScrub = {
+    enable = true;
+    interval = "monthly";
+    fileSystems = [ "/" ];
+  };
+
   swapDevices = [
     {
       device = "/var/lib/swapfile";
