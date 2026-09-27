@@ -107,6 +107,11 @@ wallpaper_scheme = "m3-tonal-spot"
         output_path = "~/.config/labwc/themerc-override"
         post_hook = "labwc --reconfigure"
 
+        [theme.templates.user.niri-themerc]
+        input_path = "~/.config/noctalia/templates/niri.conf"
+        output_path = "~/.config/niri/noctalia-layout.kdl"
+        post_hook = "niri msg action load-config-file"
+
 [wallpaper]
 directory = "/home/mikejohnp/bg"
 

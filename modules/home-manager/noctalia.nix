@@ -18,9 +18,10 @@ in
       enable = true;
     };
     home.file.".config/noctalia/config.toml".source = ../../config/noctalia/config.toml;
-    # Theme template rendering -> ~/.config/labwc/themerc-override (Noctalia
-    # fills in {{colors.*}} placeholders from its current palette).
+
     home.file.".config/noctalia/templates/labwc.conf".source =
       ../../config/noctalia/templates/labwc.conf;
+
+    home.file.".config/noctalia/templates/niri.conf".source = ../../config/noctalia/templates/niri.conf;
   };
 }
