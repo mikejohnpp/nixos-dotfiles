@@ -78,7 +78,11 @@
 
   powerManagement.enable = true;
 
-  services.thermald.enable = true;
+  services.thermald.enable = false;
+
+  services.zerotierone = {
+    enable = true;
+  };
 
   # services.tlp = {
   #   enable = true;
