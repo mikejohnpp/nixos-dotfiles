@@ -5,6 +5,7 @@
     ./../../modules/home-manager/neovim-minimal.nix
     ./../../modules/home-manager/tmux.nix
     ./../../modules/home-manager/ghostty.nix
+    ./../../modules/home-manager/kitty.nix
     ./../../modules/home-manager/git.nix
     ./../../modules/home-manager/zsh.nix
     ./lang.nix
@@ -17,6 +18,7 @@
   within.zsh.enable = true;
   within.git.enable = true;
   within.ghostty.enable = true;
+  within.kitty.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
