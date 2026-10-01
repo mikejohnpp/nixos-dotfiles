@@ -404,12 +404,19 @@ in
   services.upower.enable = true; # Battery stuff
   services.udisks2.enable = true;
   services.rpcbind.enable = true;
-
+  services.teamviewer.enable = true;
   services.cloudflare-warp.enable = true;
 
   programs.dconf.enable = true;
   programs.xfconf.enable = true;
-  programs.nix-ld.enable = true;
+
+  programs.nix-ld = {
+    enable = true;
+
+    libraries = with pkgs; [
+      libglvnd
+    ];
+  };
 
   programs.appimage = {
     enable = true;

@@ -20,6 +20,7 @@
     ./../../modules/home-manager/fastfetch.nix
     # ./../../modules/home-manager/vicinae.nix
     ./../../modules/home-manager/zoxide.nix
+    ./../../modules/home-manager/kitty.nix
     # ./../../modules/home-manager/jetbrains.nix
     ./lang.nix
     ./scripts.nix
@@ -63,6 +64,7 @@
   within.mpv.enable = true;
   within.zoxide.enable = true;
   within.fastfetch.enable = true;
+  within.kitty.enable = true;
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -80,6 +82,7 @@
     nixpkgs-fmt
     alacritty
     ghostty
+    kitty
     fastfetch
     lazygit
     feh

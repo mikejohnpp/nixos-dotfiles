@@ -66,7 +66,7 @@
 
     <!-- Terminal / apps (matches niri binds) -->
     <keybind key="W-Return">
-      <action name="Execute" command="ghostty" />
+      <action name="Execute" command="kitty" />
     </keybind>
     <keybind key="W-e">
       <action name="Execute" command="dolphin" />
