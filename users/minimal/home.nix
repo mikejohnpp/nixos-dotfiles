@@ -20,6 +20,7 @@
   within.git.enable = true;
   within.ghostty.enable = true;
   within.fastfetch.enable = true;
+  within.zoxide.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
