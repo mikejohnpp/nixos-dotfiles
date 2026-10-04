@@ -89,6 +89,7 @@
     unzip
     file
     alacritty
+    antigravity-ide-fhs
     winboat # windows virtualization
     freerdp # for winboat
     jetbrains-toolbox
