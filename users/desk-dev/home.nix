@@ -78,6 +78,7 @@
     hurl
     ripgrep
     btop
+    curl # tmux status bar weather
     nil
     nixpkgs-fmt
     alacritty
