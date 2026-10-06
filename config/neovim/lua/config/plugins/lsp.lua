@@ -231,19 +231,6 @@ return {
 				require("telescope.builtin").lsp_implementations()
 			end, { desc = "LSP implementations" })
 			-- working with go confirmed, don't know about other, keep changing as necessary
-			vim.keymap.set("n", "<leader>fm", function()
-				local filetype = vim.bo.filetype
-				local symbols_map = {
-					python = "function",
-					javascript = "function",
-					typescript = "function",
-					java = "class",
-					lua = "function",
-					go = { "method", "struct", "interface" },
-				}
-				local symbols = symbols_map[filetype] or "function"
-				require("telescope.builtin").lsp_document_symbols({ symbols = symbols })
-			end, { desc = "Document symbol" })
 
 			-- toggle for virtual text
 			vim.keymap.set("n", "<leader>lx", function()

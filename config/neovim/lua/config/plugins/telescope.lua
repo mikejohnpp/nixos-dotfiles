@@ -4,12 +4,8 @@ return {
 		dependencies = {
 			"saghen/blink.cmp",
 			{
-				"folke/lazydev.nvim",
-				opts = {
-					library = {
-						{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-					},
-				},
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "make",
 			},
 		},
 	},
@@ -24,6 +20,28 @@ return {
 					defaults = {
 						file_ignore_patterns = {
 							"^node_modules/",
+						},
+						-- NOTE: this telescope version only reads `defaults`,
+						-- `pickers` and `extensions` at the top level of setup().
+						-- Neovim has no filetype for image formats, so the builtin
+						-- previewer classifies them as binary and prints
+						-- "Binary cannot be previewed". mime_hook is invoked exactly
+						-- for binary files, so render those through Snacks.image.
+						preview = {
+							mime_hook = function(filepath, bufnr, opts)
+								if Snacks.image.supports_file(filepath) and Snacks.image.supports_terminal() then
+									vim.schedule(function()
+										Snacks.image.buf.attach(bufnr, { src = filepath })
+									end)
+								else
+									require("telescope.previewers.utils").set_preview_message(
+										bufnr,
+										opts.winid,
+										"Binary cannot be previewed",
+										opts.preview.msg_bg_fillchar
+									)
+								end
+							end,
 						},
 					},
 					-- use ui-select dropdown as our ui
@@ -45,11 +63,15 @@ return {
 							["<C-k>"] = actions.move_selection_previous,
 						},
 					},
-					-- load the ui-select extension
-					require("telescope").load_extension("ui-select"),
-					require("telescope").load_extension("dap"),
-					-- require("telescope").load_extension("noice"),
 				})
+
+				-- extensions must be loaded AFTER setup(): the fzf extension
+				-- overrides config.file_sorter / config.generic_sorter, which
+				-- setup() would otherwise overwrite.
+				require("telescope").load_extension("fzf")
+				require("telescope").load_extension("ui-select")
+				require("telescope").load_extension("dap")
+				-- require("telescope").load_extension("noice")
 
 				vim.keymap.set("n", "<leader>fh", require("telescope.builtin").help_tags)
 				vim.keymap.set("n", "<leader>ff", require("telescope.builtin").find_files)
@@ -99,21 +121,12 @@ return {
 					require("telescope.builtin").lsp_incoming_calls,
 					{ desc = "Incoming calls" }
 				)
-				vim.keymap.set("n", "<leader>fw", function()
+				vim.keymap.set("n", "<leader>fW", function()
 					require("telescope.builtin").lsp_dynamic_workspace_symbols()
 				end, { desc = "Workspace symbols" })
 				vim.keymap.set("n", "<leader>fm", function()
 					require("telescope.builtin").treesitter({ symbols = { "function", "method" } })
-				end, { desc = "Treesitter" }) -- fuzzy find methods in current class
-				vim.keymap.set("n", "<leader>ft", function() -- grep file contents in current nvim-tree node
-					local success, node = pcall(function()
-						return require("nvim-tree.lib").get_node_at_cursor()
-					end)
-					if not success or not node then
-						return
-					end
-					require("telescope.builtin").live_grep({ search_dirs = { node.absolute_path } })
-				end)
+				end, { desc = "[F]ind [M]ethods in current class" }) -- fuzzy find methods in current class
 			end,
 		},
 	},

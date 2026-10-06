@@ -53,6 +53,10 @@ in
         pkgs.vscode-langservers-extracted
         pkgs.ccls
         # pkgs.asm-lsp
+        pkgs.imagemagick
+        pkgs.ghostscript
+        pkgs.tectonic
+        pkgs.tree-sitter
       ];
     };
     home.file = {

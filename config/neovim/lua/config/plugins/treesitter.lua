@@ -14,6 +14,7 @@ return {
 				"query",
 				"markdown",
 				"markdown_inline",
+				"latex",
 				"python",
 				"html",
 				"css",

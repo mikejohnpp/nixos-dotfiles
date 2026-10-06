@@ -20,6 +20,10 @@ vim.opt.runtimepath:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
+		-- Provides the build toolchain (luv library, C compiler) used by plugins
+		-- that compile native code. Must come first so it is installed before
+		-- anything that needs to build.
+		{ "folke/lazydev.nvim", priority = 10000 },
 		{ "tpope/vim-sleuth" },
 		-- Highlight todo, notes, etc in comments
 		{
