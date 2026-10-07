@@ -284,6 +284,7 @@ in
       "gamemode"
       "i2c"
       "libvirtd"
+      "podman"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
     ];

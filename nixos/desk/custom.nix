@@ -22,6 +22,8 @@
     pkgs.lazydocker
     pkgs.tlrc
     pkgs.dnsmasq
+    pkgs.waydroid-helper
+    pkgs.distrobox
     (pkgs.writeShellScriptBin "steam" ''
       exec ${pkgs.steam}/bin/steam -system-composer
     '')
@@ -107,24 +109,27 @@
 
   services.dbus.packages = [ pkgs.mcontrolcenter ];
 
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
+    };
+    podman = {
+      enable = true;
+      dockerCompat = false;
+    };
+    waydroid.enable = true;
+    waydroid.package = pkgs.waydroid-nftables;
   };
   programs.virt-manager.enable = true;
 
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true; # enable copy and paste between host and guest
 
-  # systemd.user.services.mcontrolcenter = {
-  #   description = "Auto start mcontrolcenter";
-  #   wantedBy = [ "default.target" ];
-  #
-  #   serviceConfig = {
-  #     ExecStart = "${pkgs.mcontrolcenter}/bin/mcontrolcenter";
-  #     Restart = "on-failure";
-  #   };
-  # };
+  systemd = {
+    packages = [ pkgs.waydroid-helper ];
+    services.waydroid-mount.wantedBy = [ "multi-user.target" ];
+  };
 
   services.tailscale = {
     enable = true;

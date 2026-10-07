@@ -107,6 +107,7 @@
     wf-recorder
     devenv
     redis
+    bindfs
     kdePackages.breeze
     kdePackages.qtsvg
     kdePackages.dolphin
