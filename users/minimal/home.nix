@@ -21,6 +21,8 @@
   within.ghostty.enable = true;
   within.fastfetch.enable = true;
   within.zoxide.enable = true;
+  within.tmux.enable = true;
+  within.tmux.nerdFont = false;
 
   nixpkgs.config.allowUnfree = true;
 

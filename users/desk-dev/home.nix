@@ -65,6 +65,8 @@
   within.zoxide.enable = true;
   within.fastfetch.enable = true;
   within.kitty.enable = true;
+  within.tmux.enable = true;
+  within.tmux.nerdFont = true;
 
   nixpkgs.config = {
     allowUnfree = true;
