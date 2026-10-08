@@ -41,6 +41,7 @@ in
       ];
       enableCompletion = true;
       syntaxHighlighting.enable = true;
+      completionInit = "autoload -U compinit && compinit -u";
       history = {
         size = 50000;
         save = 50000;

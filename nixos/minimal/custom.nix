@@ -34,6 +34,10 @@
   virtualisation.docker.enable = true;
   nixpkgs.config.allowUnfreePredicate = (_: true);
 
+  services.zerotierone = {
+    enable = true;
+  };
+
   services.tailscale = {
     enable = true;
     # Enable tailscale at startup
