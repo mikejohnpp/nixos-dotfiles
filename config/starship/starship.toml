@@ -41,16 +41,16 @@ disabled = true
 format = "[$path ]($style)"
 truncation_length = 4
 
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
-"Developer" = "󰲋 "
-"Others" = " "
+# [directory.substitutions]
+# "Documents" = "󰈙 "
+# "Downloads" = " "
+# "Music" = " "
+# "Pictures" = " "
+# "Developer" = "󰲋 "
+# "Others" = " "
 
 [git_branch]
-symbol = "[ ]($style)"
+# symbol = "[ ]($style)"
 format = "[$symbol$branch]($style) "
 
 [git_status]
