@@ -2,7 +2,7 @@ local M = {}
 
 function M.setup()
 	-- Mimic blink.cmp behavior: show menu, preselect but don't auto-insert
-	vim.opt.completeopt = "menu,menuone,noselect,noinsert"
+	vim.opt.completeopt = "menu,menuone,noinsert"
 
 	-- Completion menu navigation (mimic blink.cmp)
 	vim.keymap.set("i", "<C-y>", function()

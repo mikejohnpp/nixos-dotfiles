@@ -34,6 +34,7 @@
     fastfetch
     lazygit
     unzip
+    devenv
   ];
 
   home.sessionVariables = {

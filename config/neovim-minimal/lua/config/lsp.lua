@@ -55,15 +55,15 @@ function M.setup()
 	})
 
 	-- Diagnostics UI (use plain UTF-8, no nerd font icons)
-	local signs_fill = {
-		[vim.diagnostic.severity.ERROR] = "[E] ",
-		[vim.diagnostic.severity.WARN] = "[W] ",
-		[vim.diagnostic.severity.HINT] = "[H] ",
-		[vim.diagnostic.severity.INFO] = "[I] ",
-	}
+--	local signs_fill = {
+--		[vim.diagnostic.severity.ERROR] = "[E]",
+--		[vim.diagnostic.severity.WARN] = "[W]",
+--		[vim.diagnostic.severity.HINT] = "[H]",
+--		[vim.diagnostic.severity.INFO] = "[I]",
+--	}
 
 	vim.diagnostic.config({
-		signs = { text = signs_fill },
+--		signs = { text = signs_fill },
 		virtual_text = {
 			prefix = "> ",
 			spacing = 4,
@@ -106,6 +106,18 @@ function M.setup()
 		},
 	})
 
+  vim.lsp.config("ccls", {
+		cmd = { "ccls" },
+		filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+		offset_encoding = "utf-32",
+		root_dir = function(bufnr, on_dir)
+			local root = vim.fs.root(bufnr, { "compile_commands.json", ".ccls", ".git" })
+				or vim.fs.dirname(vim.api.nvim_buf_get_name(bufnr))
+				or vim.fn.getcwd()
+			on_dir(root)
+		end,
+  })
+
 	-- bashls
 	vim.lsp.config("bashls", {})
 
@@ -113,7 +125,7 @@ function M.setup()
 	vim.lsp.config("nil_ls", {})
 
 	-- Enable servers (minimal set)
-	pcall(vim.lsp.enable, { "lua_ls", "bashls", "nil_ls" })
+	pcall(vim.lsp.enable, { "lua_ls", "bashls", "nil_ls", "ccls" })
 
 	-- LspAttach
 	local augroup = function(name)
