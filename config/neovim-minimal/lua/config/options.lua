@@ -69,7 +69,7 @@ function M.setup()
 	opt.cmdheight = 0
 	opt.mouse = "a"
 
-	pcall(vim.cmd.colorscheme, "retrobox")
+	pcall(vim.cmd.colorscheme, "catppuccin")
 
 	opt.clipboard = "unnamedplus"
 
