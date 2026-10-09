@@ -49,10 +49,7 @@ local function on_attach(args)
 end
 
 function M.setup()
-	-- Load nvim-lspconfig
-	vim.pack.add({
-		{ name = "nvim-lspconfig", src = "https://github.com/neovim/nvim-lspconfig" },
-	})
+
 
 	-- Diagnostics UI (use plain UTF-8, no nerd font icons)
 --	local signs_fill = {

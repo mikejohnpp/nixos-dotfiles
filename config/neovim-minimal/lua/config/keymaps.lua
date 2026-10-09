@@ -1,64 +1,6 @@
 local M = {}
 
-local function buf_delete(bufnr)
-	bufnr = (bufnr and bufnr ~= 0) and bufnr or vim.api.nvim_get_current_buf()
-	if vim.bo[bufnr].modified then
-		local choice = vim.fn.confirm("Save after close bufffer ?", "&Yes\n&No\n&Cancel")
-		if choice == 1 then
-			vim.cmd.write()
-		elseif choice == 3 or choice == 0 then
-			return
-		end
-	end
-
-	local windows = vim.fn.win_findbuf(bufnr)
-	local alt_buf = vim.fn.bufnr("#")
-	local target_buf = (
-		alt_buf > 0
-		and alt_buf ~= bufnr
-		and vim.api.nvim_buf_is_loaded(alt_buf)
-		and vim.bo[alt_buf].buflisted
-	)
-			and alt_buf
-		or nil
-
-	if not target_buf then
-		for _, b in ipairs(vim.api.nvim_list_bufs()) do
-			if b ~= bufnr and vim.api.nvim_buf_is_loaded(b) and vim.bo[b].buflisted then
-				target_buf = b
-				break
-			end
-		end
-	end
-
-	for _, win in ipairs(windows) do
-		if target_buf then
-			vim.api.nvim_win_set_buf(win, target_buf)
-		else
-			local scratch = vim.api.nvim_create_buf(true, false)
-			vim.api.nvim_win_set_buf(win, scratch)
-		end
-	end
-
-	pcall(vim.api.nvim_buf_delete, bufnr, { force = true })
-end
-
-local function buf_delete_others()
-	local current = vim.api.nvim_get_current_buf()
-	for _, b in ipairs(vim.api.nvim_list_bufs()) do
-		if b ~= current and vim.bo[b].buflisted then
-			buf_delete(b)
-		end
-	end
-end
-
-local function buf_delete_all()
-	for _, b in ipairs(vim.api.nvim_list_bufs()) do
-		if vim.bo[b].buflisted then
-			buf_delete(b)
-		end
-	end
-end
+local buffers = require("config.utils.buffers")
 
 function M.setup()
 	local opts = { noremap = true, silent = true }
@@ -135,9 +77,9 @@ function M.setup()
 	-- Buffer navigation & deletion
 	vim.keymap.set("n", "<Tab>", ":bnext<CR>", opts)
 	vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", opts)
-	vim.keymap.set("n", "<leader>qa", buf_delete, { desc = "Buffer delete" })
-	vim.keymap.set("n", "<leader>qA", buf_delete_all, { desc = "Buffer delete all" })
-	vim.keymap.set("n", "<leader>qo", buf_delete_others, { desc = "Buffer delete other" })
+	vim.keymap.set("n", "<leader>qa", buffers.delete, { desc = "Buffer delete" })
+	vim.keymap.set("n", "<leader>qA", buffers.delete_all, { desc = "Buffer delete all" })
+	vim.keymap.set("n", "<leader>qo", buffers.delete_others, { desc = "Buffer delete other" })
 
 	-- Save all
 	vim.keymap.set("n", "<leader>w", ":wa<CR>", { desc = "Save all files" })
@@ -185,7 +127,7 @@ function M.setup()
 	end, { desc = "Toggle Builtin Undotree" })
 
 	-- Native Difftool
-	vim.keymap.set("n", "<leader>df", function()
+	vim.keymap.set("n", "<leader>dF", function()
 		vim.cmd.packadd("nvim.difftool")
 		local f1 = vim.fn.input("File 1: ", vim.fn.expand("%"), "file")
 		local f2 = vim.fn.input("File 2: ", "", "file")

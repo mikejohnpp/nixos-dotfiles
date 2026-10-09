@@ -33,8 +33,8 @@ function M.setup()
 		return "<Up>"
 	end, { expr = true, silent = true, desc = "Completion: Prev" })
 
-	vim.keymap.set("i", "<Down>", "<C-n>", { silent = true, desc = "Completion: Next" })
-	vim.keymap.set("i", "<Up>", "<C-p>", { silent = true, desc = "Completion: Prev" })
+	-- vim.keymap.set("i", "<Down>", "<C-n>", { silent = true, desc = "Completion: Next" })
+	-- vim.keymap.set("i", "<Up>", "<C-p>", { silent = true, desc = "Completion: Prev" })
 
 	-- Manual trigger LSP completion
 	vim.keymap.set("i", "<C-Space>", function()
@@ -62,3 +62,4 @@ function M.setup()
 end
 
 return M
+

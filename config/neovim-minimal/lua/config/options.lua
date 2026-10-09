@@ -1,10 +1,6 @@
 local M = {}
 
 function M.setup()
-	-- Ensure runtimepath includes this config directory
-	local this_dir = vim.fn.fnamemodify(debug.getinfo(1).source:sub(2), ":p:h")
-	vim.opt.runtimepath:prepend(this_dir)
-
 	pcall(function()
 		require("vim._core.ui2").enable({})
 	end)

@@ -1,15 +1,15 @@
 local M = {}
 
-function M.core()
-	-- Core plugin packages via vim.pack (remote fetch when needed)
-	vim.pack.add({
-		{ name = "nvim-lspconfig", src = "https://github.com/neovim/nvim-lspconfig" },
-	})
-end
+local core = require("config.plugins.core")
+local extras = require("config.plugins.extras")
+local mini = require("config.plugins.mini")
+local trouble = require("config.plugins.trouble")
 
 function M.setup()
-	-- Setup order: core packages first, then LSP/completion
-	M.core()
+	core.setup()
+	extras.setup()
+	mini.setup()
+	trouble.setup()
 end
 
 return M
