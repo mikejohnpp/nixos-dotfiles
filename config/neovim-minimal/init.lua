@@ -1,6 +1,19 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Ensure runtimepath includes this config directory
+local this_dir = vim.fn.fnamemodify(debug.getinfo(1).source:sub(2), ":p:h")
+vim.opt.runtimepath:prepend(this_dir)
+
+local this_dir = vim.fn.fnamemodify(debug.getinfo(1).source:sub(2), ":p:h")
+vim.opt.runtimepath:prepend(this_dir)
+
+local completion = require("config.completion")
+local lsp = require("config.lsp")
+
+completion.setup()
+lsp.setup()
+
 pcall(function()
 	require("vim._core.ui2").enable({})
 end)
@@ -55,7 +68,6 @@ opt.updatetime = 250
 opt.timeoutlen = 300
 
 -- Completion menu
-opt.completeopt = "menuone,noselect"
 opt.pumheight = 10
 opt.shortmess:append("c")
 opt.iskeyword:append("-")
@@ -216,39 +228,14 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-	group = augroup("lsp_attach"),
-	callback = function(args)
-		local client = vim.lsp.get_client_by_id(args.data.client_id)
 
-		-- Native LSP completion (Neovim 0.11+)
-		if client and client:supports_method("textDocument/completion") then
-			vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
-		end
-
-		local bmap = function(mode, lhs, rhs, desc)
-			vim.keymap.set(mode, lhs, rhs, { buffer = args.buf, silent = true, desc = desc })
-		end
-
-		bmap("n", "gd", vim.lsp.buf.definition, "LSP: Goto Definition")
-		bmap("n", "gD", vim.lsp.buf.declaration, "LSP: Goto Declaration")
-		bmap("n", "K", vim.lsp.buf.hover, "LSP: Hover Documentation")
-		bmap("n", "<leader>cr", vim.lsp.buf.rename, "LSP: Rename Symbol")
-		bmap({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "LSP: Code Action")
-		bmap("n", "<leader>cf", function()
-			vim.lsp.buf.format({ async = true })
-		end, "LSP: Format Buffer")
-	end,
-})
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
 
--- Enable language servers natively if installed on system
--- Neovim 0.12 has built-in configs in vim.lsp.config[server_name]
-pcall(vim.lsp.enable, { "lua_ls", "bashls", "nixd", "nil_ls" })
+
 
 local opts = { noremap = true, silent = true }
 

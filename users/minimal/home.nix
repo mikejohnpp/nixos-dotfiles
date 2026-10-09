@@ -10,6 +10,7 @@
     ./../../modules/home-manager/fastfetch.nix
     ./../../modules/home-manager/zoxide.nix
     ./lang.nix
+    ./scripts.nix
   ];
 
   home.username = "mikejohnp";
