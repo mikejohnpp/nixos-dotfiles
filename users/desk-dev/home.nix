@@ -21,6 +21,7 @@
     # ./../../modules/home-manager/vicinae.nix
     ./../../modules/home-manager/zoxide.nix
     ./../../modules/home-manager/kitty.nix
+    ./../../modules/home-manager/dolphin.nix
     # ./../../modules/home-manager/jetbrains.nix
     ./lang.nix
     ./scripts.nix
@@ -65,6 +66,7 @@
   within.zoxide.enable = true;
   within.fastfetch.enable = true;
   within.kitty.enable = true;
+  within.dolphin.enable = true;
   within.tmux.enable = true;
   within.tmux.nerdFont = true;
 
@@ -91,7 +93,6 @@
     feh
     unzip
     file
-    alacritty
     antigravity-ide-fhs
     winboat # windows virtualization
     freerdp # for winboat
@@ -110,11 +111,6 @@
     devenv
     redis
     bindfs
-    kdePackages.breeze
-    kdePackages.qtsvg
-    kdePackages.dolphin
-    kdePackages.qtmultimedia
-    kdePackages.plasma-integration
   ];
 
   xdg.userDirs.enable = true;
@@ -127,16 +123,12 @@
   xdg.userDirs.projects = "Projects";
   xdg.userDirs.videos = "Videos";
 
-  xdg.configFile."kdeglobals".text =
-    builtins.readFile "${pkgs.kdePackages.breeze}/share/color-schemes/BreezeDark.colors";
-
+  # NOTE: kdeglobals / qt6ct colors are owned by Noctalia's
+  # kcolorscheme+qt templates — do NOT hard-code BreezeDark here.
   home.sessionVariables = {
     EDITOR = "nvim";
     XCURSOR_THEME = "breeze_cursors";
     XCURSOR_SIZE = "24";
-    QT_QPA_PLATFORMTHEME = "kde";
-
-    XDG_CONFIG_HOME = "$HOME/.config";
   };
 
   home.file = {

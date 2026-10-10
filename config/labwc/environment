@@ -17,3 +17,9 @@ XCURSOR_SIZE=24
 GTK_IM_MODULE=fcitx
 QT_IM_MODULE=fcitx
 XMODIFIERS=@im=fcitx
+
+# Qt/Dolphin theming via native kde platform theme + Noctalia KColorScheme
+# (mirrors ~/.config/environment.d/10-qtct.conf for systemd/portal apps).
+# NOTE: no QT_STYLE_OVERRIDE — the KColorScheme in kdeglobals owns the colors.
+QT_QPA_PLATFORMTHEME=kde
+XDG_MENU_PREFIX=plasma-

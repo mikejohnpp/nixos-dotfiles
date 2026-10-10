@@ -5,7 +5,15 @@
 
 // Input device configuration.
 // Find the full list of options on the wiki:
-// https://yalter.github.io/niri/Configuration:-Input
+// https://yalter.github.io/niri/Configuration:-Introduction
+
+// Qt/Dolphin theming via native kde platform theme + Noctalia KColorScheme.
+// NOTE: niri environment{} doesn't reach systemd/portal apps,
+// so QT_QPA_PLATFORMTHEME is also set in ~/.config/environment.d/10-qtct.conf
+// (see modules/home-manager/dolphin.nix).
+environment {
+    QT_QPA_PLATFORMTHEME "kde"
+}
 
 cursor {
     xcursor-theme "breeze_cursors"
