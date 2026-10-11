@@ -82,7 +82,7 @@
     hurl
     ripgrep
     btop
-    curl # tmux status bar weather
+    curl
     nil
     nixpkgs-fmt
     alacritty
@@ -93,6 +93,7 @@
     feh
     unzip
     file
+    papers
     antigravity-ide-fhs
     winboat # windows virtualization
     freerdp # for winboat

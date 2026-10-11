@@ -81,7 +81,7 @@
       "application/x-genesis-rom" = "peazip.desktop";
 
       # Document
-      "application/pdf" = "org.pwmt.zathura.desktop";
+      "application/pdf" = "org.gnome.Papers.desktop";
 
       # Directory
       "inode/directory" = "dolphin.desktop";

@@ -42,6 +42,15 @@ in
       enableCompletion = true;
       syntaxHighlighting.enable = true;
       completionInit = "autoload -U compinit && compinit -u";
+      initContent = ''
+        # pick a PDF from ~/Books and open it in zathura (Ctrl+O)
+        dot-books-widget() {
+          dot-books <$TTY
+          zle reset-prompt
+        }
+        zle -N dot-books-widget
+        bindkey '^O' dot-books-widget
+      '';
       history = {
         size = 50000;
         save = 50000;

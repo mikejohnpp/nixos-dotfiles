@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = [
+    pkgs.poppler-utils # pdfinfo/pdftotext for dot-books preview
     (pkgs.writeShellScriptBin "dot-screenshot" ''
       #!${pkgs.bash}/bin/bash
       ${builtins.readFile ../../bin/dot-screenshot.sh}
@@ -12,6 +13,10 @@
     (pkgs.writeShellScriptBin "dot-tmux-stat" ''
       #!${pkgs.bash}/bin/bash
       ${builtins.readFile ../../bin/dot-tmux-stat.sh}
+    '')
+    (pkgs.writeShellScriptBin "dot-books" ''
+      #!${pkgs.bash}/bin/bash
+      ${builtins.readFile ../../bin/dot-books.sh}
     '')
   ];
 }

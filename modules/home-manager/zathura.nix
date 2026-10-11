@@ -9,7 +9,6 @@
       adjust-open = "best-fit";
       pages-per-row = 1;
       first-page-column = "1:1";
-      page-padding = 1;
       page-cache-size = 64;
       scroll-page-aware = true;
       scroll-full-overlap = 0.01;
@@ -17,7 +16,6 @@
       zoom-step = 10;
       zoom-min = 10;
       zoom-max = 1000;
-      smooth-scroll = true;
       font = "monospace 11";
       statusbar-h-padding = 0;
       statusbar-v-padding = 0;
