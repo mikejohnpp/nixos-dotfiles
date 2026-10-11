@@ -23,5 +23,11 @@ in
       ../../config/noctalia/templates/labwc.conf;
 
     home.file.".config/noctalia/templates/niri.conf".source = ../../config/noctalia/templates/niri.conf;
+
+    home.file.".config/noctalia/templates/zathura-dark.theme".source =
+      ../../config/noctalia/templates/zathura-dark.theme;
+
+    home.file.".config/noctalia/templates/zathura-light.theme".source =
+      ../../config/noctalia/templates/zathura-light.theme;
   };
 }

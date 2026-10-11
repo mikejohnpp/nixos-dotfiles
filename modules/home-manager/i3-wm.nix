@@ -23,7 +23,6 @@ in
         "${mod}+Return" = "exec alacritty";
         "${mod}+Shift+f" = "exec firefox";
         "${mod}+Shift+d" = "exec zathura";
-        "${mod}+Shift+t" = "exec --no-startup-id bash $HOME/.config/zathura/change-theme.bash";
         "${mod}+Shift+plus" =
           "exec i3-msg scratchpad show || bash -c 'i3-msg floating enable && i3-msg resize set 1280px 1350px && i3-msg move position center && i3-msg move scratchpad'";
         # "${mod}+Shift+plus" = "exec i3-msg scratchpad show || bash -c 'i3-msg floating enable && i3-msg resize set 70 ppt 94 ppt && i3-msg move position center && i3-msg move scratchpad'";

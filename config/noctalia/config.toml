@@ -112,6 +112,10 @@ wallpaper_scheme = "m3-tonal-spot"
         output_path = "~/.config/niri/noctalia-layout.kdl"
         post_hook = "niri msg action load-config-file"
 
+        [theme.templates.user.zathura]
+        input_path_modes = { dark = "~/.config/noctalia/templates/zathura-dark.theme", light = "~/.config/noctalia/templates/zathura-light.theme" }
+        output_path = "~/.config/zathura/themes/noctalia.theme"
+
 [wallpaper]
 directory = "/home/mikejohnp/bg"
 

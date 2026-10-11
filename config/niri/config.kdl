@@ -423,8 +423,8 @@ window-rule {
 window-rule {
     match app-id=r#"^org\.pwmt\.zathura$"#
 
-    open-floating true
-    default-window-height { proportion 0.98; }
+    open-floating false
+    // default-window-height { proportion 0.98; }
 
     default-column-width { proportion 0.5; }
 }
