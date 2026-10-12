@@ -11,7 +11,11 @@ function M.setup()
 	extras.setup()
 	mini.setup()
 	trouble.setup()
-  	vim_tmux_navigator.setup()
+ 	vim_tmux_navigator.setup()
+
+	-- Built-in debugger
+	vim.cmd("packadd termdebug")
+	vim.g.termdebug_wide = 1
 end
 
 return M

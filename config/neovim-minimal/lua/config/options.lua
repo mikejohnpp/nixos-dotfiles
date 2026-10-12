@@ -136,7 +136,7 @@ function M.setup()
 	opt.path:append("**")
 	opt.wildmenu = true
 	opt.wildoptions = "pum,fuzzy"
-	opt.wildmode = "longest:full,full"
+	opt.wildmode = "noselect"
 	opt.wildignore:append({ "*/.git/*", "*/node_modules/*", "*/target/*", "*.o", "*.pyc" })
 
 	if vim.fn.executable("rg") == 1 then

@@ -48,7 +48,6 @@ function M.setup()
 			vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = event.buf, silent = true })
 		end,
 	})
-
 	-- no auto continue comments on new line
 	vim.api.nvim_create_autocmd("FileType", {
 		group = augroup("no_auto_comment"),
@@ -66,6 +65,13 @@ function M.setup()
 			vim.cmd.startinsert()
 		end,
 	})
+	
+	 vim.api.nvim_create_autocmd("CmdLineChanged", {
+	    pattern = { ":", "/", "?" },
+	    callback = function()
+		vim.fn.wildtrigger()
+	    end
+	 })
 end
 
 return M
