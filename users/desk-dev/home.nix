@@ -124,13 +124,14 @@
   xdg.userDirs.projects = "Projects";
   xdg.userDirs.videos = "Videos";
 
-  # NOTE: kdeglobals / qt6ct colors are owned by Noctalia's
   # kcolorscheme+qt templates — do NOT hard-code BreezeDark here.
   home.sessionVariables = {
     EDITOR = "nvim";
     XCURSOR_THEME = "breeze_cursors";
     XCURSOR_SIZE = "24";
   };
+
+  home.sessionPath = [ "$HOME/.local/bin" ];
 
   home.file = {
     "bg" = {

@@ -43,6 +43,10 @@ in
       syntaxHighlighting.enable = true;
       completionInit = "autoload -U compinit && compinit -u";
       initContent = ''
+        # Locally installed binaries (mirrors home.sessionPath for non-login
+        # shells, which never source hm-session-vars.sh).
+        [[ ":$PATH:" != *":$HOME/.local/bin:"* ]] && export PATH="$HOME/.local/bin:$PATH"
+
         # pick a PDF from ~/Books and open it in zathura (Ctrl+O)
         dot-books-widget() {
           dot-books <$TTY

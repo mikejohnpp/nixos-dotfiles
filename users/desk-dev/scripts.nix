@@ -14,6 +14,14 @@
       #!${pkgs.bash}/bin/bash
       ${builtins.readFile ../../bin/dot-tmux-stat.sh}
     '')
+    (pkgs.writeShellScriptBin "dot-tmux-tasks" ''
+      #!${pkgs.bash}/bin/bash
+      ${builtins.readFile ../../bin/dot-tmux-tasks.sh}
+    '')
+    (pkgs.writeShellScriptBin "dot-tmux-let-timer" ''
+      #!${pkgs.bash}/bin/bash
+      ${builtins.readFile ../../bin/dot-tmux-let-timer.sh}
+    '')
     (pkgs.writeShellScriptBin "dot-books" ''
       #!${pkgs.bash}/bin/bash
       ${builtins.readFile ../../bin/dot-books.sh}
