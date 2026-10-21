@@ -22,6 +22,8 @@
     # pkgs.tlrc
   ];
 
+  documentation.dev.enable = true;
+
   hardware.enableRedistributableFirmware = false;
   hardware.enableAllFirmware = false;
   hardware.firmware = [ ];

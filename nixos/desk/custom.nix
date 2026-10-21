@@ -68,6 +68,8 @@
     gamemode.enable = true;
   };
 
+  documentation.dev.enable = true;
+
   hardware.enableRedistributableFirmware = true;
 
   hardware.enableAllFirmware = true;

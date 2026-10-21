@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -78,7 +79,8 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = 
+    (with pkgs; [
     lsof
     vim
     wget
@@ -88,7 +90,11 @@
     git
     psmisc
     btop
-  ];
+    ])
+    ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
+      opencode
+      pi
+    ]);
 
   services.openssh.enable = true;
   services.rpcbind.enable = true;

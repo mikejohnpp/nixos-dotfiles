@@ -8,7 +8,7 @@ in
     # Python
     # python_sys
     # Node.js
-    # pkgs.nodejs_latest
+    pkgs.nodejs_latest
     #jdk21
     # pkgs.jdk21
     #maven
@@ -40,7 +40,7 @@ in
     # PYTHONSTARTUP = "${python_sys}/lib/python3.12/site-packages";
 
     # Node.js
-    # NODE_PATH = "~/.npm-global/lib/node_modules";
+    NODE_PATH = "~/.npm-global/lib/node_modules";
 
     # Java 21
     # JAVA_HOME = "${pkgs.jdk21}/lib/openjdk";
