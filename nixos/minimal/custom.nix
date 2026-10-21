@@ -17,6 +17,9 @@
   ];
 
   environment.systemPackages = [
+    pkgs.man-pages
+    pkgs.man-pages-posix
+
     pkgs.docker-compose
     pkgs.lazydocker
     # pkgs.tlrc
