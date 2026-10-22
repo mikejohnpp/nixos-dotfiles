@@ -486,8 +486,8 @@ window-rule {
      }
   }
   background-effect {
-    blur true
-    xray true
+    blur false
+    xray false
   }
 }
 

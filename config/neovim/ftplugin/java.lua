@@ -8,8 +8,33 @@ local home = vim.env.HOME -- Get the home directory
 
 local jdtls = require("jdtls")
 
-local root_markers = { ".git", "mvnw", "gradlew", "settings.gradle", "settings.gradle.kts", "pom.xml" }
-local root_dir = require("jdtls.setup").find_root(root_markers)
+local function get_java_root()
+	local getparent = function(p)
+		return vim.fn.fnamemodify(p, ":h")
+	end
+	local current = vim.fn.fnamemodify(bufname, ":p:h")
+	local top_pom = nil
+	local gradle_root = nil
+
+	while getparent(current) ~= current do
+		if
+			not gradle_root
+			and (vim.uv.fs_stat(current .. "/settings.gradle") or vim.uv.fs_stat(current .. "/settings.gradle.kts"))
+		then
+			gradle_root = current
+		end
+		if vim.uv.fs_stat(current .. "/pom.xml") then
+			top_pom = current
+		end
+		current = getparent(current)
+	end
+
+	return gradle_root
+		or top_pom
+		or require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" })
+end
+
+local root_dir = get_java_root()
 if not root_dir then
 	return
 end
@@ -33,13 +58,15 @@ end
 
 -- Needed for debugging
 local bundles = {}
-local java_dbg_bundle = vim.fn.glob(home .. "/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar")
+local java_dbg_bundle =
+	vim.fn.glob(home .. "/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar")
 if java_dbg_bundle ~= "" then
 	table.insert(bundles, java_dbg_bundle)
 end
 
 -- Needed for running/debugging unit tests
-local java_test_bundle = vim.fn.glob(home .. "/.local/share/nvim/mason/share/java-test/com.microsoft.java.test.plugin.jar")
+local java_test_bundle =
+	vim.fn.glob(home .. "/.local/share/nvim/mason/share/java-test/com.microsoft.java.test.plugin.jar")
 if java_test_bundle ~= "" then
 	table.insert(bundles, java_test_bundle)
 end
@@ -167,7 +194,7 @@ local config = {
 -- Needed for debugging
 config["on_attach"] = function(client, bufnr)
 	jdtls.setup_dap({ hotcodereplace = "auto" })
-	require("jdtls.dap").setup_dap_main_class_configs()
+	pcall(require("jdtls.dap").setup_dap_main_class_configs, { verbose = false })
 end
 
 -- This starts a new client & server, or attaches to an existing client & server based on the `root_dir`.
