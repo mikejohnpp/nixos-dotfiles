@@ -1,8 +1,20 @@
 -- JDTLS (Java LSP) configuration
+local bufname = vim.api.nvim_buf_get_name(0)
+if bufname == "" or vim.bo.buftype ~= "" then
+	return
+end
+
 local home = vim.env.HOME -- Get the home directory
 
 local jdtls = require("jdtls")
-local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
+
+local root_markers = { ".git", "mvnw", "gradlew", "settings.gradle", "settings.gradle.kts", "pom.xml" }
+local root_dir = require("jdtls.setup").find_root(root_markers)
+if not root_dir then
+	return
+end
+
+local project_name = vim.fs.basename(root_dir)
 local workspace_dir = home .. "/jdtls-workspace/" .. project_name
 
 local system_os = ""
@@ -20,12 +32,20 @@ else
 end
 
 -- Needed for debugging
-local bundles = {
-	vim.fn.glob(home .. "/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar"),
-}
+local bundles = {}
+local java_dbg_bundle = vim.fn.glob(home .. "/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar")
+if java_dbg_bundle ~= "" then
+	table.insert(bundles, java_dbg_bundle)
+end
 
 -- Needed for running/debugging unit tests
-vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/.local/share/nvim/mason/share/java-test/*.jar", 1), "\n"))
+local java_test_bundle = vim.fn.glob(home .. "/.local/share/nvim/mason/share/java-test/com.microsoft.java.test.plugin.jar")
+if java_test_bundle ~= "" then
+	table.insert(bundles, java_test_bundle)
+end
+
+local extendedClientCapabilities = jdtls.extendedClientCapabilities
+extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
@@ -57,7 +77,7 @@ local config = {
 
 	-- This is the default if not provided, you can remove it. Or adjust as needed.
 	-- One dedicated LSP server & client will be started per unique root_dir
-	root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "pom.xml", "build.gradle" }),
+	root_dir = root_dir,
 
 	-- Here you can configure eclipse.jdt.ls specific settings
 	-- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
@@ -99,11 +119,6 @@ local config = {
 			signatureHelp = { enabled = true },
 			format = {
 				enabled = true,
-				-- Formatting works by default, but you can refer to a specific file/URL if you choose
-				settings = {
-					url = "https://github.com/google/styleguide/blob/gh-pages/intellij-java-google-style.xml",
-					profile = "GoogleStyle",
-				},
 			},
 			completion = {
 				favoriteStaticMembers = {
@@ -145,7 +160,7 @@ local config = {
 	init_options = {
 		-- References the bundles defined above to support Debugging and Unit Testing
 		bundles = bundles,
-		extendedClientCapabilities = jdtls.extendedClientCapabilities,
+		extendedClientCapabilities = extendedClientCapabilities,
 	},
 }
 

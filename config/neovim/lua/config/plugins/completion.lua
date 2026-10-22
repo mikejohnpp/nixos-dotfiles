@@ -76,11 +76,6 @@ return {
 
 				["<C-b>"] = { "scroll_documentation_up", "fallback" },
 				["<C-f>"] = { "scroll_documentation_down", "fallback" },
-
-				-- 'prefix' will fuzzy match on the text before the cursor
-				-- 'full' will fuzzy match on the text before *and* after the cursor
-				-- example: 'foo_|_bar' will match 'foo_' for 'prefix' and 'foo__bar' for 'full'
-				keyword = { range = "full" },
 			},
 			cmdline = {
 				enabled = true,
@@ -112,6 +107,7 @@ return {
 				},
 			},
 			completion = {
+				keyword = { range = "full" },
 				documentation = {
 					auto_show = false,
 					auto_show_delay_ms = 500,
