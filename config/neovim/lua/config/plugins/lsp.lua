@@ -153,7 +153,7 @@ return {
 				"bashls",
 				"laravel_ls",
 				"clangd",
-				"ccls",
+				-- "ccls",
 				-- "rust_analyzer",
 			})
 

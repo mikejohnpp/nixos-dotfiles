@@ -7,9 +7,9 @@ return {
 			local mode = {
 				"mode",
 				fmt = function(str)
-					return " " .. str
+					-- return " " .. str
 					-- return " " .. str:sub(1, 1) -- displays only the first character of the mode
-					-- return str
+					return str
 				end,
 			}
 			local filename = {
@@ -36,14 +36,14 @@ return {
 				sources = { "nvim_diagnostic" },
 				sections = { "error", "warn" },
 				symbols = { error = " ", warn = " ", info = " ", hint = "󰌶 " },
-				colored = true,
+				colored = false,
 				update_in_insert = true,
 				always_visible = true,
 			}
 
 			local diff = {
 				"diff",
-				colored = true,
+				colored = false,
 				symbols = {
 					added = "󰐕 ",
 					modified = "󰏫 ",
@@ -87,9 +87,12 @@ return {
 							cond = hide_in_width,
 						},
 						{ "encoding", cond = hide_in_width },
+						"searchcount",
+						"location",
+						"progress",
 					},
-					lualine_y = { "searchcount", "location" },
-					lualine_z = { "progress" },
+					lualine_y = {},
+					lualine_z = {},
 				},
 				tabline = {
 					lualine_a = {
