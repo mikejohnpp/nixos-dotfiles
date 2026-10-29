@@ -1,7 +1,7 @@
 # vim.o.shell = "powershell.exe -nologo"
 vim.o.autoread = true;
 vim.o.hlsearch = true                          -- Set highlight on search
-vim.o.number = true                           -- Make line numbers default
+vim.o.number =  false                          -- Make line numbers default
 vim.o.mouse = 'a'                              -- Enable mouse mode
 vim.o.breakindent = true                       -- Enable break indent
 vim.o.undofile = true                          -- Save undo history
@@ -19,7 +19,7 @@ vim.o.wrap = false                             -- display lines as one long line
 vim.o.linebreak = true                         -- companion to wrap don't split words
 vim.o.scrolloff = 15                           -- minimal number of screen lines to keep above and below the cursor
 vim.o.sidescrolloff = 8                        -- minimal number of screen columns either side of cursor if wrap is `false`
-vim.o.relativenumber = true                    -- set relative numbered lines
+vim.o.relativenumber =  false                   -- set relative numbered lines
 vim.o.numberwidth = 4                          -- set number column width to 2 {default 4}
 vim.o.shiftwidth = 0                          -- the number of spaces inserted for each indentation
 vim.o.tabstop = 2                              -- insert n spaces for a tab

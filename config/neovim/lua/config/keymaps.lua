@@ -92,8 +92,13 @@ vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -5<cr>", { desc = "Decreas
 -- Toggle line number
 vim.keymap.set("n", "<leader>an", function()
 	vim.wo.number = not vim.wo.number
-	vim.wo.relativenumber = not vim.wo.relativenumber
 end, { desc = "Toggle line number" })
+
+-- Toggle relative line number
+vim.keymap.set("n", "<leader>aN", function()
+	vim.wo.number = not vim.wo.number
+	vim.wo.relativenumber = not vim.wo.relativenumber
+end, { desc = "Toggle relative line number" })
 
 vim.keymap.set("i", "<C-J>", 'copilot#Accept("\\<CR>")', {
 	expr = true,

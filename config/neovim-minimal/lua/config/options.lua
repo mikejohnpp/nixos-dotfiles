@@ -8,8 +8,8 @@ function M.setup()
 	local opt = vim.opt
 
 	-- Line numbers & cursor
-	opt.number = true
-	opt.relativenumber = true
+	opt.number = false
+	opt.relativenumber = false
 	opt.numberwidth = 4
 	opt.cursorline = false
 	opt.signcolumn = "yes"
@@ -124,15 +124,15 @@ function M.setup()
 		return string.format(" %s │ %s%s%s %%=%s │ %%l:%%c │ %%p%%%% ", m, file, modified, readonly, ft)
 	end
 
-  function _G.fuzzy_find_file(text,_)
-    local files = vim.fn.glob("**/*", true, true)
-    return vim.fn.matchfuzzy(files, text)
-  end
+	function _G.fuzzy_find_file(text, _)
+		local files = vim.fn.glob("**/*", true, true)
+		return vim.fn.matchfuzzy(files, text)
+	end
 
 	vim.o.statusline = "%!v:lua.custom_statusline()"
 
 	-- Wildmenu & find
-  opt.findfunc = "v:lua.fuzzy_find_file"
+	opt.findfunc = "v:lua.fuzzy_find_file"
 	opt.path:append("**")
 	opt.wildmenu = true
 	opt.wildoptions = "pum,fuzzy"

@@ -114,11 +114,16 @@ function M.setup()
 	vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +5<cr>", { desc = "Increase Window Width" })
 	vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -5<cr>", { desc = "Decrease Window Width" })
 
-	-- Toggle line numbers
+	-- Toggle line number
 	vim.keymap.set("n", "<leader>an", function()
 		vim.wo.number = not vim.wo.number
-		vim.wo.relativenumber = not vim.wo.relativenumber
 	end, { desc = "Toggle line number" })
+
+	-- Toggle relative line number
+	vim.keymap.set("n", "<leader>aN", function()
+		vim.wo.number = not vim.wo.number
+		vim.wo.relativenumber = not vim.wo.relativenumber
+	end, { desc = "Toggle relative line number" })
 
 	-- Native Undotree
 	vim.keymap.set("n", "<leader>u", function()
