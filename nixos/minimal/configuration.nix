@@ -10,6 +10,7 @@
   imports = [
     /etc/nixos/hardware-configuration.nix
     ./custom.nix
+    ../print-server.nix
     # ./k3s.nix
     # ./nfs-server.nix
   ];

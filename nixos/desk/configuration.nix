@@ -80,6 +80,7 @@ in
   imports = [
     /etc/nixos/hardware-configuration.nix
     ./custom.nix
+    ../print-client.nix
     # ./k3s-worker.nix
     ../../modules/home-manager/mysql.nix
 
