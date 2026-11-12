@@ -115,6 +115,7 @@ wallpaper_scheme = "m3-tonal-spot"
         [theme.templates.user.zathura]
         input_path_modes = { dark = "~/.config/noctalia/templates/zathura-dark.theme", light = "~/.config/noctalia/templates/zathura-light.theme" }
         output_path = "~/.config/zathura/themes/noctalia.theme"
+        post_hook = "for d in $(busctl --user list --acquired | awk '$1 ~ /^org\\.pwmt\\.zathura\\.PID-/ {print $1}'); do busctl --user call \"$d\" /org/pwmt/zathura org.pwmt.zathura SourceConfig >/dev/null 2>&1 || true; done"
 
 [wallpaper]
 directory = "/home/mikejohnp/bg"

@@ -56,7 +56,7 @@ return {
 		config = function()
 			-- vim.g.zenbones_darken_comments = 45
 			vim.g.zenbones_compat = 1
-			vim.g.neobones_transparent_background = isNeovide
+			vim.g.neobones_transparent_background = not isNeovide
 			vim.cmd.colorscheme("neobones")
 		end,
 	},

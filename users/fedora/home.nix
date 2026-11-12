@@ -66,6 +66,7 @@
     nerd-fonts.fira-mono
     nerd-fonts.noto
     nerd-fonts.meslo-lg
+    nerd-fonts.code-new-roman
     adwaita-fonts
   ];
 

@@ -1,0 +1,94 @@
+[
+  {
+    "label": "Lazygit",
+    "command": "lazygit",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "reveal_target": "center",
+    "hide": "always"
+  },
+  {
+    "label": "Lazygit Log",
+    "command": "lazygit",
+    "args": ["log"],
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "reveal_target": "center",
+    "hide": "always"
+  },
+  {
+    "label": "Spring Boot: Run",
+    "command": "mvn",
+    "args": ["spring-boot:run"],
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "reveal_target": "dock",
+    "hide": "never"
+  },
+  {
+    "label": "Spring Boot: Debug",
+    "command": "mvn",
+    "args": [
+      "spring-boot:run",
+      "-Dspring-boot.run.jvmArguments=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005"
+    ],
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "reveal_target": "dock",
+    "hide": "never"
+  },
+  {
+    "label": "Run Python File",
+    "command": "python3",
+    "args": ["$ZED_FILE"],
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "reveal_target": "dock",
+    "hide": "never"
+  },
+  {
+    "label": "GitHub Issues (open)",
+    "command": "gh",
+    "args": ["issue", "list", "--state", "open"],
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "reveal_target": "dock",
+    "hide": "never"
+  },
+  {
+    "label": "GitHub Issues (all)",
+    "command": "gh",
+    "args": ["issue", "list", "--state", "all"],
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "reveal_target": "dock",
+    "hide": "never"
+  },
+  {
+    "label": "GitHub PRs (open)",
+    "command": "gh",
+    "args": ["pr", "list", "--state", "open"],
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "reveal_target": "dock",
+    "hide": "never"
+  },
+  {
+    "label": "GitHub PRs (all)",
+    "command": "gh",
+    "args": ["pr", "list", "--state", "all"],
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "reveal_target": "dock",
+    "hide": "never"
+  }
+]

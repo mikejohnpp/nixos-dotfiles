@@ -13,6 +13,7 @@
     ./../../modules/home-manager/firefox.nix
     ./../../modules/home-manager/zathura.nix
     ./../../modules/home-manager/neovim.nix
+    ./../../modules/home-manager/zed.nix
     ./../../modules/home-manager/vscode.nix
     ./../../modules/home-manager/noctalia.nix
     ./../../modules/home-manager/satty.nix
@@ -57,6 +58,7 @@
   within.zsh.enable = true;
   within.ghostty.enable = true;
   within.neovim.enable = true;
+  within.zed.enable = true;
   within.alacritty.enable = true;
   within.niri.enable = true;
   within.labwc.enable = true;
@@ -112,7 +114,11 @@
     devenv
     redis
     bindfs
+    # leaf-markdown-viewer
+    nerd-fonts.code-new-roman
   ];
+
+  fonts.fontconfig.enable = true;
 
   xdg.userDirs.enable = true;
 

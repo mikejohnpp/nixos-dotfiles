@@ -1,0 +1,94 @@
+{
+  "vim_mode": true,
+  "vim": {
+    "default_mode": "normal",
+    "use_system_clipboard": "always",
+    "use_smartcase_find": true,
+    "toggle_relative_line_numbers": false,
+    "highlight_on_yank_duration": 200
+  },
+  "which_key": {
+    "enabled": true,
+    "delay_ms": 300
+  },
+  "theme": {
+    "mode": "dark",
+    "dark": "Neobones Dark",
+    "light": "Neobones Light"
+  },
+  "buffer_font_family": "CodeNewRoman Nerd Font Mono",
+  "buffer_font_size": 14,
+  "terminal": {
+    "font_family": "CodeNewRoman Nerd Font Mono",
+    "font_size": 13,
+    "dock": "bottom"
+  },
+  "gutter": {
+    "line_numbers": false,
+    "runnables": true,
+    "breakpoints": true,
+    "folds": true
+  },
+  "relative_line_numbers": "disabled",
+  "current_line_highlight": "none",
+  "vertical_scroll_margin": 15,
+  "horizontal_scroll_margin": 8,
+  "soft_wrap": "none",
+  "tab_size": 2,
+  "hard_tabs": false,
+  "format_on_save": "on",
+  "remove_trailing_whitespace_on_save": true,
+  "ensure_final_newline_on_save": true,
+  "autosave": "off",
+  "show_whitespaces": "trailing",
+  "whitespace_map": {
+    "space": "·",
+    "tab": "»"
+  },
+  "search": {
+    "case_sensitive": false,
+    "whole_word": false,
+    "regex": false
+  },
+  "seed_search_query_from_cursor": "always",
+  "use_smartcase_search": true,
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": true
+  },
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": true,
+      "delay_ms": 1000
+    }
+  },
+  "diagnostics": {
+    "include_warnings": true,
+    "inline": {
+      "enabled": true,
+      "update_debounce_ms": 250
+    }
+  },
+  "project_panel": {
+    "dock": "left",
+    "git_status": true
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "languages": {
+    "Nix": {
+      "language_servers": ["nil"],
+      "formatter": {
+        "external": {
+          "command": "nixfmt"
+        }
+      }
+    }
+  }
+}
