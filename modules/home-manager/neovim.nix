@@ -51,6 +51,7 @@ in
         pkgs.lua51Packages.lua
         pkgs.lua51Packages.luarocks
         pkgs.vscode-langservers-extracted
+        pkgs.clang-tools
         pkgs.ccls
         # pkgs.asm-lsp
         pkgs.imagemagick

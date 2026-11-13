@@ -16,7 +16,11 @@ in
   config = mkIf cfg.enable {
     programs.zed-editor = {
       enable = true;
-      package = pkgs.zed-editor.fhs;
+      package = pkgs.zed-editor.fhsWithPackages (
+        ps: with ps; [
+          glibc.dev
+        ]
+      );
 
       mutableUserSettings = true;
       mutableUserKeymaps = true;
@@ -47,7 +51,11 @@ in
         vscode-json-languageserver
         eslint_d
         prettierd
+        clang-tools
         ccls
+        direnv
+        nix-direnv
+        devenv
         ripgrep
         lazygit
         gh

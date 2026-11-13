@@ -27,6 +27,8 @@
       "k": ["vim::Up", { "display_lines": true }],
       "shift-h": "vim::FirstNonWhitespace",
       "shift-l": "vim::EndOfLine",
+      "alt-j": "editor::MoveLineDown",
+      "alt-k": "editor::MoveLineUp",
       "space y": "editor::Copy",
       "space c a": "editor::ToggleCodeActions",
       "space l f": "editor::Format",
@@ -48,8 +50,6 @@
       "x": ["workspace::SendKeystrokes", "\" _ x"],
       "space shift-y": "vim::YankLine",
       "space w": "workspace::SaveAll",
-      "alt-j": "editor::GoToDiagnostic",
-      "alt-k": "editor::GoToPreviousDiagnostic",
       "alt-r": ["task::Spawn", { "task_name": "Run Python File" }],
 
       "ctrl-h": "workspace::ActivatePaneLeft",
@@ -146,28 +146,70 @@
     "context": "Editor && vim_mode == insert",
     "bindings": {
       "ctrl-space": "editor::ShowCompletions",
-      "ctrl-j": "editor::AcceptEditPrediction",
       "alt-shift-j": "editor::AcceptEditPrediction"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert && !(showing_code_actions || showing_completions)",
+    "bindings": {
+      "ctrl-n": "editor::ShowCompletions",
+      "ctrl-p": "editor::ShowCompletions"
+    }
+  },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "ctrl-e": "editor::Cancel",
+      "ctrl-n": "editor::ContextMenuNext",
+      "ctrl-p": "editor::ContextMenuPrevious",
+      "down": "editor::ContextMenuNext",
+      "up": "editor::ContextMenuPrevious",
+      "ctrl-b": "editor::ContextMenuFirst",
+      "ctrl-f": "editor::ContextMenuLast"
     }
   },
   {
     "context": "Editor && showing_completions",
     "bindings": {
       "ctrl-y": "editor::ConfirmCompletion",
-      "ctrl-e": "editor::Cancel",
-      "ctrl-n": "editor::ContextMenuNext",
-      "ctrl-p": "editor::ContextMenuPrevious",
-      "down": "editor::ContextMenuNext",
-      "up": "editor::ContextMenuPrevious"
+      "enter": "editor::ConfirmCompletion",
+      "tab": "editor::ComposeCompletion"
+    }
+  },
+  {
+    "context": "Editor && showing_code_actions",
+    "bindings": {
+      "ctrl-y": "editor::ConfirmCodeAction",
+      "enter": "editor::ConfirmCodeAction"
+    }
+  },
+  {
+    "context": "Editor && in_snippet && has_next_tabstop && !showing_completions",
+    "bindings": {
+      "tab": "editor::NextSnippetTabstop"
+    }
+  },
+  {
+    "context": "Editor && in_snippet && has_previous_tabstop && !showing_completions",
+    "bindings": {
+      "shift-tab": "editor::PreviousSnippetTabstop"
     }
   },
   {
     "context": "Editor && edit_prediction",
     "bindings": {
       "alt-shift-j": "editor::AcceptEditPrediction",
-      "ctrl-j": "editor::AcceptEditPrediction",
       "alt-]": "editor::NextEditPrediction",
       "alt-[": "editor::PreviousEditPrediction"
+    }
+  },
+  {
+    "context": "FileFinder || (FileFinder > Picker > Editor)",
+    "bindings": {
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrevious",
+      "ctrl-n": "menu::SelectNext",
+      "ctrl-p": "menu::SelectPrevious"
     }
   },
   {

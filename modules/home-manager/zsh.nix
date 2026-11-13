@@ -25,6 +25,15 @@ in
       enableZshIntegration = true;
     };
 
+    programs.direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
+      stdlib = ''
+        eval "$(${pkgs.devenv}/bin/devenv direnvrc)"
+      '';
+    };
+
     programs.zsh = {
       plugins = [
         {
