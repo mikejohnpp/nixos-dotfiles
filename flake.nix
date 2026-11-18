@@ -16,7 +16,7 @@
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixpkgs-zen = {
-      url = "github:NixOS/nixpkgs/8d5d270900d3fc75655ea2d9d248b234f6631439";
+      url = "github:NixOS/nixpkgs/1c872b8c508bbbfebc1b0b74777ff391ce0a574c";
     };
     nixos-wsl = {
       url = "github:nix-community/NixOS-WSL/main";

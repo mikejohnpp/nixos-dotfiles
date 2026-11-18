@@ -179,7 +179,11 @@ in
   };
 
   services = {
+    desktopManager.plasma6.enable = true;
+
     displayManager = {
+      defaultSession = lib.mkForce "plasma";
+
       sddm = {
         enable = true;
         extraPackages = [
@@ -197,18 +201,6 @@ in
       };
     };
   };
-  services.desktopManager.gnome.enable = true;
-
-  # To disable installing GNOME's suite of applications
-  # and only be left with GNOME shell.
-  services.gnome.core-apps.enable = false;
-  services.gnome.core-developer-tools.enable = false;
-  services.gnome.games.enable = false;
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-tour
-    gnome-user-docs
-  ];
-
   programs.niri.enable = true;
   programs.labwc.enable = true;
 
@@ -315,11 +307,6 @@ in
       wlr-randr
       mcontrolcenter
       xdg-utils
-
-      gnomeExtensions.blur-my-shell
-      gnomeExtensions.just-perfection
-      gnomeExtensions.arc-menu
-      gnomeExtensions.appindicator
     ])
     ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
       opencode
@@ -438,12 +425,12 @@ in
   systemd.oomd.enable = true;
 
   system.autoUpgrade = {
-    enable = true;
-    flake = "/home/mikejohnp/nixos-dotfiles#desk"; # Path to your flake and the output name
+    enable = false;
+    flake = "/home/mikejohnp/nixos-dotfiles#desk-btw"; # Path to your flake and the output name
     flags = [
+      "--impure"
       "--update-input"
       "nixpkgs"
-      "--commit-lock-file" # Automatically commits the flake.lock change to your git repo
     ];
     dates = "weekly"; # Can be "daily", "04:00", etc.
     randomizedDelaySec = "45min";
