@@ -108,8 +108,6 @@ in
     ];
   };
 
-  boot.initrd.systemd.enable = true;
-
   boot.supportedFilesystems = [ "nfs" ];
 
   specialisation = {
@@ -184,8 +182,12 @@ in
     displayManager = {
       defaultSession = lib.mkForce "plasma";
 
-      sddm = {
+      plasma-login-manager = {
         enable = true;
+      };
+
+      sddm = {
+        enable = false;
         extraPackages = [
           custom-sddm-astronaut
         ];
@@ -310,7 +312,6 @@ in
     ])
     ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
       opencode
-      gemini-cli
       pi
     ]);
 
@@ -318,7 +319,10 @@ in
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     oxygen
     elisa
-    kwin-x11
+    plasma-browser-integration
+    gwenview
+    ktexteditor
+    okular
   ];
 
   fonts.packages = with pkgs; [

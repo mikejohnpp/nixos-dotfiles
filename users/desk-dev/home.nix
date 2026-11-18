@@ -85,8 +85,6 @@
     ripgrep
     btop
     curl
-    nil
-    nixpkgs-fmt
     alacritty
     ghostty
     kitty
@@ -109,13 +107,10 @@
     neovide
     wl-mirror
     kanshi
-    gnome-software
     wf-recorder
     devenv
     redis
     bindfs
-    # leaf-markdown-viewer
-    nerd-fonts.code-new-roman
   ];
 
   fonts.fontconfig.enable = true;

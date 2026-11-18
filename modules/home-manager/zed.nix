@@ -42,6 +42,7 @@ in
       extraPackages = with pkgs; [
         nil
         nixfmt
+        nixpkgs-fmt
         lua-language-server
         stylua
         basedpyright

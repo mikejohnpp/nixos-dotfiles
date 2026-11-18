@@ -33,6 +33,7 @@ in
         pkgs.lua-language-server
         pkgs.luajitPackages.jsregexp
         pkgs.nil
+        pkgs.nixpkgs-fmt
         pkgs.eslint_d
         pkgs.prettierd
         pkgs.htmlhint
